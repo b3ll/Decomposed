@@ -113,24 +113,38 @@ final class CoreAnimationUtilsTests: XCTestCase {
     XCTAssertEqual(transform, m2)
   }
 
+  func testComposition() {
+    var transform = CATransform3DIdentity
+    transform = CATransform3DTranslate(transform, 2.0, 4.0, 6.0)
+    transform = CATransform3DScale(transform, 1.0, 2.0, 3.0)
+    transform = CATransform3DRotate(transform, .pi / 4.0, 1.0, 0.0, 0.0)
+
+    let transform2 = CATransform3DIdentity
+      .translated(by: simd_double3(2.0, 4.0, 6.0))
+      .scaled(by: simd_double3(1.0, 2.0, 3.0))
+      .rotated(by: simd_quatd(angle: .pi / 4.0, axis: simd_double3(1.0, 0.0, 0.0)))
+
+    XCTAssertEqual(transform, transform2)
+  }
+
   static var allTests = [
     ("testTranslation", testTranslation),
   ]
 
 }
 
-func XCTAssertEqual(_ lhs: simd_double3, _ rhs: simd_double3, accuracy: Double = 0.00001) {
+internal func XCTAssertEqual(_ lhs: simd_double3, _ rhs: simd_double3, accuracy: Double = 0.00001) {
   XCTAssertEqual(lhs[0], rhs[0], accuracy: accuracy)
   XCTAssertEqual(lhs[1], rhs[1], accuracy: accuracy)
   XCTAssertEqual(lhs[2], rhs[2], accuracy: accuracy)
 }
 
-func XCTAssertEqual(_ lhs: simd_quatd, _ rhs: simd_quatd, accuracy: Double = 0.00001) {
+internal func XCTAssertEqual(_ lhs: simd_quatd, _ rhs: simd_quatd, accuracy: Double = 0.00001) {
   XCTAssertEqual(lhs.axis, rhs.axis, accuracy: accuracy)
   XCTAssertEqual(lhs.angle, rhs.angle, accuracy: accuracy)
 }
 
-func XCTAssertEqual(_ lhs: CATransform3D, _ rhs: CATransform3D, accuracy: CGFloat = 0.00001) {
+internal func XCTAssertEqual(_ lhs: CATransform3D, _ rhs: CATransform3D, accuracy: CGFloat = 0.00001) {
   XCTAssertEqual(lhs.m11, rhs.m11, accuracy: accuracy)
   XCTAssertEqual(lhs.m12, rhs.m12, accuracy: accuracy)
   XCTAssertEqual(lhs.m13, rhs.m13, accuracy: accuracy)

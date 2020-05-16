@@ -21,6 +21,16 @@ public struct TransformationMatrix {
       public static var zero: Skew {
         return Skew(XY: 0.0, XZ: 0.0, YZ: 0.0)
       }
+
+      static func + (left: Self, right: Self) -> Self {
+        return Skew(XY: left.XY + right.XY, XZ: left.XZ + right.XZ , YZ: left.YZ + right.YZ)
+      }
+
+      static func += (left: inout Self, right: Self) {
+        left.XY += right.XY
+        left.XZ += right.XZ
+        left.YZ += right.YZ
+      }
     }
 
     public var scale: simd_double3 = .zero
@@ -33,11 +43,11 @@ public struct TransformationMatrix {
     public var recomposed: matrix_double4x4 {
       var recomposed: matrix_double4x4 = .identity
 
-      recomposed.applyPerspective(perspective)
-      recomposed.translate(translation)
-      recomposed.rotate(quaternion)
-      recomposed.skew(skew)
-      recomposed.scale(scale)
+      recomposed.setPerspective(perspective)
+      recomposed.translate(by: translation)
+      recomposed.rotate(by: quaternion)
+      recomposed.skew(by: skew)
+      recomposed.scale(by: scale)
 
       return recomposed
     }
@@ -47,12 +57,7 @@ public struct TransformationMatrix {
   private let storage: matrix_double4x4
 
   public init(_ transform: CATransform3D) {
-    self.storage = matrix_double4x4(
-      simd_double4(Double(transform.m11), Double(transform.m12), Double(transform.m13), Double(transform.m14)),
-      simd_double4(Double(transform.m21), Double(transform.m22), Double(transform.m23), Double(transform.m24)),
-      simd_double4(Double(transform.m31), Double(transform.m32), Double(transform.m33), Double(transform.m34)),
-      simd_double4(Double(transform.m41), Double(transform.m42), Double(transform.m43), Double(transform.m44))
-    )
+    self.storage = matrix_double4x4(transform)
   }
 
   public init(_ matrix: matrix_double4x4) {
@@ -79,7 +84,7 @@ public struct TransformationMatrix {
     if (local[0][3] != 0.0) || (local[1][3] != 0.0) || (local[2][3] != 0.0) {
       let rhs = simd_double4(local[0][3], local[1][3], local[2][3], local[3][3])
       let transposedPerspective = perspective.inverse.transpose
-      decomposed.perspective = matrix_multiply(rhs, transposedPerspective)
+      decomposed.perspective = matrix_multiply(transposedPerspective, rhs)
 
       local[0][3] = 0.0
       local[1][3] = 0.0
@@ -152,11 +157,24 @@ public struct TransformationMatrix {
 public extension matrix_double4x4 {
 
   static var identity: matrix_double4x4 {
-    return matrix_double4x4(1.0)
+    return matrix_identity_double4x4
   }
 
   static var zero: matrix_double4x4 {
     return matrix_double4x4()
+  }
+
+  init(_ transform: CATransform3D) {
+    self.init(
+      simd_double4(Double(transform.m11), Double(transform.m12), Double(transform.m13), Double(transform.m14)),
+      simd_double4(Double(transform.m21), Double(transform.m22), Double(transform.m23), Double(transform.m24)),
+      simd_double4(Double(transform.m31), Double(transform.m32), Double(transform.m33), Double(transform.m34)),
+      simd_double4(Double(transform.m41), Double(transform.m42), Double(transform.m43), Double(transform.m44))
+    )
+  }
+
+  var transform: CATransform3D {
+    return CATransform3D(self)
   }
 
   var decomposed: TransformationMatrix.Decomposed {
@@ -168,11 +186,17 @@ public extension matrix_double4x4 {
       return decomposed.perspective
     }
     set {
-      let _ = self.applyPerspective(newValue)
+      self.setPerspective(newValue)
     }
   }
 
-  mutating func applyPerspective(_ p: simd_double4)  {
+  func settingPerspective(_ p: simd_double4) -> Self {
+    var matrix = self
+    matrix.setPerspective(p)
+    return matrix
+  }
+
+  mutating func setPerspective(_ p: simd_double4)  {
     self[0][3] = p.x
     self[1][3] = p.y
     self[2][3] = p.z
@@ -184,11 +208,17 @@ public extension matrix_double4x4 {
       return decomposed.translation
     }
     set {
-      self.translate(newValue)
+      self.translate(by: newValue)
     }
   }
 
-  mutating func translate(_ t: simd_double3) {
+  func translated(by translation: simd_double3) -> Self {
+    var matrix = self
+    matrix.translate(by: translation)
+    return matrix
+  }
+
+  mutating func translate(by t: simd_double3) {
     self[3][0] += t.x * self[0][0] + t.y * self[1][0] + t.z * self[2][0]
     self[3][1] += t.x * self[0][1] + t.y * self[1][1] + t.z * self[2][1]
     self[3][2] += t.x * self[0][2] + t.y * self[1][2] + t.z * self[2][2]
@@ -200,13 +230,19 @@ public extension matrix_double4x4 {
       return decomposed.quaternion
     }
     set {
-      self.rotate(newValue)
+      self.rotate(by: newValue)
     }
   }
 
-  mutating func rotate(_ q: simd_quatd) {
+  func rotated(by quaternion: simd_quatd) -> Self {
+    var matrix = self
+    matrix.rotate(by: quaternion)
+    return matrix
+  }
+
+  mutating func rotate(by q: simd_quatd) {
     let rotationMatrix = matrix_double4x4(q)
-    self = matrix_multiply(rotationMatrix, self)
+    self = matrix_multiply(self, rotationMatrix)
   }
 
   var skew: TransformationMatrix.Decomposed.Skew {
@@ -214,27 +250,33 @@ public extension matrix_double4x4 {
       return decomposed.skew
     }
     set {
-      self.skew(newValue)
+      self.skew(by: newValue)
     }
   }
 
-  mutating func skew(_ s: TransformationMatrix.Decomposed.Skew) {
+  func skewed(by skew: TransformationMatrix.Decomposed.Skew) -> Self {
+    var matrix = self
+    matrix.skew(by: skew)
+    return matrix
+  }
+
+  mutating func skew(by s: TransformationMatrix.Decomposed.Skew) {
     if s.YZ != 0.0 {
       var skewMatrix: matrix_double4x4 = .zero
       skewMatrix[2][1] = s.YZ
-      self = matrix_multiply(skewMatrix, self)
+      self = matrix_multiply(self, skewMatrix)
     }
 
     if s.XZ != 0.0 {
       var skewMatrix: matrix_double4x4 = .zero
       skewMatrix[2][0] = s.XZ
-      self = matrix_multiply(skewMatrix, self)
+      self = matrix_multiply(self, skewMatrix)
     }
 
     if s.XY != 0.0 {
       var skewMatrix: matrix_double4x4 = .zero
       skewMatrix[1][0] = s.XY
-      self = matrix_multiply(skewMatrix, self)
+      self = matrix_multiply(self, skewMatrix)
     }
   }
 
@@ -243,11 +285,17 @@ public extension matrix_double4x4 {
       return decomposed.scale
     }
     set {
-      self.scale(newValue)
+      self.scale(by: newValue)
     }
   }
 
-  mutating func scale(_ s: simd_double3) {
+  func scaled(by scale: simd_double3) -> Self {
+    var matrix = self
+    matrix.scale(by: scale)
+    return matrix
+  }
+
+  mutating func scale(by s: simd_double3) {
     self[0] *= s.x
     self[1] *= s.y
     self[2] *= s.z
@@ -297,6 +345,17 @@ public extension CATransform3D {
     }
   }
 
+  func applyingPerspective(m31: CGFloat? = nil, m32: CGFloat? = nil, m33: CGFloat? = nil, m34: CGFloat? = nil) -> Self {
+    let perspective = simd_double4(Double(m31 ?? self.m31), Double(m32 ?? self.m32), Double(m33 ?? self.m33), Double(m34 ?? self.m34))
+    return self.applyingPerspective(perspective)
+  }
+
+  func applyingPerspective(_ perspective: simd_double4) -> Self {
+    var transform = self
+    transform.perspective = perspective
+    return transform
+  }
+
   var translation: simd_double3 {
     get {
       return decomposed.translation
@@ -306,6 +365,10 @@ public extension CATransform3D {
       decomposed.translation = newValue
       self = CATransform3D(decomposed.recomposed)
     }
+  }
+
+  func translated(by translation: simd_double3) -> Self {
+    return matrix_double4x4(self).translated(by: translation).transform
   }
 
   var rotation: simd_quatd {
@@ -319,6 +382,10 @@ public extension CATransform3D {
     }
   }
 
+  func rotated(by rotation: simd_quatd) -> Self {
+    return matrix_double4x4(self).rotated(by: rotation).transform
+  }
+
   var skew: TransformationMatrix.Decomposed.Skew {
     get {
       return decomposed.skew
@@ -330,6 +397,10 @@ public extension CATransform3D {
     }
   }
 
+  func skewed(by skew: TransformationMatrix.Decomposed.Skew) -> Self {
+    return matrix_double4x4(self).skewed(by: skew).transform
+  }
+
   var scale: simd_double3 {
     get {
       return decomposed.scale
@@ -339,6 +410,10 @@ public extension CATransform3D {
       decomposed.scale = newValue
       self = CATransform3D(decomposed.recomposed)
     }
+  }
+
+  func scaled(by scale: simd_double3) -> Self {
+    return matrix_double4x4(self).scaled(by: scale).transform
   }
 
 }
