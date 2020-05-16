@@ -36,33 +36,32 @@ final class CoreAnimationUtilsTests: XCTestCase {
     XCTAssertEqual(testTransform, testTransform2);
   }
 
-//  func testRotation() {
-//    let testTransformCAX = CATransform3DMakeRotation(.pi / 4, 1.0, 0.0, 0.0)
-//    let testTransformCAY = CATransform3DMakeRotation(.pi / 4, 0.0, 1.0, 0.0)
-//    let testTransformCAZ = CATransform3DMakeRotation(.pi / 4, 0.0, 0.0, 1.0)
-//
-//    var testTransformX = CATransform3DIdentity
-//    testTransformX.rotation.x = .pi / 4.0
-//
-//    var testTransformY = CATransform3DIdentity
-//    testTransformY.rotation.y = .pi / 4.0
-//
-//    var testTransformZ = CATransform3DIdentity
-//    testTransformZ.rotation.z = .pi / 4.0
-//
-//    XCTAssertEqual(testTransformCAX, testTransformX)
-//    XCTAssertEqual(testTransformCAY, testTransformY)
-//    XCTAssertEqual(testTransformCAZ, testTransformZ)
-//
-//    let testTransformCAXY = CATransform3DConcat(testTransformCAX, testTransformCAY)
-//
-//    var testTransformXY = CATransform3DIdentity
-////    testTransformXY.rotation = Vector3(x: .pi / 4, y: .pi / 4, z: 0.0)
-//    testTransformXY.rotation.x = .pi / 4
-//    testTransformXY.rotation.y = .pi / 4
-//
-//    XCTAssertEqual(testTransformCAXY, testTransformXY)
-//  }
+  func testRotation() {
+    let testTransformCAX = CATransform3DMakeRotation(.pi / 4, 1.0, 0.0, 0.0)
+    let testTransformCAY = CATransform3DMakeRotation(.pi / 4, 0.0, 1.0, 0.0)
+    let testTransformCAZ = CATransform3DMakeRotation(.pi / 4, 0.0, 0.0, 1.0)
+
+    var testTransformX = CATransform3DIdentity
+    testTransformX.rotation = simd_quatd(angle: .pi / 4.0, axis: normalize(simd_double3(1.0, 0.0, 0.0)))
+
+    var testTransformY = CATransform3DIdentity
+    testTransformY.rotation = simd_quatd(angle: .pi / 4.0, axis: normalize(simd_double3(0.0, 1.0, 0.0)))
+
+    var testTransformZ = CATransform3DIdentity
+    testTransformZ.rotation = simd_quatd(angle: .pi / 4.0, axis: normalize(simd_double3(0.0, 0.0, 1.0)))
+
+    XCTAssertEqual(testTransformCAX, testTransformX)
+    XCTAssertEqual(testTransformCAY, testTransformY)
+    XCTAssertEqual(testTransformCAZ, testTransformZ)
+
+    let testTransformCAXY = CATransform3DRotate(testTransformX, .pi / 4.0, 0.0, 1.0, 0.0)
+
+    var testTransformXY = CATransform3DIdentity
+    testTransformXY = testTransformX.rotated(by: simd_quatd(angle: .pi / 4.0, axis: simd_double3(1.0, 0.0, 0.0)))
+    testTransformXY = testTransformX.rotated(by: simd_quatd(angle: .pi / 4.0, axis: simd_double3(0.0, 1.0, 0.0)))
+
+    XCTAssertEqual(testTransformCAXY, testTransformXY)
+  }
 
   func testDecompose() {
     let translationTransform = CATransform3DMakeTranslation(1.0, 2.0, 3.0)
@@ -122,7 +121,7 @@ final class CoreAnimationUtilsTests: XCTestCase {
     let transform2 = CATransform3DIdentity
       .translated(by: simd_double3(2.0, 4.0, 6.0))
       .scaled(by: simd_double3(1.0, 2.0, 3.0))
-      .rotated(by: simd_quatd(angle: .pi / 4.0, axis: simd_double3(1.0, 0.0, 0.0)))
+      .rotated(by: simd_quatd(angle: .pi / 4.0, axis: normalize(simd_double3(1.0, 0.0, 0.0))))
 
     XCTAssertEqual(transform, transform2)
   }
