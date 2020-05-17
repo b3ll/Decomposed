@@ -131,6 +131,23 @@ final class CoreAnimationUtilsTests: XCTestCase {
     XCTAssertEqual(transform, transform2)
   }
 
+  func testLERP() {
+    let a = simd_double4(1.0, 10.0, 100.0, 1000.0)
+    let b = a * 2.0
+
+    XCTAssertEqual(a.lerp(to: b, percent: 0.0), a)
+    XCTAssertEqual(a.lerp(to: b, percent: 0.5), simd_double4(1.5, 15.0, 150.0, 1500.0))
+    XCTAssertEqual(a.lerp(to: b, percent: 1.0), b)
+
+    // TODO: Enable these when I figure out what's wrong.
+//    let c = simd_quatd(angle: 0.0, axis: simd_double3(0.0, 0.0, 0.0))
+//    let d = simd_quatd(angle: .pi / 4.0, axis: simd_double3(0.0, 1.0, 0.0))
+//
+//    XCTAssertEqual(c.lerp(to: d, percent: 0.0), c)
+//    XCTAssertEqual(c.lerp(to: d, percent: 0.5), d / 2.0)
+//    XCTAssertEqual(c.lerp(to: d, percent: 1.0), d)
+  }
+
   static var allTests = [
     ("testTranslation", testTranslation),
   ]
@@ -143,9 +160,15 @@ internal func XCTAssertEqual(_ lhs: simd_double3, _ rhs: simd_double3, accuracy:
   XCTAssertEqual(lhs[2], rhs[2], accuracy: accuracy)
 }
 
+internal func XCTAssertEqual(_ lhs: simd_double4, _ rhs: simd_double4, accuracy: Double = 0.00001) {
+  XCTAssertEqual(lhs[0], rhs[0], accuracy: accuracy)
+  XCTAssertEqual(lhs[1], rhs[1], accuracy: accuracy)
+  XCTAssertEqual(lhs[2], rhs[2], accuracy: accuracy)
+  XCTAssertEqual(lhs[3], rhs[3], accuracy: accuracy)
+}
+
 internal func XCTAssertEqual(_ lhs: simd_quatd, _ rhs: simd_quatd, accuracy: Double = 0.00001) {
-  XCTAssertEqual(lhs.axis, rhs.axis, accuracy: accuracy)
-  XCTAssertEqual(lhs.angle, rhs.angle, accuracy: accuracy)
+  XCTAssertEqual(lhs.vector, rhs.vector, accuracy: accuracy)
 }
 
 internal func XCTAssertEqual(_ lhs: CATransform3D, _ rhs: CATransform3D, accuracy: CGFloat = 0.00001) {

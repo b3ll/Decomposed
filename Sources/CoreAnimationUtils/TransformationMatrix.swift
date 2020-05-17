@@ -14,22 +14,51 @@ public struct TransformationMatrix {
 
   public struct Decomposed {
     public struct Skew {
-      public var XY: Double
-      public var XZ: Double
-      public var YZ: Double
+      private var storage: simd_double3
+
+      public var XY: Double {
+        get {
+          return storage[0]
+        }
+        set {
+          storage[0] = newValue
+        }
+      }
+
+      public var XZ: Double {
+        get {
+          return storage[1]
+        }
+        set {
+          storage[1] = newValue
+        }
+      }
+
+      public var YZ: Double {
+        get {
+          return storage[2]
+        }
+        set {
+          storage[2] = newValue
+        }
+      }
+
+      init(XY: Double, XZ: Double, YZ: Double) {
+        self.storage = simd_double3(XY, XZ, YZ)
+      }
 
       public static var zero: Skew {
         return Skew(XY: 0.0, XZ: 0.0, YZ: 0.0)
       }
 
       static func + (left: Self, right: Self) -> Self {
-        return Skew(XY: left.XY + right.XY, XZ: left.XZ + right.XZ , YZ: left.YZ + right.YZ)
+        var skew = left
+        skew.storage += right.storage
+        return skew
       }
 
       static func += (left: inout Self, right: Self) {
-        left.XY += right.XY
-        left.XZ += right.XZ
-        left.YZ += right.YZ
+        left.storage += right.storage
       }
     }
 
