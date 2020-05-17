@@ -43,7 +43,7 @@ public struct TransformationMatrix {
     public var recomposed: matrix_double4x4 {
       var recomposed: matrix_double4x4 = .identity
 
-      recomposed.setPerspective(perspective)
+      recomposed.applyPerspective(perspective)
       recomposed.translate(by: translation)
       recomposed.rotate(by: quaternion)
       recomposed.skew(by: skew)
@@ -186,17 +186,17 @@ public extension matrix_double4x4 {
       return decomposed.perspective
     }
     set {
-      self.setPerspective(newValue)
+      self.applyPerspective(newValue)
     }
   }
 
-  func settingPerspective(_ p: simd_double4) -> Self {
+  func applyingPerspective(_ p: simd_double4) -> Self {
     var matrix = self
-    matrix.setPerspective(p)
+    matrix.applyPerspective(p)
     return matrix
   }
 
-  mutating func setPerspective(_ p: simd_double4)  {
+  mutating func applyPerspective(_ p: simd_double4)  {
     self[0][3] = p.x
     self[1][3] = p.y
     self[2][3] = p.z

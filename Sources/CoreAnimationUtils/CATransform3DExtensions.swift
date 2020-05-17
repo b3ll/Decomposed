@@ -55,8 +55,12 @@ public extension CATransform3D {
 
   func applyingPerspective(_ perspective: simd_double4) -> Self {
     var transform = self
-    transform.perspective = perspective
+    transform.applyPerspective(perspective)
     return transform
+  }
+
+  mutating func applyPerspective(_ perspective: simd_double4) {
+    self = matrix_double4x4(self).applyingPerspective(perspective).transform
   }
 
   var translation: simd_double3 {
