@@ -70,32 +70,32 @@ final class CoreAnimationUtilsTests: XCTestCase {
 
   func testDecompose() {
     let translationTransform = CATransform3DMakeTranslation(1.0, 2.0, 3.0)
-    let decomposedTranslationTransform = TransformationMatrix(translationTransform).decomposed
+    let decomposedTranslationTransform = translationTransform.decomposed
 
     XCTAssert(decomposedTranslationTransform.translation == simd_double3(1.0, 2.0, 3.0))
 
     let scaleTransform = CATransform3DMakeScale(1.0, 2.0, 3.0)
-    let decomposedScaleTransform = TransformationMatrix(scaleTransform).decomposed
+    let decomposedScaleTransform = scaleTransform.decomposed
 
     XCTAssert(decomposedScaleTransform.scale == simd_double3(1.0, 2.0, 3.0))
 
     let rotationTransformX = CATransform3DMakeRotation(.pi / 4.0, 1.0, 0.0, 0.0)
-    let decomposedRotationTransformX = TransformationMatrix(rotationTransformX).decomposed
+    let decomposedRotationTransformX = rotationTransformX.decomposed
 
     XCTAssertEqual(decomposedRotationTransformX.rotation, simd_double3(.pi / 4.0, 0.0, 0.0))
 
     let rotationTransformY = CATransform3DMakeRotation(.pi / 4.0, 0.0, 1.0, 0.0)
-    let decomposedRotationTransformY = TransformationMatrix(rotationTransformY).decomposed
+    let decomposedRotationTransformY = rotationTransformY.decomposed
 
     XCTAssertEqual(decomposedRotationTransformY.rotation, simd_double3(0.0, .pi / 4.0, 0.0))
 
     let rotationTransformZ = CATransform3DMakeRotation(.pi / 4.0, 0.0, 0.0, 1.0)
-    let decomposedRotationTransformZ = TransformationMatrix(rotationTransformZ).decomposed
+    let decomposedRotationTransformZ = rotationTransformZ.decomposed
 
     XCTAssertEqual(decomposedRotationTransformZ.rotation, simd_double3(0.0, 0.0, .pi / 4.0))
 
     let rotationTransformQuaternion = CATransform3DMakeRotation(.pi / 4.0, 1.0, 1.0, 1.0)
-    let decomposedRotationTransformQuaternion = TransformationMatrix(rotationTransformQuaternion).decomposed
+    let decomposedRotationTransformQuaternion = rotationTransformQuaternion.decomposed
 
     XCTAssertEqual(decomposedRotationTransformQuaternion.quaternion, simd_quatd(angle: .pi / 4.0, axis: normalize(simd_double3(1.0, 1.0, 1.0))))
   }
@@ -105,7 +105,7 @@ final class CoreAnimationUtilsTests: XCTestCase {
 
     XCTAssertEqual(transform.rotation, simd_quatd(angle: .pi / 4.0, axis: normalize(simd_double3(1.0, 0.0, 0.0))))
 
-    let m = TransformationMatrix(CATransform3DIdentity)
+    let m = CATransform3DIdentity
     var decomposed = m.decomposed
     decomposed.quaternion = simd_quatd(angle: .pi / 4.0, axis: normalize(simd_double3(1.0, 0.0, 0.0)))
     let recomposed = CATransform3D(decomposed.recomposed)

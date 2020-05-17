@@ -37,8 +37,8 @@ public extension CATransform3D {
     return matrix_double4x4(self)
   }
 
-  var decomposed: TransformationMatrix.Decomposed {
-    return TransformationMatrix(self).decomposed
+  var decomposed: Decomposed {
+    return matrix_double4x4(self).decomposed
   }
 
   var perspective: simd_double4 {
@@ -119,7 +119,7 @@ public extension CATransform3D {
     self = matrix.rotated(by: rotation).transform
   }
 
-  var skew: TransformationMatrix.Decomposed.Skew {
+  var skew: Decomposed.Skew {
     get {
       return decomposed.skew
     }
@@ -130,18 +130,18 @@ public extension CATransform3D {
     }
   }
 
-  func skewed(by skew: TransformationMatrix.Decomposed.Skew) -> Self {
+  func skewed(by skew: Decomposed.Skew) -> Self {
     var transform = self
     transform.skew(by: skew)
     return transform
   }
 
   func skewedBy(XY: Double = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) -> Self {
-    let skew = TransformationMatrix.Decomposed.Skew(XY: Double(XY), XZ: Double(XZ), YZ: Double(YZ))
+    let skew = Decomposed.Skew(XY: Double(XY), XZ: Double(XZ), YZ: Double(YZ))
     return self.skewed(by: skew)
   }
 
-  mutating func skew(by skew: TransformationMatrix.Decomposed.Skew) {
+  mutating func skew(by skew: Decomposed.Skew) {
     self = matrix.skewed(by: skew).transform
   }
 
