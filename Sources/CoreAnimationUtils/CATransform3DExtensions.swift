@@ -33,6 +33,10 @@ public extension CATransform3D {
     self.m44 = CGFloat(matrix[3][3])
   }
 
+  internal var matrix: matrix_double4x4 {
+    return matrix_double4x4(self)
+  }
+
   var decomposed: TransformationMatrix.Decomposed {
     return TransformationMatrix(self).decomposed
   }
@@ -60,7 +64,7 @@ public extension CATransform3D {
   }
 
   mutating func applyPerspective(_ perspective: simd_double4) {
-    self = matrix_double4x4(self).applyingPerspective(perspective).transform
+    self = matrix.applyingPerspective(perspective).transform
   }
 
   var translation: simd_double3 {
@@ -80,8 +84,13 @@ public extension CATransform3D {
     return transform
   }
 
+  func translatedBy(x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
+    let translation = simd_double3(Double(x), Double(y), Double(z))
+    return self.translated(by: translation)
+  }
+
   mutating func translate(by translation: simd_double3) {
-    self = matrix_double4x4(self).translated(by: translation).transform
+    self = matrix.translated(by: translation).transform
   }
 
   var rotation: simd_quatd {
@@ -101,8 +110,13 @@ public extension CATransform3D {
     return transform
   }
 
+  func rotatedBy(angle: CGFloat, x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
+    let rotation = simd_quatd(angle: Double(angle), axis: simd_double3(Double(x), Double(y), Double(z)))
+    return self.rotated(by: rotation)
+  }
+
   mutating func rotate(by rotation: simd_quatd) {
-    self = matrix_double4x4(self).rotated(by: rotation).transform
+    self = matrix.rotated(by: rotation).transform
   }
 
   var skew: TransformationMatrix.Decomposed.Skew {
@@ -122,8 +136,13 @@ public extension CATransform3D {
     return transform
   }
 
+  func skewedBy(XY: Double = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) -> Self {
+    let skew = TransformationMatrix.Decomposed.Skew(XY: Double(XY), XZ: Double(XZ), YZ: Double(YZ))
+    return self.skewed(by: skew)
+  }
+
   mutating func skew(by skew: TransformationMatrix.Decomposed.Skew) {
-    self = matrix_double4x4(self).skewed(by: skew).transform
+    self = matrix.skewed(by: skew).transform
   }
 
   var scale: simd_double3 {
@@ -143,8 +162,13 @@ public extension CATransform3D {
     return transform
   }
 
+  func scaledBy(x: CGFloat = 1.0, y: CGFloat = 1.0, z: CGFloat = 1.0) -> Self {
+    let scale = simd_double3(Double(x), Double(y), Double(z))
+    return self.scaled(by: scale)
+  }
+
   mutating func scale(by scale: simd_double3) {
-    self = matrix_double4x4(self).scaled(by: scale).transform
+    self = matrix.scaled(by: scale).transform
   }
 
 }
