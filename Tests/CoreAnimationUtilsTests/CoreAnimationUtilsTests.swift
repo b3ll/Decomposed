@@ -7,18 +7,23 @@ import simd
 final class CoreAnimationUtilsTests: XCTestCase {
 
   func testTranslation() {
-    let testTransform = CATransform3DMakeTranslation(2.0, 3.0, 4.0)
+    let testTransformCA = CATransform3DMakeTranslation(2.0, 3.0, 4.0)
 
-    XCTAssertEqual(testTransform.translation.x, 2.0);
-    XCTAssertEqual(testTransform.translation.y, 3.0);
-    XCTAssertEqual(testTransform.translation.z, 4.0);
+    XCTAssertEqual(testTransformCA.translation.x, 2.0);
+    XCTAssertEqual(testTransformCA.translation.y, 3.0);
+    XCTAssertEqual(testTransformCA.translation.z, 4.0);
+
+    var testTransform = CATransform3DIdentity
+    testTransform.translation.x = 2.0
+    testTransform.translation.y = 3.0
+    testTransform.translation.z = 4.0
+
+    XCTAssertEqual(testTransform, testTransformCA);
 
     var testTransform2 = CATransform3DIdentity
-    testTransform2.translation.x = 2.0
-    testTransform2.translation.y = 3.0
-    testTransform2.translation.z = 4.0
+    testTransform2 = testTransform2.translated(by: simd_double3(2.0, 3.0, 4.0))
 
-    XCTAssertEqual(testTransform, testTransform2);
+    XCTAssertEqual(testTransform2, testTransformCA)
   }
 
   func testScale() {
