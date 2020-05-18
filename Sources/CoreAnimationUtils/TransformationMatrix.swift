@@ -14,7 +14,7 @@ import simd
 
 public struct Decomposed {
   public struct Skew {
-    private var storage: simd_double3
+    internal var storage: simd_double3
 
     public var XY: Double {
       get {

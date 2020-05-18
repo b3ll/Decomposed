@@ -135,9 +135,9 @@ final class CoreAnimationUtilsTests: XCTestCase {
     let a = simd_double4(1.0, 10.0, 100.0, 1000.0)
     let b = a * 2.0
 
-    XCTAssertEqual(a.lerp(to: b, percent: 0.0), a)
-    XCTAssertEqual(a.lerp(to: b, percent: 0.5), simd_double4(1.5, 15.0, 150.0, 1500.0))
-    XCTAssertEqual(a.lerp(to: b, percent: 1.0), b)
+    XCTAssertEqual(a.lerp(to: b, fraction: 0.0), a)
+    XCTAssertEqual(a.lerp(to: b, fraction: 0.5), simd_double4(1.5, 15.0, 150.0, 1500.0))
+    XCTAssertEqual(a.lerp(to: b, fraction: 1.0), b)
 
     // TODO: Enable these when I figure out what's wrong.
 //    let c = simd_quatd(angle: 0.0, axis: simd_double3(0.0, 0.0, 0.0))
