@@ -67,44 +67,44 @@ public extension CATransform3D {
     self = matrix.applyingPerspective(perspective).transform
   }
 
-  var translation: simd_double3 {
+  var translation: Vector3 {
     get {
-      return decomposed.translation
+      return Vector3(decomposed.translation)
     }
     set {
       var decomposed = self.decomposed
-      decomposed.translation = newValue
+      decomposed.translation = simd_double3(newValue)
       self = CATransform3D(decomposed.recomposed)
     }
   }
 
-  func translated(by translation: simd_double3) -> Self {
+  func translated(by translation: Vector3) -> Self {
     var transform = self
     transform.translate(by: translation)
     return transform
   }
 
   func translatedBy(x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
-    let translation = simd_double3(Double(x), Double(y), Double(z))
+    let translation = Vector3(x: x, y: y, z: z)
     return self.translated(by: translation)
   }
 
-  mutating func translate(by translation: simd_double3) {
-    self = matrix.translated(by: translation).transform
+  mutating func translate(by translation: Vector3) {
+    self = matrix.translated(by: translation.storage).transform
   }
 
-  var rotation: simd_quatd {
+  var rotation: Quaternion {
     get {
-      return decomposed.quaternion
+      return Quaternion(decomposed.quaternion)
     }
     set {
       var decomposed = self.decomposed
-      decomposed.quaternion = newValue
+      decomposed.quaternion = newValue.storage
       self = CATransform3D(decomposed.recomposed)
     }
   }
 
-  func rotated(by rotation: simd_quatd) -> Self {
+  func rotated(by rotation: Quaternion) -> Self {
     var transform = self
     transform.rotate(by: rotation)
     return transform
@@ -112,11 +112,11 @@ public extension CATransform3D {
 
   func rotatedBy(angle: CGFloat, x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
     let rotation = simd_quatd(angle: Double(angle), axis: simd_double3(Double(x), Double(y), Double(z)))
-    return self.rotated(by: rotation)
+    return self.rotated(by: Quaternion(rotation))
   }
 
-  mutating func rotate(by rotation: simd_quatd) {
-    self = matrix.rotated(by: rotation).transform
+  mutating func rotate(by rotation: Quaternion) {
+    self = matrix.rotated(by: rotation.storage).transform
   }
 
   var skew: Decomposed.Skew {
@@ -145,18 +145,18 @@ public extension CATransform3D {
     self = matrix.skewed(by: skew).transform
   }
 
-  var scale: simd_double3 {
+  var scale: Vector3 {
     get {
-      return decomposed.scale
+      return Vector3(decomposed.scale)
     }
     set {
       var decomposed = self.decomposed
-      decomposed.scale = newValue
+      decomposed.scale = newValue.storage
       self = CATransform3D(decomposed.recomposed)
     }
   }
 
-  func scaled(by scale: simd_double3) -> Self {
+  func scaled(by scale: Vector3) -> Self {
     var transform = self
     transform.scale(by: scale)
     return transform
@@ -164,11 +164,11 @@ public extension CATransform3D {
 
   func scaledBy(x: CGFloat = 1.0, y: CGFloat = 1.0, z: CGFloat = 1.0) -> Self {
     let scale = simd_double3(Double(x), Double(y), Double(z))
-    return self.scaled(by: scale)
+    return self.scaled(by: Vector3(scale))
   }
 
-  mutating func scale(by scale: simd_double3) {
-    self = matrix.scaled(by: scale).transform
+  mutating func scale(by scale: Vector3) {
+    self = matrix.scaled(by: scale.storage).transform
   }
 
 }

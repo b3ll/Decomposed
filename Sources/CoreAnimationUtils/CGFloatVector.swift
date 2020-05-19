@@ -9,28 +9,26 @@ import Foundation
 import simd
 import QuartzCore
 
-public typealias SupportedVectorType = FloatingPoint & BinaryInteger
-
-public struct Vector3<T: SupportedVectorType> {
+public struct Vector3 {
 
   internal var storage: simd_double3
 
-  var x: T {
-    get { return T(storage.x) }
+  var x: CGFloat {
+    get { return CGFloat(storage.x) }
     set { storage.x = Double(newValue) }
   }
 
-  var y: T {
-    get { return T(storage.y) }
+  var y: CGFloat {
+    get { return CGFloat(storage.y) }
     set { storage.y = Double(newValue) }
   }
 
-  var z: T {
-    get { return T(storage.z) }
+  var z: CGFloat {
+    get { return CGFloat(storage.z) }
     set { storage.z = Double(newValue) }
   }
 
-  public init(x: T = 0, y: T = 0, z: T = 0) {
+  public init(x: CGFloat = 0, y: CGFloat = 0, z: CGFloat = 0) {
     self.init(simd_double3(Double(x), Double(y), Double(z)))
   }
 
@@ -42,37 +40,37 @@ public struct Vector3<T: SupportedVectorType> {
 
 public extension simd_double3 {
 
-  init<T: SupportedVectorType>(_ vector: Vector3<T>) {
+  init(_ vector: Vector3) {
     self.init(Double(vector.x), Double(vector.y), Double(vector.z))
   }
 
 }
 
-public struct Vector4<T: SupportedVectorType> {
+public struct Vector4 {
 
   internal var storage: simd_double4
 
-  var x: T {
-    get { return T(storage.x) }
+  var x: CGFloat {
+    get { return CGFloat(storage.x) }
     set { storage.x = Double(newValue) }
   }
 
-  var y: T {
-    get { return T(storage.y) }
+  var y: CGFloat {
+    get { return CGFloat(storage.y) }
     set { storage.y = Double(newValue) }
   }
 
-  var z: T {
-    get { return T(storage.z) }
+  var z: CGFloat {
+    get { return CGFloat(storage.z) }
     set { storage.z = Double(newValue) }
   }
 
-  var w: T {
-    get { return T(storage.w) }
+  var w: CGFloat {
+    get { return CGFloat(storage.w) }
     set { storage.w = Double(newValue) }
   }
 
-  public init(x: T = 0, y: T = 0, z: T = 0, w: T = 0) {
+  public init(x: CGFloat = 0, y: CGFloat = 0, z: CGFloat = 0, w: CGFloat = 0) {
     self.init(simd_double4(Double(x), Double(y), Double(z), Double(w)))
   }
 
@@ -84,18 +82,18 @@ public struct Vector4<T: SupportedVectorType> {
 
 public extension simd_double4 {
 
-  init<T: SupportedVectorType>(_ vector: Vector4<T>) {
+  init(_ vector: Vector4) {
     self.init(Double(vector.x), Double(vector.y), Double(vector.z), Double(vector.w))
   }
 
 }
 
-public struct Quaternion<T: SupportedVectorType> {
+public struct Quaternion {
 
   internal var storage: simd_quatd
 
-  var axis: Vector3<T> {
-    get { return Vector3<T>(storage.axis) }
+  var axis: Vector3 {
+    get { return Vector3(storage.axis) }
     set { self.storage = simd_quatd(angle: storage.angle, axis: simd_double3(newValue)) }
   }
 
@@ -104,7 +102,7 @@ public struct Quaternion<T: SupportedVectorType> {
     set { self.storage = simd_quatd(angle: Double(newValue), axis: storage.axis) }
   }
 
-  public init(angle: CGFloat, axis: Vector3<T>) {
+  public init(angle: CGFloat, axis: Vector3) {
     self.storage = simd_quatd(angle: Double(angle), axis: simd_double3(axis))
   }
 
@@ -116,7 +114,7 @@ public struct Quaternion<T: SupportedVectorType> {
 
 public extension simd_quatd {
 
-  init<T: SupportedVectorType>(_ quaternion: Quaternion<T>) {
+  init(_ quaternion: Quaternion) {
     self.init(angle: Double(quaternion.angle), axis: simd_double3(quaternion.axis))
   }
 
@@ -126,24 +124,58 @@ public extension simd_quatd {
 
 extension Vector3: Interpolatable {
 
-  public func lerp(to: Vector3<T>, fraction: T) -> Vector3<T> {
-    return Vector3<T>(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
+  public func lerp(to: Vector3, fraction: CGFloat) -> Vector3 {
+    return Vector3(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
   }
 
 }
 
 extension Vector4: Interpolatable {
 
-  public func lerp(to: Vector4<T>, fraction: T) -> Vector4<T> {
-    return Vector4<T>(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
+  public func lerp(to: Vector4, fraction: CGFloat) -> Vector4 {
+    return Vector4(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
   }
 
 }
 
 extension Quaternion: Interpolatable {
 
-  public func lerp(to: Quaternion<T>, fraction: T) -> Quaternion<T> {
-    return Quaternion<T>(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
+  public func lerp(to: Quaternion, fraction: CGFloat) -> Quaternion {
+    return Quaternion(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
+  }
+
+}
+
+// MARK: - Equatable
+
+fileprivate let accuracy: Double = 0.0001
+
+extension Vector3: Equatable {
+
+  public static func == (lhs: Self, rhs: Self) -> Bool {
+    return abs(rhs.storage[0] - lhs.storage[0]) < accuracy &&
+    abs(rhs.storage[1] - lhs.storage[1]) < accuracy &&
+    abs(rhs.storage[2] - lhs.storage[2]) < accuracy
+  }
+
+}
+
+extension Vector4: Equatable {
+
+  public static func == (lhs: Self, rhs: Self) -> Bool {
+    return abs(rhs.storage[0] - lhs.storage[0]) < accuracy &&
+    abs(rhs.storage[1] - lhs.storage[1]) < accuracy &&
+    abs(rhs.storage[2] - lhs.storage[2]) < accuracy &&
+    abs(rhs.storage[3] - lhs.storage[3]) < accuracy
+  }
+
+}
+
+extension Quaternion: Equatable {
+
+  public static func == (lhs: Self, rhs: Self) -> Bool {
+    return lhs.axis == rhs.axis &&
+      abs(rhs.storage.angle - lhs.storage.angle) < accuracy
   }
 
 }
