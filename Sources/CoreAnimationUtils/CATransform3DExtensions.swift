@@ -10,72 +10,6 @@ import QuartzCore
 
 public extension CATransform3D {
 
-  typealias Translation = Vector3
-  typealias Scale = Vector3
-
-  struct Perspective {
-
-    internal var storage: Vector4
-
-    public var m31: CGFloat {
-      get { return CGFloat(self.storage.storage[0]) }
-      set { self.storage.storage[0] = Double(newValue) }
-    }
-
-    public var m32: CGFloat {
-      get { return CGFloat(self.storage.storage[1]) }
-      set { self.storage.storage[1] = Double(newValue) }
-    }
-
-    public var m33: CGFloat {
-      get { return CGFloat(self.storage.storage[2]) }
-      set { self.storage.storage[2] = Double(newValue) }
-    }
-
-    public var m34: CGFloat {
-      get { return CGFloat(self.storage.storage[3]) }
-      set { self.storage.storage[3] = Double(newValue) }
-    }
-
-    public init(m31: CGFloat = 0.0, m32: CGFloat = 0.0, m33: CGFloat = 0.0, m34: CGFloat = 0.0) {
-      self.storage = Vector4(x: m31, y: m32, z: m33, w: m34)
-    }
-
-    public init(_ vector: simd_double4) {
-      self.storage = Vector4(vector)
-    }
-
-  }
-
-  struct Skew {
-
-    internal var storage: matrix_double4x4.Skew
-
-    public var XY: CGFloat {
-      get { return CGFloat(storage.XY) }
-      set { storage.XY = Double(newValue) }
-    }
-
-    public var XZ: CGFloat {
-      get { return CGFloat(storage.XZ) }
-      set { storage.XZ = Double(newValue) }
-    }
-
-    public var YZ: CGFloat {
-      get { return CGFloat(storage.YZ) }
-      set { storage.YZ = Double(newValue) }
-    }
-
-    public init(XY: CGFloat = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) {
-      self.storage = matrix_double4x4.Skew(XY: Double(XY), XZ: Double(XZ), YZ: Double(YZ))
-    }
-
-    public init(_ skew: matrix_double4x4.Skew) {
-      self.storage = skew
-    }
-
-  }
-
   init(_ matrix: matrix_double4x4) {
     self = CATransform3DIdentity
     self.m11 = CGFloat(matrix[0][0])
@@ -117,7 +51,7 @@ public extension CATransform3D {
     }
     set {
       var decomposed = _decomposed()
-      decomposed.perspective = newValue.storage.storage
+      decomposed.perspective = newValue.storage
       self = CATransform3D(_decomposed().recomposed())
     }
   }
@@ -134,7 +68,7 @@ public extension CATransform3D {
   }
 
   mutating func applyPerspective(_ perspective: Perspective) {
-    self = CATransform3D(matrix.applyingPerspective(perspective.storage.storage))
+    self = CATransform3D(matrix.applyingPerspective(perspective.storage))
   }
 
   var translation: Translation {
@@ -155,7 +89,7 @@ public extension CATransform3D {
   }
 
   func translatedBy(x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
-    let translation = Translation(x: x, y: y, z: z)
+    let translation = Translation(x, y, z)
     return self.translated(by: translation)
   }
 
@@ -181,7 +115,7 @@ public extension CATransform3D {
   }
 
   func rotatedBy(angle: CGFloat, x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
-    let rotation = Quaternion(angle: angle, axis: Vector3(x: x, y: y, z: z))
+    let rotation = Quaternion(angle: angle, axis: Vector3(x, y, z))
     return self.rotated(by: rotation)
   }
 
@@ -207,7 +141,7 @@ public extension CATransform3D {
   }
 
   func skewedBy(XY: CGFloat = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) -> Self {
-    let skew = Skew(XY: XY, XZ: XZ, YZ: YZ)
+    let skew = Skew(XY, XZ, YZ)
     return self.skewed(by: skew)
   }
 
@@ -233,7 +167,7 @@ public extension CATransform3D {
   }
 
   func scaledBy(x: CGFloat = 1.0, y: CGFloat = 1.0, z: CGFloat = 1.0) -> Self {
-    let scale = Scale(x: x, y: y, z: z)
+    let scale = Scale(x, y, z)
     return self.scaled(by: scale)
   }
 
@@ -243,11 +177,67 @@ public extension CATransform3D {
 
 }
 
+public extension Vector4 {
+
+  var m31: CGFloat {
+    get { return CGFloat(self.storage[0]) }
+    set { self.storage[0] = Double(newValue) }
+  }
+
+  var m32: CGFloat {
+    get { return CGFloat(self.storage[1]) }
+    set { self.storage[1] = Double(newValue) }
+  }
+
+  var m33: CGFloat {
+    get { return CGFloat(self.storage[2]) }
+    set { self.storage[2] = Double(newValue) }
+  }
+
+  var m34: CGFloat {
+    get { return CGFloat(self.storage[3]) }
+    set { self.storage[3] = Double(newValue) }
+  }
+
+  init(m31: CGFloat = 0.0, m32: CGFloat = 0.0, m33: CGFloat = 0.0, m34: CGFloat = 0.0) {
+    self.init(x: m31, y: m32, z: m33, w: m34)
+  }
+
+}
+
+public extension Vector3 {
+
+  var XY: CGFloat {
+    get { return CGFloat(self.storage[0]) }
+    set { self.storage[0] = Double(newValue) }
+  }
+
+  var XZ: CGFloat {
+    get { return CGFloat(self.storage[1]) }
+    set { self.storage[1] = Double(newValue) }
+  }
+
+  var YZ: CGFloat {
+    get { return CGFloat(self.storage[2]) }
+    set { self.storage[2] = Double(newValue) }
+  }
+
+  init(XY: CGFloat = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) {
+    self.init(XY, XZ, YZ)
+  }
+
+}
+
+public typealias Translation = Vector3
+public typealias Scale = Vector3
+public typealias Perspective = Vector4
+public typealias Skew = Vector3
+
 public extension CATransform3D {
 
   struct Decomposed {
 
-    var translation: Vector3 {
+    var translation: Translation {
       get {
         return Vector3(storage.translation)
       }
@@ -256,7 +246,7 @@ public extension CATransform3D {
       }
     }
 
-    var scale: Vector3 {
+    var scale: Translation {
       get {
         return Vector3(storage.scale)
       }
@@ -274,21 +264,21 @@ public extension CATransform3D {
       }
     }
 
-    var skew: CATransform3D.Skew {
+    var skew: Skew {
       get {
-        return CATransform3D.Skew(storage.skew)
+        return Skew(storage.skew)
       }
       set {
         storage.skew = newValue.storage
       }
     }
 
-    var perspective: CATransform3D.Perspective {
+    var perspective: Perspective {
       get {
-        return CATransform3D.Perspective(storage.perspective)
+        return Perspective(storage.perspective)
       }
       set {
-        storage.perspective = newValue.storage.storage
+        storage.perspective = newValue.storage
       }
     }
 

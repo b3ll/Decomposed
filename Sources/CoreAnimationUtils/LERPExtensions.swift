@@ -56,16 +56,6 @@ extension simd_quatd: Interpolatable {
 
 }
 
-extension matrix_double4x4.Skew: Interpolatable {
-
-  public func lerp(to: Self, fraction: Double) -> Self {
-    var copy = self
-    copy.storage = copy.storage.lerp(to: to.storage, fraction: fraction)
-    return copy
-  }
-
-}
-
 extension matrix_double4x4.Decomposed: Interpolatable {
 
   public func lerp(to: Self, fraction: Double) -> Self {

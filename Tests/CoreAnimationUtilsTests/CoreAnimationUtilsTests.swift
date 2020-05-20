@@ -77,7 +77,7 @@ final class CoreAnimationUtilsTests: XCTestCase {
     let scaleTransform = CATransform3DMakeScale(1.0, 2.0, 3.0)
     let decomposedScaleTransform = scaleTransform.decomposed()
 
-    XCTAssertEqual(decomposedScaleTransform.scale, CATransform3D.Scale(1.0, 2.0, 3.0))
+    XCTAssertEqual(decomposedScaleTransform.scale, Scale(1.0, 2.0, 3.0))
 
     let rotationTransformQuaternion = CATransform3DMakeRotation(.pi / 4.0, 1.0, 1.0, 1.0)
     let decomposedRotationTransformQuaternion = rotationTransformQuaternion.decomposed()

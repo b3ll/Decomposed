@@ -12,6 +12,29 @@ import simd
 
 // MARK: - matrix_double4x4
 
+internal extension simd_double3 {
+
+  var XY: Double {
+    get { return self[0] }
+    set { self[0] = newValue }
+  }
+
+  var XZ: Double {
+    get { return self[1] }
+    set { self[1] = newValue }
+  }
+
+  var YZ: Double {
+    get { return self[2] }
+    set { self[2] = newValue }
+  }
+
+  init(XY: Double, XZ: Double, YZ: Double) {
+    self.init(XY, XZ, YZ)
+  }
+  
+}
+
 public extension matrix_double4x4 {
 
   static var identity: matrix_double4x4 {
@@ -98,7 +121,7 @@ public extension matrix_double4x4 {
     self = matrix_multiply(self, rotationMatrix)
   }
 
-  var skew: Skew {
+  var skew: simd_double3 {
     get {
       return decomposed().skew
     }
@@ -107,13 +130,13 @@ public extension matrix_double4x4 {
     }
   }
 
-  func skewed(by skew: Skew) -> Self {
+  func skewed(by skew: simd_double3) -> Self {
     var matrix = self
     matrix.skew(by: skew)
     return matrix
   }
 
-  mutating func skew(by s: Skew) {
+  mutating func skew(by s: simd_double3) {
     if s.YZ != 0.0 {
       var skewMatrix: matrix_double4x4 = .zero
       skewMatrix[2][1] = s.YZ
@@ -160,65 +183,16 @@ public extension matrix_double4x4 {
 
 public extension matrix_double4x4 {
 
-  struct Skew {
-    internal var storage: simd_double3
-
-    public var XY: Double {
-      get {
-        return storage[0]
-      }
-      set {
-        storage[0] = newValue
-      }
-    }
-
-    public var XZ: Double {
-      get {
-        return storage[1]
-      }
-      set {
-        storage[1] = newValue
-      }
-    }
-
-    public var YZ: Double {
-      get {
-        return storage[2]
-      }
-      set {
-        storage[2] = newValue
-      }
-    }
-
-    init(XY: Double, XZ: Double, YZ: Double) {
-      self.storage = simd_double3(XY, XZ, YZ)
-    }
-
-    public static var zero: Skew {
-      return Skew(XY: 0.0, XZ: 0.0, YZ: 0.0)
-    }
-
-    static func + (left: Self, right: Self) -> Self {
-      var skew = left
-      skew.storage += right.storage
-      return skew
-    }
-
-    static func += (left: inout Self, right: Self) {
-      left.storage += right.storage
-    }
-  }
-
   struct Decomposed {
 
     public var scale: simd_double3 = .zero
-    public var skew: Skew = .zero
+    public var skew: simd_double3 = .zero
     public var rotation: simd_double3 = .zero
     public var quaternion: simd_quatd = simd_quatd(vector: .zero)
     public var translation: simd_double3 = .zero
     public var perspective: simd_double4 = .zero
 
-    internal init(scale: simd_double3, skew: simd_double4x4.Skew, rotation: simd_double3, quaternion: simd_quatd, translation: simd_double3, perspective: simd_double4) {
+    internal init(scale: simd_double3, skew: simd_double3, rotation: simd_double3, quaternion: simd_quatd, translation: simd_double3, perspective: simd_double4) {
       self.scale = scale
       self.skew = skew
       self.rotation = rotation
