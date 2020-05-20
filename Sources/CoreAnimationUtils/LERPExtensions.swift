@@ -16,6 +16,8 @@ public protocol Interpolatable {
 
 }
 
+// MARK: - SIMD Extensions
+
 extension SIMD2: Interpolatable where Scalar: FloatingPoint {
 
   public func lerp(to: Self, fraction: Self.Scalar) -> Self {
@@ -51,7 +53,7 @@ extension simd_quatf: Interpolatable {
 extension simd_quatd: Interpolatable {
 
   public func lerp(to: Self, fraction: Double) -> Self {
-    return (self + ((to - self) * fraction))
+    return simd_slerp(self, to, fraction)
   }
 
 }
@@ -73,22 +75,6 @@ extension matrix_double4x4: Interpolatable {
 
   public func lerp(to: Self, fraction: Double) -> Self {
     return self.decomposed().lerp(to: to.decomposed(), fraction: Double(fraction)).recomposed()
-  }
-
-}
-
-extension CATransform3D.Decomposed: Interpolatable {
-
-  public func lerp(to: Self, fraction: Double) -> Self {
-    return CATransform3D.Decomposed(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
-  }
-
-}
-
-extension CATransform3D: Interpolatable {
-
-  public func lerp(to: Self, fraction: CGFloat) -> Self {
-    return CATransform3D(self._decomposed().lerp(to: to._decomposed(), fraction: Double(fraction)).recomposed())
   }
 
 }

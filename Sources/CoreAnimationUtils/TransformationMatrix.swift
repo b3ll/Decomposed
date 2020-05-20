@@ -12,29 +12,6 @@ import simd
 
 // MARK: - matrix_double4x4
 
-internal extension simd_double3 {
-
-  var XY: Double {
-    get { return self[0] }
-    set { self[0] = newValue }
-  }
-
-  var XZ: Double {
-    get { return self[1] }
-    set { self[1] = newValue }
-  }
-
-  var YZ: Double {
-    get { return self[2] }
-    set { self[2] = newValue }
-  }
-
-  init(XY: Double, XZ: Double, YZ: Double) {
-    self.init(XY, XZ, YZ)
-  }
-  
-}
-
 public extension matrix_double4x4 {
 
   static var identity: matrix_double4x4 {

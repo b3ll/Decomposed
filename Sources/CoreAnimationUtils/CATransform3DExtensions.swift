@@ -10,6 +10,14 @@ import QuartzCore
 
 public extension CATransform3D {
 
+  static var identity: CATransform3D {
+    return CATransform3DIdentity
+  }
+
+  static var zero: CATransform3D {
+    return CATransform3D(.zero)
+  }
+
   init(_ matrix: matrix_double4x4) {
     self = CATransform3DIdentity
     self.m11 = CGFloat(matrix[0][0])
@@ -177,65 +185,11 @@ public extension CATransform3D {
 
 }
 
-public extension Vector4 {
-
-  var m31: CGFloat {
-    get { return CGFloat(self.storage[0]) }
-    set { self.storage[0] = Double(newValue) }
-  }
-
-  var m32: CGFloat {
-    get { return CGFloat(self.storage[1]) }
-    set { self.storage[1] = Double(newValue) }
-  }
-
-  var m33: CGFloat {
-    get { return CGFloat(self.storage[2]) }
-    set { self.storage[2] = Double(newValue) }
-  }
-
-  var m34: CGFloat {
-    get { return CGFloat(self.storage[3]) }
-    set { self.storage[3] = Double(newValue) }
-  }
-
-  init(m31: CGFloat = 0.0, m32: CGFloat = 0.0, m33: CGFloat = 0.0, m34: CGFloat = 0.0) {
-    self.init(x: m31, y: m32, z: m33, w: m34)
-  }
-
-}
-
-public extension Vector3 {
-
-  var XY: CGFloat {
-    get { return CGFloat(self.storage[0]) }
-    set { self.storage[0] = Double(newValue) }
-  }
-
-  var XZ: CGFloat {
-    get { return CGFloat(self.storage[1]) }
-    set { self.storage[1] = Double(newValue) }
-  }
-
-  var YZ: CGFloat {
-    get { return CGFloat(self.storage[2]) }
-    set { self.storage[2] = Double(newValue) }
-  }
-
-  init(XY: CGFloat = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) {
-    self.init(XY, XZ, YZ)
-  }
-
-}
-
-public typealias Translation = Vector3
-public typealias Scale = Vector3
-public typealias Perspective = Vector4
-public typealias Skew = Vector3
-
 public extension CATransform3D {
 
   struct Decomposed {
+
+    internal var storage: matrix_double4x4.Decomposed
 
     var translation: Translation {
       get {
@@ -282,8 +236,6 @@ public extension CATransform3D {
       }
     }
 
-    internal var storage: matrix_double4x4.Decomposed
-
     init(_ decomposed: matrix_double4x4.Decomposed) {
       self.storage = decomposed
     }
@@ -292,6 +244,24 @@ public extension CATransform3D {
       return CATransform3D(storage.recomposed())
     }
 
+  }
+
+}
+
+// MARK: - CATransform3D Extensions
+
+extension CATransform3D.Decomposed: Interpolatable {
+
+  public func lerp(to: Self, fraction: Double) -> Self {
+    return CATransform3D.Decomposed(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
+  }
+
+}
+
+extension CATransform3D: Interpolatable {
+
+  public func lerp(to: Self, fraction: CGFloat) -> Self {
+    return CATransform3D(self._decomposed().lerp(to: to._decomposed(), fraction: Double(fraction)).recomposed())
   }
 
 }
