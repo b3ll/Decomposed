@@ -38,6 +38,20 @@ public struct Vector3 {
 
 }
 
+// MARK: - ExpressibleByArrayLiteral
+
+extension Vector3: ExpressibleByArrayLiteral {
+
+  public init(arrayLiteral elements: CGFloat...) {
+    self.init(x: elements[0], y: elements[1], z: elements[2])
+  }
+
+  public init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat) {
+    self.init(x: x, y: y, z: z)
+  }
+
+}
+
 public extension simd_double3 {
 
   init(_ vector: Vector3) {
@@ -76,6 +90,20 @@ public struct Vector4 {
 
   public init(_ vector: simd_double4) {
     self.storage = vector
+  }
+
+}
+
+// MARK: - ExpressibleByArrayLiteral
+
+extension Vector4: ExpressibleByArrayLiteral {
+
+  public init(arrayLiteral elements: CGFloat...) {
+    self.init(x: elements[0], y: elements[1], z: elements[2], w: elements[3])
+  }
+
+  public init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat, _ w: CGFloat) {
+    self.init(x: x, y: y, z: z, w: w)
   }
 
 }

@@ -56,7 +56,7 @@ extension simd_quatd: Interpolatable {
 
 }
 
-extension Decomposed.Skew: Interpolatable {
+extension matrix_double4x4.Skew: Interpolatable {
 
   public func lerp(to: Self, fraction: Double) -> Self {
     var copy = self
@@ -66,10 +66,10 @@ extension Decomposed.Skew: Interpolatable {
 
 }
 
-extension Decomposed: Interpolatable {
+extension matrix_double4x4.Decomposed: Interpolatable {
 
   public func lerp(to: Self, fraction: Double) -> Self {
-    return Decomposed(scale: scale.lerp(to: to.scale, fraction: fraction),
+    return matrix_double4x4.Decomposed(scale: scale.lerp(to: to.scale, fraction: fraction),
                       skew: skew.lerp(to: to.skew, fraction: fraction),
                       rotation: rotation.lerp(to: to.rotation, fraction: fraction),
                       quaternion: quaternion.lerp(to: to.quaternion, fraction: fraction),
@@ -82,7 +82,7 @@ extension Decomposed: Interpolatable {
 extension matrix_double4x4: Interpolatable {
 
   public func lerp(to: Self, fraction: Double) -> Self {
-    return self.decomposed.lerp(to: to.decomposed, fraction: Double(fraction)).recomposed
+    return self.decomposed().lerp(to: to.decomposed(), fraction: Double(fraction)).recomposed()
   }
 
 }
@@ -90,7 +90,7 @@ extension matrix_double4x4: Interpolatable {
 extension CATransform3D: Interpolatable {
 
   public func lerp(to: Self, fraction: CGFloat) -> Self {
-    return self.decomposed.lerp(to: to.decomposed, fraction: Double(fraction)).recomposed.transform
+    return CATransform3D(self._decomposed().lerp(to: to._decomposed(), fraction: Double(fraction)).recomposed())
   }
 
 }
