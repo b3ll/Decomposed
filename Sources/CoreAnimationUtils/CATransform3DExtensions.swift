@@ -10,15 +10,18 @@ import QuartzCore
 
 public extension CATransform3D {
 
+  /// Returns the identity matrix of `CATransform3D`
   static var identity: CATransform3D {
     return CATransform3DIdentity
   }
 
+  /// Returns the a `CATransform3D` initialized with all zeros.
   static var zero: CATransform3D {
     return CATransform3D(.zero)
   }
 
-  init(_ matrix: matrix_double4x4) {
+  /// Intializes a `CATransform3D` with a `matrix_double4x4`.
+  public init(_ matrix: matrix_double4x4) {
     self = CATransform3DIdentity
     self.m11 = CGFloat(matrix[0][0])
     self.m12 = CGFloat(matrix[0][1])
@@ -53,32 +56,6 @@ public extension CATransform3D {
     return Decomposed(_decomposed())
   }
 
-  var perspective: Perspective {
-    get {
-      return Perspective(_decomposed().perspective)
-    }
-    set {
-      var decomposed = _decomposed()
-      decomposed.perspective = newValue.storage
-      self = CATransform3D(_decomposed().recomposed())
-    }
-  }
-
-  func applyingPerspective(m31: CGFloat? = nil, m32: CGFloat? = nil, m33: CGFloat? = nil, m34: CGFloat? = nil) -> Self {
-    let perspective = Perspective(m31: m31 ?? self.m31, m32: m32 ?? self.m32, m33: m33 ?? self.m33, m34: m34 ?? self.m34)
-    return self.applyingPerspective(perspective)
-  }
-
-  func applyingPerspective(_ perspective: Perspective) -> Self {
-    var transform = self
-    transform.applyPerspective(perspective)
-    return transform
-  }
-
-  mutating func applyPerspective(_ perspective: Perspective) {
-    self = CATransform3D(matrix.applyingPerspective(perspective.storage))
-  }
-
   var translation: Translation {
     get {
       return Translation(_decomposed().translation)
@@ -103,58 +80,6 @@ public extension CATransform3D {
 
   mutating func translate(by translation: Translation) {
     self = CATransform3D(matrix.translated(by: translation.storage))
-  }
-
-  var rotation: Quaternion {
-    get {
-      return Quaternion(_decomposed().quaternion)
-    }
-    set {
-      var decomposed = _decomposed()
-      decomposed.quaternion = newValue.storage
-      self = CATransform3D(decomposed.recomposed())
-    }
-  }
-
-  func rotated(by rotation: Quaternion) -> Self {
-    var transform = self
-    transform.rotate(by: rotation)
-    return transform
-  }
-
-  func rotatedBy(angle: CGFloat, x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
-    let rotation = Quaternion(angle: angle, axis: Vector3(x, y, z))
-    return self.rotated(by: rotation)
-  }
-
-  mutating func rotate(by rotation: Quaternion) {
-    self = CATransform3D(matrix.rotated(by: rotation.storage))
-  }
-
-  var skew: Skew {
-    get {
-      return Skew(_decomposed().skew)
-    }
-    set {
-      var decomposed = _decomposed()
-      decomposed.skew = newValue.storage
-      self = CATransform3D(decomposed.recomposed())
-    }
-  }
-
-  func skewed(by skew: Skew) -> Self {
-    var transform = self
-    transform.skew(by: skew)
-    return transform
-  }
-
-  func skewedBy(XY: CGFloat = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) -> Self {
-    let skew = Skew(XY, XZ, YZ)
-    return self.skewed(by: skew)
-  }
-
-  mutating func skew(by skew: Skew) {
-    self = CATransform3D(matrix.skewed(by: skew.storage))
   }
 
   var scale: Scale {
@@ -183,14 +108,94 @@ public extension CATransform3D {
     self = CATransform3D(matrix.scaled(by: scale.storage))
   }
 
+  var rotation: Quaternion {
+    get {
+      return Quaternion(_decomposed().quaternion)
+    }
+    set {
+      var decomposed = _decomposed()
+      decomposed.quaternion = newValue.storage
+      self = CATransform3D(decomposed.recomposed())
+    }
+  }
+
+  func rotated(by rotation: Quaternion) -> Self {
+    var transform = self
+    transform.rotate(by: rotation)
+    return transform
+  }
+
+  func rotatedBy(angle: CGFloat = 0.0, x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
+    let rotation = Quaternion(angle: angle, axis: Vector3(x, y, z))
+    return self.rotated(by: rotation)
+  }
+
+  mutating func rotate(by rotation: Quaternion) {
+    self = CATransform3D(matrix.rotated(by: rotation.storage))
+  }
+
+  var skew: Skew {
+    get {
+      return Skew(_decomposed().skew)
+    }
+    set {
+      var decomposed = _decomposed()
+      decomposed.skew = newValue.storage
+      self = CATransform3D(decomposed.recomposed())
+    }
+  }
+
+  func skewed(by skew: Skew) -> Self {
+    var transform = self
+    transform.skew(by: skew)
+    return transform
+  }
+
+  func skewedBy(XY: CGFloat? = nil, XZ: CGFloat? = nil, YZ: CGFloat? = nil) -> Self {
+    let skew = Skew(XY ?? self.skew.XY, XZ ?? self.skew.XZ, self.skew.YZ)
+    return self.skewed(by: skew)
+  }
+
+  mutating func skew(by skew: Skew) {
+    self = CATransform3D(matrix.skewed(by: skew.storage))
+  }
+
+  var perspective: Perspective {
+    get {
+      return Perspective(_decomposed().perspective)
+    }
+    set {
+      var decomposed = _decomposed()
+      decomposed.perspective = newValue.storage
+      self = CATransform3D(_decomposed().recomposed())
+    }
+  }
+
+  func applyingPerspective(m31: CGFloat? = nil, m32: CGFloat? = nil, m33: CGFloat? = nil, m34: CGFloat? = nil) -> Self {
+    let perspective = Perspective(m31: m31 ?? self.m31, m32: m32 ?? self.m32, m33: m33 ?? self.m33, m34: m34 ?? self.m34)
+    return self.applyingPerspective(perspective)
+  }
+
+  func applyingPerspective(_ perspective: Perspective) -> Self {
+    var transform = self
+    transform.applyPerspective(perspective)
+    return transform
+  }
+
+  mutating func applyPerspective(_ perspective: Perspective) {
+    self = CATransform3D(matrix.applyingPerspective(perspective.storage))
+  }
+
 }
 
 public extension CATransform3D {
 
+  /// Represents a decomposed CATransform3D in which the transform is broken down into its transform attributes (scale, translation, etc.).
   struct Decomposed {
 
     internal var storage: matrix_double4x4.Decomposed
 
+    /// The translation of the transform.
     var translation: Translation {
       get {
         return Vector3(storage.translation)
@@ -200,6 +205,7 @@ public extension CATransform3D {
       }
     }
 
+    /// The scale of the transform.
     var scale: Translation {
       get {
         return Vector3(storage.scale)
@@ -209,6 +215,7 @@ public extension CATransform3D {
       }
     }
 
+    /// The rotation of the transform (exposed as a quaternion).
     var rotation: Quaternion {
       get {
         return Quaternion(storage.quaternion)
@@ -218,6 +225,7 @@ public extension CATransform3D {
       }
     }
 
+    /// The skew of the transform.
     var skew: Skew {
       get {
         return Skew(storage.skew)
@@ -227,6 +235,7 @@ public extension CATransform3D {
       }
     }
 
+    /// The perspective of the transform.
     var perspective: Perspective {
       get {
         return Perspective(storage.perspective)

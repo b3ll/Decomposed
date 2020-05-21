@@ -14,17 +14,17 @@ import simd
 
 public extension matrix_double4x4 {
 
-  /// Returns the identity matrix of a simd 4x4 matrix.
+  /// Returns the identity matrix of a `matrix_double4x4`.
   static var identity: matrix_double4x4 {
     return matrix_identity_double4x4
   }
 
-  /// Returns a matrix_double4x4 with all zeros.
+  /// Returns a `matrix_double4x4` with all zeros.
   static var zero: matrix_double4x4 {
     return matrix_double4x4()
   }
 
-  /// Initializes a matrix_double4x4 with a CATransform3D.
+  /// Initializes a `matrix_double4x4` with a CATransform3D.
   init(_ transform: CATransform3D) {
     self.init(
       simd_double4(Double(transform.m11), Double(transform.m12), Double(transform.m13), Double(transform.m14)),
