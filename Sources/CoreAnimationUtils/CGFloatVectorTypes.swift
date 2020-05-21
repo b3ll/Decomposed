@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CGFloatVectorTypes.swift
 //  
 //
 //  Created by Adam Bell on 5/18/20.
@@ -8,6 +8,10 @@
 import Foundation
 import simd
 import QuartzCore
+
+// This whole file exists basically because SIMD doesn't support CGFloat :(
+// So everything here just bridges CGFloats to Doubles and uses their simd equivalents.
+// Technically CGFloat can be Float or Double (32bit or 64bit) but everything is 64bit nowadays so, if it's really necessary it can be added later.
 
 public struct Vector3 {
 
