@@ -21,7 +21,7 @@ public extension CATransform3D {
   }
 
   /// Intializes a `CATransform3D` with a `matrix_double4x4`.
-  public init(_ matrix: matrix_double4x4) {
+  init(_ matrix: matrix_double4x4) {
     self = CATransform3DIdentity
     self.m11 = CGFloat(matrix[0][0])
     self.m12 = CGFloat(matrix[0][1])
@@ -152,7 +152,7 @@ public extension CATransform3D {
   }
 
   func skewedBy(XY: CGFloat? = nil, XZ: CGFloat? = nil, YZ: CGFloat? = nil) -> Self {
-    let skew = Skew(XY ?? self.skew.XY, XZ ?? self.skew.XZ, self.skew.YZ)
+    let skew = Skew(XY ?? self.skew.XY, XZ ?? self.skew.XZ, YZ ?? self.skew.YZ)
     return self.skewed(by: skew)
   }
 
