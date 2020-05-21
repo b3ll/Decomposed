@@ -14,14 +14,17 @@ import simd
 
 public extension matrix_double4x4 {
 
+  /// Returns the identity matrix of a simd 4x4 matrix.
   static var identity: matrix_double4x4 {
     return matrix_identity_double4x4
   }
 
+  /// Returns a matrix_double4x4 with all zeros.
   static var zero: matrix_double4x4 {
     return matrix_double4x4()
   }
 
+  /// Initializes a matrix_double4x4 with a CATransform3D.
   init(_ transform: CATransform3D) {
     self.init(
       simd_double4(Double(transform.m11), Double(transform.m12), Double(transform.m13), Double(transform.m14)),
@@ -31,6 +34,7 @@ public extension matrix_double4x4 {
     )
   }
 
+  /// Decomposes this matrix into its specific transform attributes (scale, translation, etc.) and returns a Decomposed struct to alter / recompose it.
   func decomposed() -> Decomposed {
     return Decomposed(self)
   }
@@ -158,17 +162,34 @@ public extension matrix_double4x4 {
 
 // MARK: - Decomposed
 
+/// A type to break down a matrix_double4x4 into its specific transformation attributes and properties.
 public extension matrix_double4x4 {
 
   struct Decomposed {
 
-    public var scale: simd_double3 = .zero
-    public var skew: simd_double3 = .zero
-    public var rotation: simd_double3 = .zero
-    public var quaternion: simd_quatd = simd_quatd(vector: .zero)
+    /// The translation of a transformation matrix.
     public var translation: simd_double3 = .zero
+
+    /// The scale of a transformation matrix.
+    public var scale: simd_double3 = .zero
+
+    /// The rotation of a transformation matrix expressed as euler angles.
+    public var rotation: simd_double3 = .zero
+
+    /// The rotation of a transformation matrix expressed as a quaternion.
+    public var quaternion: simd_quatd = simd_quatd(vector: .zero)
+
+    /// The shearing of a transformation matrix.
+    public var skew: simd_double3 = .zero
+
+    /// The perspective of a transformation matrix (e.g. .m34)
     public var perspective: simd_double4 = .zero
 
+    /**
+     Designated initializer.
+
+     Note: You'll want to use matrix_double4x4.decomposed() instead.
+     */
     internal init(scale: simd_double3, skew: simd_double3, rotation: simd_double3, quaternion: simd_quatd, translation: simd_double3, perspective: simd_double4) {
       self.scale = scale
       self.skew = skew
@@ -178,6 +199,11 @@ public extension matrix_double4x4 {
       self.perspective = perspective
     }
 
+    /**
+     Designated initializer.
+
+     Note: You'll want to use matrix_double4x4.decomposed() instead.
+     */
     internal init(_ matrix: matrix_double4x4) {
       var local = matrix
 
