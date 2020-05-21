@@ -39,28 +39,7 @@ public extension matrix_double4x4 {
     return Decomposed(self)
   }
 
-  var perspective: simd_double4 {
-    get {
-      return decomposed().perspective
-    }
-    set {
-      self.applyPerspective(newValue)
-    }
-  }
-
-  func applyingPerspective(_ p: simd_double4) -> Self {
-    var matrix = self
-    matrix.applyPerspective(p)
-    return matrix
-  }
-
-  mutating func applyPerspective(_ p: simd_double4)  {
-    self[0][3] = p.x
-    self[1][3] = p.y
-    self[2][3] = p.z
-    self[3][3] = p.w
-  }
-
+  /// The translation of the transformation matrix.
   var translation: simd_double3 {
     get {
       return decomposed().translation
@@ -70,18 +49,45 @@ public extension matrix_double4x4 {
     }
   }
 
+  /// Returns a copy by translating the current transformation matrix by the given translation amount.
   func translated(by translation: simd_double3) -> Self {
     var matrix = self
     matrix.translate(by: translation)
     return matrix
   }
 
+  /// Translates the current transformation matrix by the given translation amount.
   mutating func translate(by t: simd_double3) {
     var matrix: matrix_double4x4 = .identity
     matrix[3] = simd_double4(t.x, t.y, t.z, 1.0)
     self = matrix_multiply(self, matrix)
   }
 
+  /// The scale of the transformation matrix.
+  var scale: simd_double3 {
+    get {
+      return decomposed().scale
+    }
+    set {
+      self.scale(by: newValue)
+    }
+  }
+
+  /// Returns a copy by scaling the current transformation matrix by the given scale.
+  func scaled(by scale: simd_double3) -> Self {
+    var matrix = self
+    matrix.scale(by: scale)
+    return matrix
+  }
+
+  /// Scales the current transformation matrix by the given scale.
+  mutating func scale(by s: simd_double3) {
+    self[0] *= s.x
+    self[1] *= s.y
+    self[2] *= s.z
+  }
+
+  /// The rotation of the transformation matrix (expressed as a quaternion).
   var rotation: simd_quatd {
     get {
       return decomposed().quaternion
@@ -91,17 +97,20 @@ public extension matrix_double4x4 {
     }
   }
 
+  /// Returns a copy by applying a rotation transform (expressed as a quaternion) to the current transformation matrix.
   func rotated(by quaternion: simd_quatd) -> Self {
     var matrix = self
     matrix.rotate(by: quaternion)
     return matrix
   }
 
+  /// Rotates the current rotation by applying a rotation transform (expressed as a quaternion) to the current transformation matrix.
   mutating func rotate(by q: simd_quatd) {
     let rotationMatrix = matrix_double4x4(q)
     self = matrix_multiply(self, rotationMatrix)
   }
 
+  /// The skew of the transformation matrix.
   var skew: simd_double3 {
     get {
       return decomposed().skew
@@ -111,12 +120,14 @@ public extension matrix_double4x4 {
     }
   }
 
+  /// Returns a copy by skewing the current transformation matrix by a given skew.
   func skewed(by skew: simd_double3) -> Self {
     var matrix = self
     matrix.skew(by: skew)
     return matrix
   }
 
+  /// Skews the current transformation matrix by the given skew.
   mutating func skew(by s: simd_double3) {
     if s.YZ != 0.0 {
       var skewMatrix: matrix_double4x4 = .identity
@@ -137,34 +148,38 @@ public extension matrix_double4x4 {
     }
   }
 
-  var scale: simd_double3 {
+  /// The perspective of the transformation matrix.
+  var perspective: simd_double4 {
     get {
-      return decomposed().scale
+      return decomposed().perspective
     }
     set {
-      self.scale(by: newValue)
+      self.applyPerspective(newValue)
     }
   }
 
-  func scaled(by scale: simd_double3) -> Self {
+  /// Returns a copy by changing the perspective of the current transformation matrix.
+  func applyingPerspective(_ p: simd_double4) -> Self {
     var matrix = self
-    matrix.scale(by: scale)
+    matrix.applyPerspective(p)
     return matrix
   }
 
-  mutating func scale(by s: simd_double3) {
-    self[0] *= s.x
-    self[1] *= s.y
-    self[2] *= s.z
+  /// Sets the perspective of the current transformation matrix.
+  mutating func applyPerspective(_ p: simd_double4)  {
+    self[0][3] = p.x
+    self[1][3] = p.y
+    self[2][3] = p.z
+    self[3][3] = p.w
   }
 
 }
 
 // MARK: - Decomposed
 
-/// A type to break down a matrix_double4x4 into its specific transformation attributes and properties.
 public extension matrix_double4x4 {
 
+  /// A type to break down a `matrix_double4x4` into its specific transformation attributes / properties (i.e. scale, translation, etc.).
   struct Decomposed {
 
     /// The translation of a transformation matrix.
@@ -173,10 +188,10 @@ public extension matrix_double4x4 {
     /// The scale of a transformation matrix.
     public var scale: simd_double3 = .zero
 
-    /// The rotation of a transformation matrix expressed as euler angles.
+    /// The rotation of a transformation matrix (expressed as euler angles).
     public var rotation: simd_double3 = .zero
 
-    /// The rotation of a transformation matrix expressed as a quaternion.
+    /// The rotation of a transformation matrix (expressed as a quaternion).
     public var quaternion: simd_quatd = simd_quatd(vector: .zero)
 
     /// The shearing of a transformation matrix.
@@ -188,9 +203,9 @@ public extension matrix_double4x4 {
     /**
      Designated initializer.
 
-     Note: You'll want to use matrix_double4x4.decomposed() instead.
+     - Note: You'll want to use `matrix_double4x4.decomposed()` instead.
      */
-    internal init(scale: simd_double3, skew: simd_double3, rotation: simd_double3, quaternion: simd_quatd, translation: simd_double3, perspective: simd_double4) {
+    internal init(translation: simd_double3, scale: simd_double3, rotation: simd_double3, quaternion: simd_quatd, skew: simd_double3, perspective: simd_double4) {
       self.scale = scale
       self.skew = skew
       self.rotation = rotation
@@ -202,7 +217,7 @@ public extension matrix_double4x4 {
     /**
      Designated initializer.
 
-     Note: You'll want to use matrix_double4x4.decomposed() instead.
+     - Note: You'll want to use `matrix_double4x4.decomposed()` instead.
      */
     internal init(_ matrix: matrix_double4x4) {
       var local = matrix
@@ -305,6 +320,6 @@ public extension matrix_double4x4 {
 
 // MARK: - Utils
 
-internal func simd_linear_combination(_ ascl: Double, _ a: simd_double3, _ bscl: Double, _ b: simd_double3) -> simd_double3 {
+fileprivate func simd_linear_combination(_ ascl: Double, _ a: simd_double3, _ bscl: Double, _ b: simd_double3) -> simd_double3 {
   return simd_double3((ascl * a[0]) + (bscl * b[0]), (ascl * a[1]) + (bscl * b[1]), (ascl * a[2]) + (bscl * b[2]))
 }

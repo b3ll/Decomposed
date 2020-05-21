@@ -61,12 +61,12 @@ extension simd_quatd: Interpolatable {
 extension matrix_double4x4.Decomposed: Interpolatable {
 
   public func lerp(to: Self, fraction: Double) -> Self {
-    return matrix_double4x4.Decomposed(scale: scale.lerp(to: to.scale, fraction: fraction),
-                      skew: skew.lerp(to: to.skew, fraction: fraction),
-                      rotation: rotation.lerp(to: to.rotation, fraction: fraction),
-                      quaternion: quaternion.lerp(to: to.quaternion, fraction: fraction),
-                      translation: translation.lerp(to: to.translation, fraction: fraction),
-                      perspective: perspective.lerp(to: to.perspective, fraction: fraction))
+    return matrix_double4x4.Decomposed(translation: translation.lerp(to: to.translation, fraction: fraction),
+                                       scale: scale.lerp(to: to.scale, fraction: fraction),
+                                       rotation: rotation.lerp(to: to.rotation, fraction: fraction),
+                                       quaternion: quaternion.lerp(to: to.quaternion, fraction: fraction),
+                                       skew: skew.lerp(to: to.skew, fraction: fraction),
+                                       perspective: perspective.lerp(to: to.perspective, fraction: fraction))
   }
 
 }
