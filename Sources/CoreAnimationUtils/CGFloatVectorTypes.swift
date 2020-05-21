@@ -161,29 +161,31 @@ public typealias Skew = Vector3
 
 // Perspective
 
-public extension Vector4 {
+extension Vector4: PerspectiveRepresentable {
 
-  var m31: CGFloat {
+  typealias ValueType = CGFloat
+
+  public var m31: CGFloat {
     get { return CGFloat(self.storage[0]) }
     set { self.storage[0] = Double(newValue) }
   }
 
-  var m32: CGFloat {
+  public var m32: CGFloat {
     get { return CGFloat(self.storage[1]) }
     set { self.storage[1] = Double(newValue) }
   }
 
-  var m33: CGFloat {
+  public var m33: CGFloat {
     get { return CGFloat(self.storage[2]) }
     set { self.storage[2] = Double(newValue) }
   }
 
-  var m34: CGFloat {
+  public var m34: CGFloat {
     get { return CGFloat(self.storage[3]) }
     set { self.storage[3] = Double(newValue) }
   }
 
-  init(m31: CGFloat = 0.0, m32: CGFloat = 0.0, m33: CGFloat = 0.0, m34: CGFloat = 0.0) {
+  public init(m31: CGFloat = 0.0, m32: CGFloat = 0.0, m33: CGFloat = 0.0, m34: CGFloat = 1.0) {
     self.init(m31, m32, m33, m34)
   }
 
@@ -191,24 +193,26 @@ public extension Vector4 {
 
 // Skew
 
-public extension Vector3 {
+extension Vector3: SkewRepresentable {
 
-  var XY: CGFloat {
+  typealias ValueType = CGFloat
+
+  public var XY: CGFloat {
     get { return CGFloat(self.storage[0]) }
     set { self.storage[0] = Double(newValue) }
   }
 
-  var XZ: CGFloat {
+  public var XZ: CGFloat {
     get { return CGFloat(self.storage[1]) }
     set { self.storage[1] = Double(newValue) }
   }
 
-  var YZ: CGFloat {
+  public var YZ: CGFloat {
     get { return CGFloat(self.storage[2]) }
     set { self.storage[2] = Double(newValue) }
   }
 
-  init(XY: CGFloat = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) {
+  public init(XY: CGFloat = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) {
     self.init(XY, XZ, YZ)
   }
 
