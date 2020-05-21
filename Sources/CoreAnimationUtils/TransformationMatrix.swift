@@ -115,19 +115,19 @@ public extension matrix_double4x4 {
 
   mutating func skew(by s: simd_double3) {
     if s.YZ != 0.0 {
-      var skewMatrix: matrix_double4x4 = .zero
+      var skewMatrix: matrix_double4x4 = .identity
       skewMatrix[2][1] = s.YZ
       self = matrix_multiply(self, skewMatrix)
     }
 
     if s.XZ != 0.0 {
-      var skewMatrix: matrix_double4x4 = .zero
+      var skewMatrix: matrix_double4x4 = .identity
       skewMatrix[2][0] = s.XZ
       self = matrix_multiply(self, skewMatrix)
     }
 
     if s.XY != 0.0 {
-      var skewMatrix: matrix_double4x4 = .zero
+      var skewMatrix: matrix_double4x4 = .identity
       skewMatrix[1][0] = s.XY
       self = matrix_multiply(self, skewMatrix)
     }
@@ -204,7 +204,7 @@ public extension matrix_double4x4 {
         local[2][3] = 0.0
         local[3][3] = 1.0
       } else {
-        self.perspective.w = 1.0
+        self.perspective[3] = 1.0
       }
 
       // get translation
