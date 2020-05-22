@@ -318,6 +318,27 @@ public extension matrix_double4x4 {
 
 }
 
+extension matrix_double4x4.Decomposed: Interpolatable {
+
+  public func lerp(to: Self, fraction: Double) -> Self {
+    return matrix_double4x4.Decomposed(translation: translation.lerp(to: to.translation, fraction: fraction),
+                                       scale: scale.lerp(to: to.scale, fraction: fraction),
+                                       rotation: rotation.lerp(to: to.rotation, fraction: fraction),
+                                       quaternion: quaternion.lerp(to: to.quaternion, fraction: fraction),
+                                       skew: skew.lerp(to: to.skew, fraction: fraction),
+                                       perspective: perspective.lerp(to: to.perspective, fraction: fraction))
+  }
+
+}
+
+extension matrix_double4x4: Interpolatable {
+
+  public func lerp(to: Self, fraction: Double) -> Self {
+    return self.decomposed().lerp(to: to.decomposed(), fraction: Double(fraction)).recomposed()
+  }
+
+}
+
 // MARK: - Utils
 
 fileprivate func simd_linear_combination(_ ascl: Double, _ a: simd_double3, _ bscl: Double, _ b: simd_double3) -> simd_double3 {

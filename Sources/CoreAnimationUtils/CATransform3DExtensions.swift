@@ -196,7 +196,7 @@ public extension CATransform3D {
     internal var storage: matrix_double4x4.Decomposed
 
     /// The translation of the transform.
-    var translation: Translation {
+    public var translation: Translation {
       get {
         return Vector3(storage.translation)
       }
@@ -206,7 +206,7 @@ public extension CATransform3D {
     }
 
     /// The scale of the transform.
-    var scale: Translation {
+    public var scale: Translation {
       get {
         return Vector3(storage.scale)
       }
@@ -216,7 +216,7 @@ public extension CATransform3D {
     }
 
     /// The rotation of the transform (exposed as a quaternion).
-    var rotation: Quaternion {
+    public var rotation: Quaternion {
       get {
         return Quaternion(storage.quaternion)
       }
@@ -226,7 +226,7 @@ public extension CATransform3D {
     }
 
     /// The skew of the transform.
-    var skew: Skew {
+    public var skew: Skew {
       get {
         return Skew(storage.skew)
       }
@@ -236,7 +236,7 @@ public extension CATransform3D {
     }
 
     /// The perspective of the transform.
-    var perspective: Perspective {
+    public var perspective: Perspective {
       get {
         return Perspective(storage.perspective)
       }
@@ -245,11 +245,11 @@ public extension CATransform3D {
       }
     }
 
-    init(_ decomposed: matrix_double4x4.Decomposed) {
+    public init(_ decomposed: matrix_double4x4.Decomposed) {
       self.storage = decomposed
     }
 
-    func recomposed() -> CATransform3D {
+    public func recomposed() -> CATransform3D {
       return CATransform3D(storage.recomposed())
     }
 

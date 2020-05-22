@@ -9,7 +9,7 @@ import simd
 
 // Perspective
 
-protocol PerspectiveRepresentable {
+public protocol PerspectiveRepresentable {
 
   associatedtype ValueType: Numeric
 
@@ -24,29 +24,29 @@ protocol PerspectiveRepresentable {
 
 extension simd_double4: PerspectiveRepresentable {
 
-  typealias ValueType = Double
+  public typealias ValueType = Double
 
-  var m31: Double {
+  public var m31: Double {
     get { return self[0] }
     set { self[0] = Double(newValue) }
   }
 
-  var m32: Double {
+  public var m32: Double {
     get { return self[1] }
     set { self[1] = Double(newValue) }
   }
 
-  var m33: Double {
+  public var m33: Double {
     get { return self[2] }
     set { self[2] = Double(newValue) }
   }
 
-  var m34: Double {
+  public var m34: Double {
     get { return self[3] }
     set { self[3] = Double(newValue) }
   }
 
-  init(m31: Double = 0.0, m32: Double = 0.0, m33: Double = 0.0, m34: Double = 1.0) {
+  public init(m31: Double = 0.0, m32: Double = 0.0, m33: Double = 0.0, m34: Double = 1.0) {
     self.init(m31, m32, m33, m34)
   }
 
@@ -54,7 +54,7 @@ extension simd_double4: PerspectiveRepresentable {
 
 // Skew
 
-protocol SkewRepresentable {
+public protocol SkewRepresentable {
 
   associatedtype ValueType: Numeric
 
@@ -68,24 +68,24 @@ protocol SkewRepresentable {
 
 extension simd_double3: SkewRepresentable {
 
-  typealias Number = Double
+  public typealias ValueType = Double
 
-  var XY: Double {
+  public var XY: Double {
     get { return self[0] }
     set { self[0] = newValue }
   }
 
-  var XZ: Double {
+  public var XZ: Double {
     get { return self[1] }
     set { self[1] = newValue }
   }
 
-  var YZ: Double {
+  public var YZ: Double {
     get { return self[2] }
     set { self[2] = newValue }
   }
 
-  init(XY: Double = 0.0, XZ: Double = 0.0, YZ: Double = 0.0) {
+  public init(XY: Double = 0.0, XZ: Double = 0.0, YZ: Double = 0.0) {
     self.init(XY, XZ, YZ)
   }
 
