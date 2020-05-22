@@ -21,17 +21,17 @@ It's also powered by Accelerate, so it should introduce relatively low overhead 
 Create a transform with a translation of 44pts on the Y-axis, rotated by .pi / 4.0 on the X-axis
 
 ```swift
-var transform: CATransform3D = .identity
-transform.translate(by: [0.0, 88.0, 0.0))
-transform.rotateBy(angle: .pi / 4.0, x: 1.0)
+var transform: CATransform3D = CATransform3DIdentity
+  .translatedBy(y: 44.0)
+  .rotatedBy(angle: .pi / 4.0, x: 1.0)
 ```
 
-Change a layer's transform's translation to `(44.0, 44.0, 0.0)` and scale to `(0.75, 0.75, 0.0)`
+Change a layer's transform's translation to `(x: 44.0, y: 44.0)` and scale to `(x: 0.75, y: 0.75)`
 
 ```swift
 let layer = ...
-layer.transform.translation = [44.0, 44.0, 0.0]
-layer.transform.scale = [0.75, 0.75, 0.0]
+layer.transform.translation = Translation(44.0, 44.0, 0.0)
+layer.transform.scale = Scale(0.75, 0.75, 0.0)
 ```
 
 # DecomposedTransform
@@ -40,11 +40,22 @@ Anytime you change a property on a `CATransform3D` or `matrix_double4x4`, it nee
 
 ```swift
 var decomposed = transform.decomposed()
-decomposed.translation = [44.0, 44.0, 0.0]
-decomposed.scale = [0.75, 0.75, 0.0]
-decomposed.rotation = Quaternion(angle: .pi / 4.0, axis: [1.0, 0.0, 0.0])
+decomposed.translation = Translation(44.0, 44.0, 0.0)
+decomposed.scale = Scale(0.75, 0.75, 0.0)
+decomposed.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(1.0, 0.0, 0.0))
 
 let changedTransform = decomposed.recomposed()
+```
+
+# Vector3 / Vector4 / Quaternion
+
+Sadly, `simd` doesn't support storing `CGFloat` (even when they're `Double`) so to make this library easier to use (i.e. without casting everything to doubles all the time `Double(some CGFloat)` you'll find `Vector3`, `Vector4`, and `Quaternion`, which wrap `simd` counterparts: `simd_double3`, `simd_double4`, and `simd_quatd`, respectively.
+
+`Translation`, `Scale`, etc. are all type aliased (i.e. `Vector3`  or `Vector4`), and they all conform to `ArrayLiteralRepresentable` so you can use Array<CGFloat> to initialize them.
+
+```swift
+layer.translation = [44.0, 44.0, 0.0]
+layer.scale = [0.5, 0.75, 0.0]
 ```
 
 # Interpolatable
@@ -52,9 +63,14 @@ let changedTransform = decomposed.recomposed()
 It also provides functionality to linearly interpolate from any transform to any transform via the `Interpolatable` protocol.
 
 ```swift
-var transform: CATransform3D = CATransform3DIdentity
+let transform: CATransform3D = CATransform3DIdentity
   .translated(by: [44.0, 44.0, 0.0])
   .scaled(by: [1.0, 1.0, 1.0])
 
-let transform2 = CATransform3D
+let transform2 = CATransform3DIdentity
+  .translated(by: [120.0, 240.0, 0.0])
+  .scaled(by: [0.5, 0.75, 1.0])
+  .rotatedBy(angle: .pi / 4.0, x: 1.0)
+  
+let interpolatedTransform = transform.lerp(to: transform2, fraction: 0.5)
 ```
