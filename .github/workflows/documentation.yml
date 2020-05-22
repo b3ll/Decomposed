@@ -12,7 +12,7 @@ jobs:
         uses: SwiftDocOrg/swift-doc@master
         with:
           inputs: "Sources"
-          module-name: CoreAnimationUtils
+          module-name: Decomposed
           output: "Documentation"
       - name: Upload Documentation to Wiki
         uses: SwiftDocOrg/github-wiki-publish-action@v1
