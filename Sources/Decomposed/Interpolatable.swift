@@ -26,28 +26,32 @@ public protocol Interpolatable {
 
 }
 
+/**
+ - TODO: I would love to collapse these into a single generic for both `Double` and `Float` using `simd_mix` but I still haven't quite figured it out yet. PRs would be awesome!
+ */
+
 // MARK: - SIMD Extensions
 
-extension SIMD2: Interpolatable where Scalar: FloatingPoint {
+extension SIMD2: Interpolatable where Scalar == Double {
 
   public func lerp(to: Self, fraction: Self.Scalar) -> Self {
-    return (self + ((to - self) * fraction))
+    simd_mix(self, to, Self(repeating: fraction))
   }
 
 }
 
-extension SIMD3: Interpolatable where Scalar: FloatingPoint {
+extension SIMD3: Interpolatable where Scalar == Double {
 
   public func lerp(to: Self, fraction: Self.Scalar) -> Self {
-    return (self + ((to - self) * fraction))
+    simd_mix(self, to, Self(repeating: fraction))
   }
 
 }
 
-extension SIMD4: Interpolatable where Scalar: FloatingPoint {
+extension SIMD4: Interpolatable where Scalar == Double {
 
   public func lerp(to: Self, fraction: Self.Scalar) -> Self {
-    return (self + ((to - self) * fraction))
+    simd_mix(self, to, Self(repeating: fraction))
   }
 
 }
@@ -55,7 +59,7 @@ extension SIMD4: Interpolatable where Scalar: FloatingPoint {
 extension simd_quatf: Interpolatable {
 
   public func lerp(to: Self, fraction: Float) -> simd_quatf {
-    return (self + ((to - self) * fraction))
+    return simd_slerp(self, to, fraction)
   }
 
 }
