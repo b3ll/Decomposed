@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SIMDConvenienceExtensions.swift
 //  
 //
 //  Created by Adam Bell on 5/19/20.

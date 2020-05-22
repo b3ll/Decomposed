@@ -1,5 +1,5 @@
 //
-//  LERPExtension.swift
+//  Interpolatable.swift
 //  
 //
 //  Created by Adam Bell on 5/17/20.
