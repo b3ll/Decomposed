@@ -44,18 +44,21 @@ public extension CATransform3D {
     self.m44 = CGFloat(matrix[3][3])
   }
 
+  /// Returns a `matrix_double4x4` from the contents of this transform.
   internal var matrix: matrix_double4x4 {
     return matrix_double4x4(self)
   }
 
+  /// Returns a `matrix_double4x4.DecomposedTransform` from the contents of this transform.
   internal func _decomposed() -> matrix_double4x4.DecomposedTransform {
-    return matrix_double4x4(self).decomposed()
+    return matrix.decomposed()
   }
 
   func decomposed() -> DecomposedTransform {
     return DecomposedTransform(_decomposed())
   }
 
+  /// The translation of the transform.
   var translation: Translation {
     get {
       return Translation(_decomposed().translation)
@@ -67,21 +70,29 @@ public extension CATransform3D {
     }
   }
 
+  /// Returns a copy by translating the current transform by the given translation amount.
   func translated(by translation: Translation) -> Self {
     var transform = self
     transform.translate(by: translation)
     return transform
   }
 
+  /**
+   Returns a copy by translating the current transform by the given translation components.
+
+   - Note: Omitted components have no effect on the translation.
+   */
   func translatedBy(x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
     let translation = Translation(x, y, z)
     return self.translated(by: translation)
   }
 
+  /// Translates the current transform by the given translation amount.
   mutating func translate(by translation: Translation) {
     self = CATransform3D(matrix.translated(by: translation.storage))
   }
 
+  /// The scale of the transform.
   var scale: Scale {
     get {
       return Scale(_decomposed().scale)
@@ -93,21 +104,29 @@ public extension CATransform3D {
     }
   }
 
+  /// Returns a copy by scaling the current transform by the given scale.
   func scaled(by scale: Scale) -> Self {
     var transform = self
     transform.scale(by: scale)
     return transform
   }
 
+  /**
+   Returns a copy by scaling the current transform by the given scale.
+
+   - Note: Omitted components have no effect on the translation.
+   */
   func scaledBy(x: CGFloat = 1.0, y: CGFloat = 1.0, z: CGFloat = 1.0) -> Self {
     let scale = Scale(x, y, z)
     return self.scaled(by: scale)
   }
 
+  /// Scales the current transform by the given scale.
   mutating func scale(by scale: Scale) {
     self = CATransform3D(matrix.scaled(by: scale.storage))
   }
 
+  /// The rotation of the transform (expressed as a quaternion).
   var rotation: Quaternion {
     get {
       return Quaternion(_decomposed().quaternion)
@@ -119,21 +138,28 @@ public extension CATransform3D {
     }
   }
 
+  /// Returns a copy by applying a rotation transform (expressed as a quaternion) to the current transform.
   func rotated(by rotation: Quaternion) -> Self {
     var transform = self
     transform.rotate(by: rotation)
     return transform
   }
 
+  /** Returns a copy by applying a rotation transform (expressed as a quaternion) to the current transform.
+
+   - Note: Omitted components have no effect on the translation.
+   */
   func rotatedBy(angle: CGFloat = 0.0, x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
     let rotation = Quaternion(angle: angle, axis: Vector3(x, y, z))
     return self.rotated(by: rotation)
   }
 
+  /// Rotates the current rotation by applying a rotation transform (expressed as a quaternion) to the current transform.
   mutating func rotate(by rotation: Quaternion) {
     self = CATransform3D(matrix.rotated(by: rotation.storage))
   }
 
+  /// The skew of the transform.
   var skew: Skew {
     get {
       return Skew(_decomposed().skew)
@@ -145,12 +171,18 @@ public extension CATransform3D {
     }
   }
 
+  /// Returns a copy by skewing the current transform by a given skew.
   func skewed(by skew: Skew) -> Self {
     var transform = self
     transform.skew(by: skew)
     return transform
   }
 
+  /**
+   Returns a copy by skewing the current transform by the given skew components.
+
+   - Note: Omitted components have no effect on the translation.
+   */
   func skewedBy(XY: CGFloat? = nil, XZ: CGFloat? = nil, YZ: CGFloat? = nil) -> Self {
     let skew = Skew(XY ?? self.skew.XY, XZ ?? self.skew.XZ, YZ ?? self.skew.YZ)
     return self.skewed(by: skew)
@@ -160,6 +192,7 @@ public extension CATransform3D {
     self = CATransform3D(matrix.skewed(by: skew.storage))
   }
 
+  /// The perspective of the transform.
   var perspective: Perspective {
     get {
       return Perspective(_decomposed().perspective)
@@ -171,28 +204,38 @@ public extension CATransform3D {
     }
   }
 
-  func applyingPerspective(m31: CGFloat? = nil, m32: CGFloat? = nil, m33: CGFloat? = nil, m34: CGFloat? = nil) -> Self {
-    let perspective = Perspective(m31: m31 ?? self.m31, m32: m32 ?? self.m32, m33: m33 ?? self.m33, m34: m34 ?? self.m34)
-    return self.applyingPerspective(perspective)
-  }
-
+  /// Returns a copy by changing the perspective of the current transform.
   func applyingPerspective(_ perspective: Perspective) -> Self {
     var transform = self
     transform.applyPerspective(perspective)
     return transform
   }
 
+  /**
+   Returns a copy by changing the perspective of the current transform.
+
+   - Note: Omitted components have no effect on the translation.
+   */
+  func applyingPerspective(m31: CGFloat? = nil, m32: CGFloat? = nil, m33: CGFloat? = nil, m34: CGFloat? = nil) -> Self {
+    let perspective = Perspective(m31: m31 ?? self.m31, m32: m32 ?? self.m32, m33: m33 ?? self.m33, m34: m34 ?? self.m34)
+    return self.applyingPerspective(perspective)
+  }
+
+  /// Sets the perspective of the current transform.
   mutating func applyPerspective(_ perspective: Perspective) {
     self = CATransform3D(matrix.applyingPerspective(perspective.storage))
   }
 
 }
 
+// MARK: - DecomposedTransform
+
 public extension CATransform3D {
 
   /// Represents a decomposed CATransform3D in which the transform is broken down into its transform attributes (scale, translation, etc.).
   struct DecomposedTransform {
 
+    // This is just a simple wrapper overtop `matrix_double4x4.DecomposedTransform`.
     internal var storage: matrix_double4x4.DecomposedTransform
 
     /// The translation of the transform.
@@ -245,10 +288,16 @@ public extension CATransform3D {
       }
     }
 
+    /**
+      Designated initializer.
+
+      - Note: You'll probably want to use `CATransform3D.decomposed()` instead.
+      */
     public init(_ decomposed: matrix_double4x4.DecomposedTransform) {
       self.storage = decomposed
     }
 
+    /// Merges all the properties of the the decomposed transform into a `CATransform3D`.
     public func recomposed() -> CATransform3D {
       return CATransform3D(storage.recomposed())
     }

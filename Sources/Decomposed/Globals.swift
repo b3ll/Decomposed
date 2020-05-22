@@ -7,4 +7,5 @@
 
 import QuartzCore
 
+// The amount of accuracy that should be used when comparing floating point values.
 internal let SupportedAccuracy = 0.0001

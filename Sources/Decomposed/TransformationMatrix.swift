@@ -175,7 +175,7 @@ public extension matrix_double4x4 {
 
 }
 
-// MARK: - Decomposed
+// MARK: - DecomposedTransform
 
 public extension matrix_double4x4 {
 
@@ -302,6 +302,7 @@ public extension matrix_double4x4 {
       self.quaternion = simd_quatd(rotationLocal)
     }
 
+    /// Merges all the properties of the the decomposed transform into a `matrix_double4x4` transform.
     public func recomposed() -> matrix_double4x4 {
       var recomposed: matrix_double4x4 = .identity
 
