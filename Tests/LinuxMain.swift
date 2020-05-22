@@ -1,7 +1,7 @@
 import XCTest
 
-import CoreAnimationUtilsTests
+import DecomposedTests
 
 var tests = [XCTestCaseEntry]()
-tests += CoreAnimationUtilsTests.allTests()
+tests += DecomposedTests.allTests()
 XCTMain(tests)

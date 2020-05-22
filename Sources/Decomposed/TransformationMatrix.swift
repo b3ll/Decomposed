@@ -35,8 +35,8 @@ public extension matrix_double4x4 {
   }
 
   /// Decomposes this matrix into its specific transform attributes (scale, translation, etc.) and returns a Decomposed struct to alter / recompose it.
-  func decomposed() -> Decomposed {
-    return Decomposed(self)
+  func decomposed() -> DecomposedTransform {
+    return DecomposedTransform(self)
   }
 
   /// The translation of the transformation matrix.
@@ -180,7 +180,7 @@ public extension matrix_double4x4 {
 public extension matrix_double4x4 {
 
   /// A type to break down a `matrix_double4x4` into its specific transformation attributes / properties (i.e. scale, translation, etc.).
-  struct Decomposed {
+  struct DecomposedTransform {
 
     /// The translation of a transformation matrix.
     public var translation: simd_double3 = .zero
@@ -318,15 +318,15 @@ public extension matrix_double4x4 {
 
 }
 
-extension matrix_double4x4.Decomposed: Interpolatable {
+extension matrix_double4x4.DecomposedTransform: Interpolatable {
 
   public func lerp(to: Self, fraction: Double) -> Self {
-    return matrix_double4x4.Decomposed(translation: translation.lerp(to: to.translation, fraction: fraction),
-                                       scale: scale.lerp(to: to.scale, fraction: fraction),
-                                       rotation: rotation.lerp(to: to.rotation, fraction: fraction),
-                                       quaternion: quaternion.lerp(to: to.quaternion, fraction: fraction),
-                                       skew: skew.lerp(to: to.skew, fraction: fraction),
-                                       perspective: perspective.lerp(to: to.perspective, fraction: fraction))
+    return matrix_double4x4.DecomposedTransform(translation: translation.lerp(to: to.translation, fraction: fraction),
+                                                scale: scale.lerp(to: to.scale, fraction: fraction),
+                                                rotation: rotation.lerp(to: to.rotation, fraction: fraction),
+                                                quaternion: quaternion.lerp(to: to.quaternion, fraction: fraction),
+                                                skew: skew.lerp(to: to.skew, fraction: fraction),
+                                                perspective: perspective.lerp(to: to.perspective, fraction: fraction))
   }
 
 }

@@ -48,12 +48,12 @@ public extension CATransform3D {
     return matrix_double4x4(self)
   }
 
-  internal func _decomposed() -> matrix_double4x4.Decomposed {
+  internal func _decomposed() -> matrix_double4x4.DecomposedTransform {
     return matrix_double4x4(self).decomposed()
   }
 
-  func decomposed() -> Decomposed {
-    return Decomposed(_decomposed())
+  func decomposed() -> DecomposedTransform {
+    return DecomposedTransform(_decomposed())
   }
 
   var translation: Translation {
@@ -191,9 +191,9 @@ public extension CATransform3D {
 public extension CATransform3D {
 
   /// Represents a decomposed CATransform3D in which the transform is broken down into its transform attributes (scale, translation, etc.).
-  struct Decomposed {
+  struct DecomposedTransform {
 
-    internal var storage: matrix_double4x4.Decomposed
+    internal var storage: matrix_double4x4.DecomposedTransform
 
     /// The translation of the transform.
     public var translation: Translation {
@@ -245,7 +245,7 @@ public extension CATransform3D {
       }
     }
 
-    public init(_ decomposed: matrix_double4x4.Decomposed) {
+    public init(_ decomposed: matrix_double4x4.DecomposedTransform) {
       self.storage = decomposed
     }
 
@@ -259,10 +259,10 @@ public extension CATransform3D {
 
 // MARK: - CATransform3D Extensions
 
-extension CATransform3D.Decomposed: Interpolatable {
+extension CATransform3D.DecomposedTransform: Interpolatable {
 
   public func lerp(to: Self, fraction: Double) -> Self {
-    return CATransform3D.Decomposed(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
+    return CATransform3D.DecomposedTransform(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
   }
 
 }

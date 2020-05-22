@@ -1,10 +1,10 @@
-import CoreAnimationUtils
+import Decomposed
 import XCTest
 import simd
 
-@testable import CoreAnimationUtils
+@testable import Decomposed
 
-final class CoreAnimationUtilsTests: XCTestCase {
+final class DecomposedTests: XCTestCase {
 
   func testTranslation() {
     let testTransformCA = CATransform3DMakeTranslation(2.0, 3.0, 4.0)
