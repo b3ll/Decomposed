@@ -44,6 +44,29 @@ public extension CATransform3D {
     self.m44 = CGFloat(matrix[3][3])
   }
 
+  init(_ matrix: matrix_float4x4) {
+    self = CATransform3DIdentity
+    self.m11 = CGFloat(matrix[0][0])
+    self.m12 = CGFloat(matrix[0][1])
+    self.m13 = CGFloat(matrix[0][2])
+    self.m14 = CGFloat(matrix[0][3])
+
+    self.m21 = CGFloat(matrix[1][0])
+    self.m22 = CGFloat(matrix[1][1])
+    self.m23 = CGFloat(matrix[1][2])
+    self.m24 = CGFloat(matrix[1][3])
+
+    self.m31 = CGFloat(matrix[2][0])
+    self.m32 = CGFloat(matrix[2][1])
+    self.m33 = CGFloat(matrix[2][2])
+    self.m34 = CGFloat(matrix[2][3])
+
+    self.m41 = CGFloat(matrix[3][0])
+    self.m42 = CGFloat(matrix[3][1])
+    self.m43 = CGFloat(matrix[3][2])
+    self.m44 = CGFloat(matrix[3][3])
+  }
+
   /// Returns a `matrix_double4x4` from the contents of this transform.
   internal var matrix: matrix_double4x4 {
     return matrix_double4x4(self)
