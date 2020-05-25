@@ -10,7 +10,7 @@ import simd
 import QuartzCore
 
 /**
- This whole file exists basically because SIMD doesn't support CGFloat :(
+ This whole file exists basically because SIMD doesn't support CGFloat and without this file, you'd be doing things like `transform.position.x = Double(value)` :(
  So everything here just bridges CGFloats to Doubles and uses their simd equivalents.
  Technically CGFloat can be Float or Double (32bit or 64bit) but everything is 64bit nowadays so, if it's really necessary it can be added later.
  */

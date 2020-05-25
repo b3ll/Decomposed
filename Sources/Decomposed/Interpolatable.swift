@@ -32,26 +32,31 @@ public protocol Interpolatable {
 
 // MARK: - SIMD Extensions
 
-extension SIMD2: Interpolatable where Scalar == Double {
+public protocol SupportedInterpolatableSIMDFloatingPoint: FloatingPoint & SIMDScalar {}
+extension Double: SupportedInterpolatableSIMDFloatingPoint {}
+extension Float: SupportedInterpolatableSIMDFloatingPoint {}
 
+extension SIMD2: Interpolatable where Scalar: SupportedInterpolatableSIMDFloatingPoint {
+
+  // I would really like to use simd_mix here but for some reason it doesn't support SIMD2<Scalar> as an argument :(
   public func lerp(to: Self, fraction: Self.Scalar) -> Self {
-    simd_mix(self, to, Self(repeating: fraction))
+    return self + ((to - self) * Self(repeating: fraction))
   }
 
 }
 
-extension SIMD3: Interpolatable where Scalar == Double {
+extension SIMD3: Interpolatable where Scalar: SupportedInterpolatableSIMDFloatingPoint {
 
   public func lerp(to: Self, fraction: Self.Scalar) -> Self {
-    simd_mix(self, to, Self(repeating: fraction))
+    return self + ((to - self) * Self(repeating: fraction))
   }
 
 }
 
-extension SIMD4: Interpolatable where Scalar == Double {
+extension SIMD4: Interpolatable where Scalar: SupportedInterpolatableSIMDFloatingPoint {
 
   public func lerp(to: Self, fraction: Self.Scalar) -> Self {
-    simd_mix(self, to, Self(repeating: fraction))
+    return self + ((to - self) * Self(repeating: fraction))
   }
 
 }

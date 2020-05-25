@@ -178,8 +178,12 @@ public extension matrix_double4x4 {
 // MARK: - DecomposedTransform
 
 public extension matrix_double4x4 {
-
-  /// A type to break down a `matrix_double4x4` into its specific transformation attributes / properties (i.e. scale, translation, etc.).
+  
+  /**
+   A type to break down a `matrix_double4x4` into its specific transformation attributes / properties (i.e. scale, translation, etc.).
+   
+   Instantiate this using: `matrix_float4x4.decomposed()`.
+   */
   struct DecomposedTransform {
 
     /// The translation of a transformation matrix.
@@ -510,7 +514,13 @@ public extension matrix_float4x4 {
 
 public extension matrix_float4x4 {
 
-  /// A type to break down a `matrix_double4x4` into its specific transformation attributes / properties (i.e. scale, translation, etc.).
+  /**
+   A type to break down a `matrix_float4x4` into its specific transformation attributes / properties (i.e. scale, translation, etc.).
+
+   Instantiate this using: `matrix_float4x4.decomposed()`.
+
+   - Note: Under the hood this does a conversion to represent its contents as `matrix_double4x4` which could be expensive when done frequently.
+   */
   struct DecomposedTransform {
 
     /// The translation of a transformation matrix.
@@ -545,6 +555,11 @@ public extension matrix_float4x4 {
       self.perspective = perspective
     }
 
+    /**
+     Designated initializer.
+
+     - Note: You'll want to use `matrix_float4x4.decomposed()` instead.
+     */
     internal init(_ decomposed: matrix_double4x4.DecomposedTransform) {
       self.init(translation: simd_float3(decomposed.translation),
                 scale: simd_float3(decomposed.scale),
@@ -557,7 +572,7 @@ public extension matrix_float4x4 {
     /**
      Designated initializer.
 
-     - Note: You'll want to use `matrix_double4x4.decomposed()` instead.
+     - Note: You'll want to use `matrix_float4x4.decomposed()` instead.
      */
     internal init(_ matrix: matrix_float4x4) {
       let local = matrix_double4x4(matrix)
@@ -565,19 +580,40 @@ public extension matrix_float4x4 {
       self.init(decomposed)
     }
 
-    /// Merges all the properties of the the decomposed transform into a `matrix_double4x4` transform.
-    public func recomposed() -> matrix_double4x4 {
-      var recomposed: matrix_double4x4 = .identity
+    /// Merges all the properties of the the decomposed transform into a `matrix_float4x4` transform.
+    public func recomposed() -> matrix_float4x4 {
+      var recomposed: matrix_float4x4 = .identity
 
-      recomposed.applyPerspective(simd_double4(perspective))
-      recomposed.translate(by: simd_double3(translation))
-      recomposed.rotate(by: simd_quatd(quaternion))
-      recomposed.skew(by: simd_double3(skew))
-      recomposed.scale(by: simd_double3(scale))
+      recomposed.applyPerspective(perspective)
+      recomposed.translate(by: translation)
+      recomposed.rotate(by: quaternion)
+      recomposed.skew(by: skew)
+      recomposed.scale(by: scale)
 
       return recomposed
     }
 
+  }
+
+}
+
+extension matrix_float4x4.DecomposedTransform: Interpolatable {
+
+  public func lerp(to: Self, fraction: Float) -> Self {
+    return matrix_float4x4.DecomposedTransform(translation: translation.lerp(to: to.translation, fraction: fraction),
+                                                scale: scale.lerp(to: to.scale, fraction: fraction),
+                                                rotation: rotation.lerp(to: to.rotation, fraction: fraction),
+                                                quaternion: quaternion.lerp(to: to.quaternion, fraction: fraction),
+                                                skew: skew.lerp(to: to.skew, fraction: fraction),
+                                                perspective: perspective.lerp(to: to.perspective, fraction: fraction))
+  }
+
+}
+
+extension matrix_float4x4: Interpolatable {
+
+  public func lerp(to: Self, fraction: Float) -> Self {
+    return self.decomposed().lerp(to: to.decomposed(), fraction: fraction).recomposed()
   }
 
 }
