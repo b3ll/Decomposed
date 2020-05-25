@@ -4,7 +4,7 @@ import simd
 
 @testable import Decomposed
 
-final class DecomposedTests: XCTestCase {
+final class FloatTests: XCTestCase {
 
   func testTranslation() {
     let testTransformCA = CATransform3DMakeTranslation(2.0, 3.0, 4.0)
@@ -49,20 +49,20 @@ final class DecomposedTests: XCTestCase {
     let testRotateZCA = CATransform3DMakeRotation(.pi / 4, 0.0, 0.0, 1.0)
 
     var testTransformX = CATransform3DIdentity
-    testTransformX.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_double3(1.0, 0.0, 0.0))))
+    testTransformX.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 0.0, 0.0))))
 
     var testTransformY = CATransform3DIdentity
-    testTransformY.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_double3(0.0, 1.0, 0.0))))
+    testTransformY.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(0.0, 1.0, 0.0))))
 
     var testTransformZ = CATransform3DIdentity
-    testTransformZ.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_double3(0.0, 0.0, 1.0))))
+    testTransformZ.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(0.0, 0.0, 1.0))))
 
     XCTAssertEqual(testTransformX, testRotateXCA)
     XCTAssertEqual(testTransformY, testRotateYCA)
     XCTAssertEqual(testTransformZ, testRotateZCA)
 
     let testTransformXYCA = CATransform3DMakeRotation(.pi / 4.0, 1.0, 1.0, 0.0)
-    let testTransformXY = CATransform3DIdentity.rotated(by: Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_double3(x: 1.0, y: 1.0, z: 0.0)))))
+    let testTransformXY = CATransform3DIdentity.rotated(by: Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(x: 1.0, y: 1.0, z: 0.0)))))
 
     XCTAssertEqual(testTransformXY, testTransformXYCA)
   }
@@ -86,7 +86,7 @@ final class DecomposedTests: XCTestCase {
 
     let rotationTransformQuaternion = CATransform3DMakeRotation(.pi / 4.0, 1.0, 1.0, 1.0)
     let decomposedRotationTransformQuaternion = rotationTransformQuaternion.decomposed()
-    XCTAssertEqual(decomposedRotationTransformQuaternion.rotation, Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_double3(1.0, 1.0, 1.0)))))
+    XCTAssertEqual(decomposedRotationTransformQuaternion.rotation, Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 1.0, 1.0)))))
 
     var combinedTransform = CATransform3DMakeTranslation(1.0, 2.0, 3.0)
     combinedTransform = CATransform3DScale(combinedTransform, 2.0, 2.0, 2.0)
@@ -110,13 +110,13 @@ final class DecomposedTests: XCTestCase {
 
     let m = CATransform3DIdentity
     var decomposed = m.decomposed()
-    decomposed.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_double3(1.0, 0.0, 0.0))))
+    decomposed.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 0.0, 0.0))))
     let recomposedRotationTransform = decomposed.recomposed()
 
     XCTAssertEqual(rotationTransform, recomposedRotationTransform)
 
     var m2 = CATransform3DIdentity
-    m2.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_double3(1.0, 0.0, 0.0))))
+    m2.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 0.0, 0.0))))
     XCTAssertEqual(rotationTransform, m2)
   }
 
@@ -129,25 +129,24 @@ final class DecomposedTests: XCTestCase {
     let transform2 = CATransform3DIdentity
       .translated(by: Vector3(x: 2.0, y: 4.0, z: 6.0))
       .scaled(by: Vector3(x: 1.0, y: 2.0, z: 3.0))
-      .rotated(by: Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_double3(1.0, 0.0, 0.0)))))
+      .rotated(by: Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 0.0, 0.0)))))
 
     XCTAssertEqual(transform, transform2)
   }
 
   func testLERP() {
-    let a = simd_double4(1.0, 10.0, 100.0, 1000.0)
+    let a = simd_float4(1.0, 10.0, 100.0, 1000.0)
     let b = a * 2.0
 
     XCTAssertEqual(a.lerp(to: b, fraction: 0.0), a)
-    XCTAssertEqual(a.lerp(to: b, fraction: 0.5), simd_double4(1.5, 15.0, 150.0, 1500.0))
+    XCTAssertEqual(a.lerp(to: b, fraction: 0.5), simd_float4(1.5, 15.0, 150.0, 1500.0))
     XCTAssertEqual(a.lerp(to: b, fraction: 1.0), b)
 
-    // TODO: Enable these when I figure out what's wrong.
-    let c = simd_quatd(angle: 0.0, axis: simd_double3(0.0, 0.0, 0.0))
-    let d = simd_quatd(angle: .pi / 4.0, axis: simd_double3(0.0, 1.0, 0.0))
+    let c = simd_quatf(angle: 0.0, axis: simd_float3(0.0, 0.0, 0.0))
+    let d = simd_quatf(angle: .pi / 4.0, axis: simd_float3(0.0, 1.0, 0.0))
 
     XCTAssertEqual(c.lerp(to: d, fraction: 0.0), c)
-    XCTAssertEqual(c.lerp(to: d, fraction: 0.5), simd_quatd(angle: d.angle * 0.5, axis: d.axis))
+    XCTAssertEqual(c.lerp(to: d, fraction: 0.5), simd_quatf(angle: d.angle * 0.5, axis: d.axis))
     XCTAssertEqual(c.lerp(to: d, fraction: 1.0), d)
   }
 
@@ -162,45 +161,4 @@ final class DecomposedTests: XCTestCase {
     ("testLERP", testLERP),
   ]
 
-}
-
-// Equality with Accuracy Checks
-
-internal func XCTAssertEqual(_ lhs: simd_double3, _ rhs: simd_double3, accuracy: Double = SupportedAccuracy) {
-  XCTAssertEqual(lhs[0], rhs[0], accuracy: accuracy)
-  XCTAssertEqual(lhs[1], rhs[1], accuracy: accuracy)
-  XCTAssertEqual(lhs[2], rhs[2], accuracy: accuracy)
-}
-
-internal func XCTAssertEqual(_ lhs: simd_double4, _ rhs: simd_double4, accuracy: Double = SupportedAccuracy) {
-  XCTAssertEqual(lhs[0], rhs[0], accuracy: accuracy)
-  XCTAssertEqual(lhs[1], rhs[1], accuracy: accuracy)
-  XCTAssertEqual(lhs[2], rhs[2], accuracy: accuracy)
-  XCTAssertEqual(lhs[3], rhs[3], accuracy: accuracy)
-}
-
-internal func XCTAssertEqual(_ lhs: simd_quatd, _ rhs: simd_quatd, accuracy: Double = SupportedAccuracy) {
-  XCTAssertEqual(lhs.vector, rhs.vector, accuracy: accuracy)
-}
-
-internal func XCTAssertEqual(_ lhs: CATransform3D, _ rhs: CATransform3D, accuracy: CGFloat = CGFloat(SupportedAccuracy)) {
-  XCTAssertEqual(lhs.m11, rhs.m11, accuracy: accuracy)
-  XCTAssertEqual(lhs.m12, rhs.m12, accuracy: accuracy)
-  XCTAssertEqual(lhs.m13, rhs.m13, accuracy: accuracy)
-  XCTAssertEqual(lhs.m14, rhs.m14, accuracy: accuracy)
-
-  XCTAssertEqual(lhs.m21, rhs.m21, accuracy: accuracy)
-  XCTAssertEqual(lhs.m22, rhs.m22, accuracy: accuracy)
-  XCTAssertEqual(lhs.m23, rhs.m23, accuracy: accuracy)
-  XCTAssertEqual(lhs.m24, rhs.m24, accuracy: accuracy)
-
-  XCTAssertEqual(lhs.m31, rhs.m31, accuracy: accuracy)
-  XCTAssertEqual(lhs.m32, rhs.m32, accuracy: accuracy)
-  XCTAssertEqual(lhs.m33, rhs.m33, accuracy: accuracy)
-  XCTAssertEqual(lhs.m34, rhs.m34, accuracy: accuracy)
-
-  XCTAssertEqual(lhs.m41, rhs.m41, accuracy: accuracy)
-  XCTAssertEqual(lhs.m42, rhs.m42, accuracy: accuracy)
-  XCTAssertEqual(lhs.m43, rhs.m43, accuracy: accuracy)
-  XCTAssertEqual(lhs.m44, rhs.m44, accuracy: accuracy)
 }
