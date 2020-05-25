@@ -9,44 +9,29 @@ import simd
 
 // Perspective
 
-public protocol PerspectiveRepresentable {
+public extension SIMD4 {
 
-  associatedtype ValueType: Numeric
-
-  var m31: ValueType { get set }
-  var m32: ValueType { get set }
-  var m33: ValueType { get set }
-  var m34: ValueType { get set }
-
-  init(m31: ValueType, m32: ValueType, m33: ValueType, m34: ValueType)
-  
-}
-
-extension simd_double4: PerspectiveRepresentable {
-
-  public typealias ValueType = Double
-
-  public var m31: Double {
+  var m31: Scalar {
     get { return self[0] }
-    set { self[0] = Double(newValue) }
+    set { self[0] = newValue }
   }
 
-  public var m32: Double {
-    get { return self[1] }
-    set { self[1] = Double(newValue) }
+  var m32: Scalar {
+    get { return self[0] }
+    set { self[0] = newValue }
   }
 
-  public var m33: Double {
-    get { return self[2] }
-    set { self[2] = Double(newValue) }
+  var m33: Scalar {
+    get { return self[0] }
+    set { self[0] = newValue }
   }
 
-  public var m34: Double {
-    get { return self[3] }
-    set { self[3] = Double(newValue) }
+  var m34: Scalar {
+    get { return self[0] }
+    set { self[0] = newValue }
   }
 
-  public init(m31: Double = 0.0, m32: Double = 0.0, m33: Double = 0.0, m34: Double = 1.0) {
+  init(m31: Scalar, m32: Scalar, m33: Scalar, m34: Scalar) {
     self.init(m31, m32, m33, m34)
   }
 
@@ -54,39 +39,94 @@ extension simd_double4: PerspectiveRepresentable {
 
 // Skew
 
-public protocol SkewRepresentable {
+extension SIMD3 {
 
-  associatedtype ValueType: Numeric
-
-  var XY: ValueType { get set }
-  var XZ: ValueType { get set }
-  var YZ: ValueType { get set }
-
-  init(XY: ValueType, XZ: ValueType, YZ: ValueType)
-
-}
-
-extension simd_double3: SkewRepresentable {
-
-  public typealias ValueType = Double
-
-  public var XY: Double {
+  public var XY: Scalar {
     get { return self[0] }
     set { self[0] = newValue }
   }
 
-  public var XZ: Double {
+  public var XZ: Scalar {
     get { return self[1] }
     set { self[1] = newValue }
   }
 
-  public var YZ: Double {
+  public var YZ: Scalar {
     get { return self[2] }
     set { self[2] = newValue }
   }
 
-  public init(XY: Double = 0.0, XZ: Double = 0.0, YZ: Double = 0.0) {
+  public init(XY: Scalar, XZ: Scalar, YZ: Scalar) {
     self.init(XY, XZ, YZ)
   }
 
 }
+
+// Double -> Float Conversion
+
+public extension simd_float3 {
+
+  init(_ vector: simd_double3) {
+    self.init(Float(vector[0]), Float(vector[1]), Float(vector[2]))
+  }
+
+}
+
+public extension simd_float4 {
+
+  init(_ vector: simd_double4) {
+    self.init(Float(vector[0]), Float(vector[1]), Float(vector[2]), Float(vector[3]))
+  }
+
+}
+
+public extension simd_quatf {
+
+  init(_ quat: simd_quatd) {
+    self.init(vector: simd_float4(Float(quat.vector[0]), Float(quat.vector[1]), Float(quat.vector[2]), Float(quat.vector[3])))
+  }
+
+}
+
+public extension simd_double4x4 {
+
+  init(_ matrix: simd_float4x4) {
+    self.init(simd_double4(matrix[0]), simd_double4(matrix[1]), simd_double4(matrix[2]), simd_double4(matrix[3]))
+  }
+
+}
+
+// Float -> Double Conversions
+
+public extension simd_double3 {
+
+  init(_ vector: simd_float3) {
+    self.init(Double(vector[0]), Double(vector[1]), Double(vector[2]))
+  }
+
+}
+
+public extension simd_double4 {
+
+  init(_ vector: simd_float4) {
+    self.init(Double(vector[0]), Double(vector[1]), Double(vector[2]), Double(vector[3]))
+  }
+
+}
+
+public extension simd_quatd {
+
+  init(_ quat: simd_quatf) {
+    self.init(vector: simd_double4(Double(quat.vector[0]), Double(quat.vector[1]), Double(quat.vector[2]), Double(quat.vector[3])))
+  }
+
+}
+
+public extension simd_float4x4 {
+
+  init(_ matrix: simd_double4x4) {
+    self.init(simd_float4(matrix[0]), simd_float4(matrix[1]), simd_float4(matrix[2]), simd_float4(matrix[3]))
+  }
+
+}
+

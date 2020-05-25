@@ -17,7 +17,7 @@ public extension CATransform3D {
 
   /// Returns the a `CATransform3D` initialized with all zeros.
   static var zero: CATransform3D {
-    return CATransform3D(.zero)
+    return CATransform3D(matrix_double4x4.zero)
   }
 
   /// Intializes a `CATransform3D` with a `matrix_double4x4`.
