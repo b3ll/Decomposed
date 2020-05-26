@@ -90,7 +90,7 @@ public extension matrix_double4x4 {
   /// The rotation of the transformation matrix (expressed as a quaternion).
   var rotation: simd_quatd {
     get {
-      return decomposed().quaternion
+      return decomposed().rotation
     }
     set {
       self.rotate(by: newValue)
@@ -192,11 +192,11 @@ public extension matrix_double4x4 {
     /// The scale of a transformation matrix.
     public var scale: simd_double3 = .zero
 
-    /// The rotation of a transformation matrix (expressed as euler angles).
-    public var rotation: simd_double3 = .zero
+    /// The rotation of a transformation matrix (expressed as a quaternion ).
+    public var rotation: simd_quatd = simd_quatd(vector: .zero)
 
-    /// The rotation of a transformation matrix (expressed as a quaternion).
-    public var quaternion: simd_quatd = simd_quatd(vector: .zero)
+    /// The rotation of a transformation matrix (expressed as a euler angles).
+    public var eulerAngles: simd_double3 = .zero
 
     /// The shearing of a transformation matrix.
     public var skew: simd_double3 = .zero
@@ -209,11 +209,11 @@ public extension matrix_double4x4 {
 
      - Note: You'll want to use `matrix_double4x4.decomposed()` instead.
      */
-    internal init(translation: simd_double3, scale: simd_double3, rotation: simd_double3, quaternion: simd_quatd, skew: simd_double3, perspective: simd_double4) {
+    internal init(translation: simd_double3, scale: simd_double3, rotation: simd_quatd, eulerAngles: simd_double3, skew: simd_double3, perspective: simd_double4) {
       self.scale = scale
       self.skew = skew
       self.rotation = rotation
-      self.quaternion = quaternion
+      self.eulerAngles = eulerAngles
       self.translation = translation
       self.perspective = perspective
     }
@@ -295,16 +295,16 @@ public extension matrix_double4x4 {
       }
 
       // get rotation
-      self.rotation.y = asin(-rotationLocal[0][2])
-      if cos(rotation.y) != 0.0 {
-        self.rotation.x = atan2(rotationLocal[1][2], rotationLocal[2][2])
-        self.rotation.z = atan2(rotationLocal[0][1], rotationLocal[0][0])
+      self.eulerAngles.y = asin(-rotationLocal[0][2])
+      if cos(eulerAngles.y) != 0.0 {
+        self.eulerAngles.x = atan2(rotationLocal[1][2], rotationLocal[2][2])
+        self.eulerAngles.z = atan2(rotationLocal[0][1], rotationLocal[0][0])
       } else {
-        self.rotation.x = atan2(-rotationLocal[2][0], rotationLocal[1][1])
-        self.rotation.z = 0.0
+        self.eulerAngles.x = atan2(-rotationLocal[2][0], rotationLocal[1][1])
+        self.eulerAngles.z = 0.0
       }
 
-      self.quaternion = simd_quatd(rotationLocal)
+      self.rotation = simd_quatd(rotationLocal)
     }
 
     /// Merges all the properties of the the decomposed transform into a `matrix_double4x4` transform.
@@ -313,7 +313,7 @@ public extension matrix_double4x4 {
 
       recomposed.applyPerspective(perspective)
       recomposed.translate(by: translation)
-      recomposed.rotate(by: quaternion)
+      recomposed.rotate(by: rotation)
       recomposed.skew(by: skew)
       recomposed.scale(by: scale)
 
@@ -330,7 +330,7 @@ extension matrix_double4x4.DecomposedTransform: Interpolatable {
     return matrix_double4x4.DecomposedTransform(translation: translation.lerp(to: to.translation, fraction: fraction),
                                                 scale: scale.lerp(to: to.scale, fraction: fraction),
                                                 rotation: rotation.lerp(to: to.rotation, fraction: fraction),
-                                                quaternion: quaternion.lerp(to: to.quaternion, fraction: fraction),
+                                                eulerAngles: eulerAngles.lerp(to: to.eulerAngles, fraction: fraction),
                                                 skew: skew.lerp(to: to.skew, fraction: fraction),
                                                 perspective: perspective.lerp(to: to.perspective, fraction: fraction))
   }
@@ -425,7 +425,7 @@ public extension matrix_float4x4 {
   /// The rotation of the transformation matrix (expressed as a quaternion).
   var rotation: simd_quatf {
     get {
-      return decomposed().quaternion
+      return decomposed().rotation
     }
     set {
       self.rotate(by: newValue)
@@ -529,11 +529,11 @@ public extension matrix_float4x4 {
     /// The scale of a transformation matrix.
     public var scale: simd_float3 = .zero
 
-    /// The rotation of a transformation matrix (expressed as euler angles).
-    public var rotation: simd_float3 = .zero
-
     /// The rotation of a transformation matrix (expressed as a quaternion).
-    public var quaternion: simd_quatf = simd_quatf(vector: .zero)
+    public var rotation: simd_quatf = simd_quatf(vector: .zero)
+
+    /// The rotation of a transformation matrix (expressed as euler angles).
+    public var eulerAngles: simd_float3 = .zero
 
     /// The shearing of a transformation matrix.
     public var skew: simd_float3 = .zero
@@ -546,11 +546,11 @@ public extension matrix_float4x4 {
 
      - Note: You'll want to use `matrix_float4x4.decomposed()` instead.
      */
-    internal init(translation: simd_float3, scale: simd_float3, rotation: simd_float3, quaternion: simd_quatf, skew: simd_float3, perspective: simd_float4) {
+    internal init(translation: simd_float3, scale: simd_float3, rotation: simd_quatf, eulerAngles: simd_float3, skew: simd_float3, perspective: simd_float4) {
       self.scale = scale
       self.skew = skew
       self.rotation = rotation
-      self.quaternion = quaternion
+      self.eulerAngles = eulerAngles
       self.translation = translation
       self.perspective = perspective
     }
@@ -563,8 +563,8 @@ public extension matrix_float4x4 {
     internal init(_ decomposed: matrix_double4x4.DecomposedTransform) {
       self.init(translation: simd_float3(decomposed.translation),
                 scale: simd_float3(decomposed.scale),
-                rotation: simd_float3(decomposed.rotation),
-                quaternion: simd_quatf(decomposed.quaternion),
+                rotation: simd_quatf(decomposed.rotation),
+                eulerAngles: simd_float3(decomposed.eulerAngles),
                 skew: simd_float3(decomposed.skew),
                 perspective: simd_float4(decomposed.perspective))
     }
@@ -586,7 +586,7 @@ public extension matrix_float4x4 {
 
       recomposed.applyPerspective(perspective)
       recomposed.translate(by: translation)
-      recomposed.rotate(by: quaternion)
+      recomposed.rotate(by: rotation)
       recomposed.skew(by: skew)
       recomposed.scale(by: scale)
 
@@ -603,7 +603,7 @@ extension matrix_float4x4.DecomposedTransform: Interpolatable {
     return matrix_float4x4.DecomposedTransform(translation: translation.lerp(to: to.translation, fraction: fraction),
                                                 scale: scale.lerp(to: to.scale, fraction: fraction),
                                                 rotation: rotation.lerp(to: to.rotation, fraction: fraction),
-                                                quaternion: quaternion.lerp(to: to.quaternion, fraction: fraction),
+                                                eulerAngles: eulerAngles.lerp(to: to.eulerAngles, fraction: fraction),
                                                 skew: skew.lerp(to: to.skew, fraction: fraction),
                                                 perspective: perspective.lerp(to: to.perspective, fraction: fraction))
   }

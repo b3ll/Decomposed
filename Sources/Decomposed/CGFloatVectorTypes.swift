@@ -168,7 +168,7 @@ public struct Quaternion {
 
   var axis: Vector3 {
     get { return Vector3(storage.axis) }
-    set { self.storage = simd_quatd(angle: storage.angle, axis: simd_double3(newValue)) }
+    set { self.storage = simd_quatd(angle: storage.angle, axis: normalize(simd_double3(newValue))) }
   }
 
   var angle: CGFloat {
@@ -176,8 +176,14 @@ public struct Quaternion {
     set { self.storage = simd_quatd(angle: Double(newValue), axis: storage.axis) }
   }
 
+  /**
+   Default initializer.
+
+   - Parameter angle: The angle of rotation (specified in radians).
+   - Parameter axis: The axis of rotation (this will be normalized automatically)
+   */
   public init(angle: CGFloat, axis: Vector3) {
-    self.storage = simd_quatd(angle: Double(angle), axis: simd_double3(axis))
+    self.storage = simd_quatd(angle: Double(angle), axis: normalize(simd_double3(axis)))
   }
 
   public init(_ quaternion: simd_quatd) {

@@ -152,11 +152,11 @@ public extension CATransform3D {
   /// The rotation of the transform (expressed as a quaternion).
   var rotation: Quaternion {
     get {
-      return Quaternion(_decomposed().quaternion)
+      return Quaternion(_decomposed().rotation)
     }
     set {
       var decomposed = _decomposed()
-      decomposed.quaternion = newValue.storage
+      decomposed.rotation = newValue.storage
       self = CATransform3D(decomposed.recomposed())
     }
   }
@@ -284,10 +284,10 @@ public extension CATransform3D {
     /// The rotation of the transform (exposed as a quaternion).
     public var rotation: Quaternion {
       get {
-        return Quaternion(storage.quaternion)
+        return Quaternion(storage.rotation)
       }
       set {
-        storage.quaternion = newValue.storage
+        storage.rotation = newValue.storage
       }
     }
 
