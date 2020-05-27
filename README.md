@@ -69,7 +69,7 @@ layer.scale = Scale(0.75, 0.75, 0.0)
 
 Create a transform with a translation of 44pts on the Y-axis, rotated by .pi / 40 on the X-axis.
 
-```objective-c
+```objectivec
 CATransform3D transform = CATransform3DIdentity;
 CATransform3DDecomposed *decomposed = [CATransform3DDecomposed decomposedTransform:transform];
 decomposed.translation = CGPoint(0.0, 44.0);
@@ -79,7 +79,7 @@ transform = [decomposed recompose];
 
 Change a layer's transform's translation to `(x: 44.0, y: 44.0)` and scale to `(x: 0.75, y: 0.75)`.
 
-```objective-c
+```objectivec
 CALayer *layer = ...
 layer.de_translation = CGPointMake(44.0, 44.0);
 layer.de_scale = CGPointMake(0.75, 0.75);
@@ -98,7 +98,7 @@ layer.translation = panGestureRecognizer.translation(in: self)
 
 ## Objective-C
 
-```swift
+```objectivec
 // In some UIPanGestureRecognizer handling method
 layer.de_translation = [panGestureRecognizer translationInView:self];
 ```
