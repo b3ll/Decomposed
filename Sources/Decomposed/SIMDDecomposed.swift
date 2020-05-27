@@ -1,5 +1,5 @@
 //
-//  TransformationMatrix.swift
+//  SIMDDecomposed.swift
 //  
 //
 //  Created by Adam Bell on 5/14/20.
@@ -201,7 +201,7 @@ public extension matrix_double4x4 {
     /// The shearing of a transformation matrix.
     public var skew: simd_double3 = .zero
 
-    /// The perspective of a transformation matrix (e.g. .m34)
+    /// The perspective of a transformation matrix (e.g. .m34).
     public var perspective: simd_double4 = .zero
 
     /**
@@ -538,7 +538,7 @@ public extension matrix_float4x4 {
     /// The shearing of a transformation matrix.
     public var skew: simd_float3 = .zero
 
-    /// The perspective of a transformation matrix (e.g. .m34)
+    /// The perspective of a transformation matrix (e.g. .m34).
     public var perspective: simd_float4 = .zero
 
     /**

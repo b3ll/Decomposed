@@ -10,15 +10,10 @@ import QuartzCore
 
 // MARK: - Interaction Enhancements
 
-fileprivate let DisableActions = { (changes: () -> Void) in
-  CATransaction.begin()
-  CATransaction.setDisableActions(true)
-  changes()
-  CATransaction.commit()
-}
-
+/// This class exposes properties to manipulate the transform of a `CALayer` directly with implicit actions (animations) disabled.
 public extension CALayer {
 
+  /// The translation of the layer's transform (X and Y) as a CGPoint.
   var translation: CGPoint {
     get {
       let translation = transform.translation
@@ -29,6 +24,7 @@ public extension CALayer {
     }
   }
 
+  /// The translation of the layer's transform (X, Y, and Z).
   var translationXYZ: Translation {
     get {
       return transform.translation
@@ -40,18 +36,20 @@ public extension CALayer {
     }
   }
 
-  var scale: CGSize {
+  /// The scale of the layer's transform (X and Y) as a CGPoint.
+  var scale: CGPoint {
     get {
       let scale = transform.scale
-      return CGSize(width: scale.x, height: scale.y)
+      return CGPoint(x: scale.x, y: scale.y)
     }
     set {
       DisableActions {
-        transform.scale = Scale(newValue.width, newValue.height, transform.scale.z)
+        transform.scale = Scale(newValue.x, newValue.y, transform.scale.z)
       }
     }
   }
 
+  /// The scale of the layer's transform (X, Y, and Z).
   var scaleXYZ: Scale {
     get {
       return transform.scale
@@ -63,6 +61,7 @@ public extension CALayer {
     }
   }
 
+  /// The rotation of the layer's transform (expressed as a quaternion).
   var rotation: Quaternion {
     get {
       return transform.rotation
@@ -74,6 +73,7 @@ public extension CALayer {
     }
   }
 
+  /// The shearing of the layer's transform.
   var skew: Skew {
     get {
       return transform.skew
@@ -85,6 +85,7 @@ public extension CALayer {
     }
   }
 
+  /// The perspective of the layer's transform (e.g. .m34).
   var perspective: Perspective {
     get {
       return transform.perspective
