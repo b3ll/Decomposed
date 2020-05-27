@@ -23,3 +23,5 @@ FOUNDATION_EXPORT const unsigned char DecomposedVersionString[];
     #import <Decomposed/Decomposed-Swift.h>
 #endif
 #endif
+
+#import <Decomposed/CALayer+Decomposed.h>
