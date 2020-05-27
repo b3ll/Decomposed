@@ -239,8 +239,8 @@ public extension CATransform3D {
 
    - Note: Omitted components have no effect on the translation.
    */
-  func applyingPerspective(m31: CGFloat? = nil, m32: CGFloat? = nil, m33: CGFloat? = nil, m34: CGFloat? = nil) -> Self {
-    let perspective = Perspective(m31: m31 ?? self.m31, m32: m32 ?? self.m32, m33: m33 ?? self.m33, m34: m34 ?? self.m34)
+  func applyingPerspective(m14: CGFloat? = nil, m24: CGFloat? = nil, m34: CGFloat? = nil, m44: CGFloat? = nil) -> Self {
+    let perspective = Perspective(m14: m14 ?? self.m14, m24: m24 ?? self.m24, m34: m34 ?? self.m34, m44: m44 ?? self.m44)
     return self.applyingPerspective(perspective)
   }
 

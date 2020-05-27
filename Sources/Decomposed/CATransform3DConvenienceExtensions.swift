@@ -19,36 +19,36 @@ public typealias Skew = Vector3
 
 public extension Vector4 {
 
-  var m31: CGFloat {
+  var m14: CGFloat {
     get { return CGFloat(self.storage[0]) }
     set { self.storage[0] = Double(newValue) }
   }
 
-  var m32: CGFloat {
+  var m24: CGFloat {
     get { return CGFloat(self.storage[1]) }
     set { self.storage[1] = Double(newValue) }
   }
 
-  var m33: CGFloat {
+  var m34: CGFloat {
     get { return CGFloat(self.storage[2]) }
     set { self.storage[2] = Double(newValue) }
   }
 
-  var m34: CGFloat {
+  var m44: CGFloat {
     get { return CGFloat(self.storage[3]) }
     set { self.storage[3] = Double(newValue) }
   }
 
-  init(m31: CGFloat = 0.0, m32: CGFloat = 0.0, m33: CGFloat = 0.0, m34: CGFloat = 1.0) {
-    self.init(m31, m32, m33, m34)
+  init(m14: CGFloat = 0.0, m24: CGFloat = 0.0, m34: CGFloat = 0.0, m44: CGFloat = 1.0) {
+    self.init(m14, m24, m34, m44)
   }
 
-  init(m31: Double = 0.0, m32: Double = 0.0, m33: Double = 0.0, m34: Double = 1.0) {
-    self.init(CGFloat(m31), CGFloat(m32), CGFloat(m33), CGFloat(m34))
+  init(m14: Double = 0.0, m24: Double = 0.0, m34: Double = 0.0, m44: Double = 1.0) {
+    self.init(CGFloat(m14), CGFloat(m24), CGFloat(m34), CGFloat(m44))
   }
 
-  init(m31: Float = 0.0, m32: Float = 0.0, m33: Float = 0.0, m34: Float = 1.0) {
-    self.init(CGFloat(m31), CGFloat(m32), CGFloat(m33), CGFloat(m34))
+  init(m14: Float = 0.0, m24: Float = 0.0, m34: Float = 0.0, m44: Float = 1.0) {
+    self.init(CGFloat(m14), CGFloat(m24), CGFloat(m34), CGFloat(m34))
   }
 
 }
