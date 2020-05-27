@@ -95,6 +95,7 @@
 {
   DecomposeTransform;
   DisableActions(^{
+    simd_quaternion(<#double angle#>, <#simd_double3 axis#>)
     decomposed.rotation = de_rotation;
     RecomposeAndSetTransform;
   });
