@@ -2,6 +2,8 @@
 
 Manipulating and using `CATransform3D` for animations and interactions is pretty challenging… Decomposed makes `CATransform3D`, `matrix_double4x4`, and `matrix_float4x4` much easier to work with.
 
+![demo_image](https://github.com/b3ll/Decomposed/blob/master/Resources/Decomposed.gif)
+
 **Note**: The API for Decomposed is still heavily being changed / optimized, so please feel free to give feedback and expect breaking changes as time moves on.
 
 # Introduction
@@ -12,6 +14,7 @@ Typically on iOS if you wanted to transform a `CALayer` you'd do something like:
 let layer: CAlayer = ...
 layer.transform = CATransform3DMakeScale(0.5, 0.5, 1.0)
 ```
+
 However, what if you were given a transform from somewhere else? How would you know what the scale of the layer is? What if you wanted to set the scale or translation of a transform? Without lots of complex linear algebra, it's not easy to do!
 
 Decomposed aims to simplify this by allowing for `CATransform3D`, `matrix_double4x4`, `matrix_float4x4`, to be decomposed, recomposed, and mutated without crazy math.
@@ -115,7 +118,7 @@ let changedTransform = decomposed.recomposed()
 
 Sadly, `simd` doesn't support storing `CGFloat` (even when they're `Double`). To make this library easier to use (i.e. without casting everything to doubles all the time `Double(some CGFloat)` you'll find `Vector3`, `Vector4`, and `Quaternion`, which wrap `simd` counterparts: `simd_double3`, `simd_double4`, and `simd_quatd`, respectively.
 
-`Translation`, `Scale`, etc. are all type aliased (i.e. `Vector3`  or `Vector4`), and they all conform to `ArrayLiteralRepresentable` so you can use `Array<CGFloat>` to initialize them.
+`Translation`, `Scale`, etc. are all type aliased (i.e. `Vector3` or `Vector4`), and they all conform to `ArrayLiteralRepresentable` so you can use `Array<CGFloat>` to initialize them.
 
 ```swift
 layer.translation = [44.0, 44.0, 0.0]
@@ -137,7 +140,7 @@ let transform2 = CATransform3DIdentity
   .translated(by: [120.0, 240.0, 0.0])
   .scaled(by: [0.5, 0.75, 1.0])
   .rotatedBy(angle: .pi / 4.0, x: 1.0)
-  
+
 let interpolatedTransform = transform.lerp(to: transform2, fraction: 0.5)
 ```
 
