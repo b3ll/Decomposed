@@ -23,7 +23,7 @@ layer.transform = CATransform3DMakeScale(0.5, 0.5, 1.0)
 
 However, what if you were given a transform from somewhere else? How would you know what the scale of the layer is? What if you wanted to set the scale or translation of a transform? Without lots of complex linear algebra, it's not easy to do!
 
-Decomposed aims to simplify this by allowing for `CATransform3D`, `matrix_double4x4`, `matrix_float4x4`, to be decomposed, recomposed, and mutated without complex math.
+Decomposed aims to simplify this by allowing for `CATransform3D`, `matrix_double4x4`, and `matrix_float4x4`, to be decomposed, recomposed, and mutated without complex math.
 
 Decomposition is the act of breaking something down into smaller components, in this case transformation matrices into things like translation, scale, etc. in a way that they can all be individually changed or reset. The following are supported:
 
