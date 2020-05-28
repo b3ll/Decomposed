@@ -42,12 +42,12 @@ Currently Decomposed supports Swift Package Manager and being used manually as a
 - **Swift Package Manager**: Add `.package(url: "http://github.com/b3ll/Decomposed", from: "0.0.1")` to your Package.swift (or through Xcode's GUI).
 - **Xcode Subproject**: add `Decomposed.xcodeproj` to your project, and then add `Decomposed.framework` as an embedded framework.
 
-### Requirements
+#### Requirements
 
 - iOS 13+, macOS 10.15+
 - Swift 5.0 or higher
 
-### Objective-C Notes
+#### Objective-C Notes
 
 - Objective-C support is **not** available through Swift Package Manager. Please use the manual Xcode subproject instead.
 - You'll want to use `#import <Decomposed/Decomposed.h>` as this contains both the generated Swift interfaces for the Objective-C classes and CALayer categories.
@@ -57,9 +57,9 @@ Currently Decomposed supports Swift Package Manager and being used manually as a
 
 API Documentation is [here](https://b3ll.github.io/Decomposed/).
 
-# Transform Modifications
+## Transform Modifications
 
-## Swift
+### Swift
 
 Create a transform with a translation of 44pts on the Y-axis, rotated by .pi / 4.0 on the X-axis
 
@@ -69,7 +69,7 @@ var transform: CATransform3D = CATransform3DIdentity
   .rotatedBy(angle: .pi / 4.0, x: 1.0)
 ```
 
-## Objective-C
+### Objective-C
 
 Create a transform with a translation of 44pts on the Y-axis, rotated by .pi / 40 on the X-axis.
 
@@ -80,11 +80,11 @@ decomposed.rotation = simd_quaternion(M_PI / 4.0, simd_make_double3(1.0, 0.0, 0.
 transform = [decomposed recompose];
 ```
 
-# CALayer Extensions
+## CALayer Extensions
 
 Typically when doing interactive gestures with `UIView` and `CALayer` you'll wind up dealing with implicit actions (animations) when changing transforms. Instead of wrapping your code in `CATransactions`'s and disabling actions, Decomposed does this automatically for you.
 
-## Swift
+### Swift
 
 ```swift
 // In some UIPanGestureRecognizer handling method
@@ -92,7 +92,7 @@ layer.translation = panGestureRecognizer.translation(in: self)
 layer.scale = CGPoint(x: 0.75, y: 0.75)
 ```
 
-## Objective-C
+### Objective-C
 
 Since namespace collision happens in Objective-C, you're able to do similar changes via the `transformProxy` property. Changes to this proxy object will be applied to the layer's transform with implicit animations disabled.
 
@@ -102,11 +102,11 @@ layer.transformProxy.translation = [panGestureRecognizer translationInView:self]
 layer.transformProxy.scale = CGPoint(x: 0.75, y: 0.75);
 ```
 
-# DecomposedTransform
+## DecomposedTransform
 
 Anytime you change a property on a `CATransform3D` or `matrix_double4x4`, it needs to be decomposed, changed, and then recomposed. This can be expensive if done a lot, so it should be limited. If you're making multiple changes at once, it's better to change the `DecomposedTransform` and then call its `recomposed()` function to get a recomposed transform.
 
-## Swift
+### Swift
 
 ```swift
 var decomposed = transform.decomposed()
@@ -117,7 +117,7 @@ decomposed.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(1.0, 0.0, 0.0))
 let changedTransform = decomposed.recomposed()
 ```
 
-## Objective-C
+### Objective-C
 
 ```objectivec
 DEDecomposedCATransform3D *decomposed = [DEDecomposedCATransform3D decomposedTransformWithTransform:transform];
@@ -128,7 +128,7 @@ decomposed.rotation = simd_quaternion(M_PI / 4.0, simd_make_double3(1.0, 0.0, 0.
 CATransform3D changedTransform = [decomposed recomposed];
 ```
 
-# Vector3 / Vector4 / Quaternion
+## Vector3 / Vector4 / Quaternion
 
 Sadly, `simd` doesn't support storing `CGFloat` (even when they're `Double`). To make this library easier to use (i.e. without casting everything to doubles all the time `Double(some CGFloat)` you'll find `Vector3`, `Vector4`, and `Quaternion`, which wrap `simd` counterparts: `simd_double3`, `simd_double4`, and `simd_quatd`, respectively.
 
@@ -141,7 +141,7 @@ layer.scale = [0.5, 0.75, 0.0]
 
 **Note**: This API is questionable in its current form as it collides with Swift's `Vector` types (which are just simd types and part of me thinks everything should be exposed as `simd` types), so I'm happy to take feedback!
 
-# Interpolatable
+## Interpolatable
 
 It also provides functionality to linearly interpolate from any transform to any transform via the `Interpolatable` protocol.
 
