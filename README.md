@@ -159,6 +159,44 @@ let transform2 = CATransform3DIdentity
 let interpolatedTransform = transform.lerp(to: transform2, fraction: 0.5)
 ```
 
+# Other Recommendations
+
+## Advance
+
+This library pairs very nicely with [Advance](https://github.com/timdonnelly/Advance), a physics-based animation system for iOS.
+
+Animating a layer on a spring by modifying its transform has never been easier! Usually you'd have to manually wrap things in a `CATransaction` with actions disabled, and usage of `CATransform3DTranslate` gets pretty cumbersome.
+
+With Decomposed + Advanced this is super easy.
+
+```swift
+let layer = ...
+let spring = Spring<CGPoint>(initialValue: .zero)
+spring.onChange = { [layer] translation in 
+  layer.translation = translation
+}
+
+// In your pan gesture recognizer callback
+
+let translation = panGestureRecognizer.translation(in: self.view)
+let velocity = panGestureRecognizer.velocity(in: self.view)
+
+switch panGestureRecognizer.state {
+  case .began:
+    spring.reset(to: .zero)
+    break
+  case .changed:
+    layer.translation = translation
+    break
+  case .ended:
+    spring.velocity = velocity
+    spring.target = CGPoint(x: 200.0, y: 200.0) // wherever you want it to go  
+    break
+}
+```
+
+See the DraggingCard demo for a good example of this :)
+
 # License
 
 Decomposed is licensed under the [BSD 2-clause license](https://github.com/b3ll/Decomposed/blob/master/LICENSE).
