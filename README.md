@@ -41,7 +41,7 @@ It's also powered by Accelerate, so it should introduce relatively low overhead 
 
 Currently Decomposed supports Swift Package Manager and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
 
-- **Swift Package Manager**: Add `.package(url: "http://github.com/b3ll/Decomposed", from: "0.0.1")` to your Package.swift (or through Xcode's GUI).
+- **Swift Package Manager**: Add `.package(url: "https://github.com/b3ll/Decomposed", from: "0.0.1")` to your Package.swift (or through Xcode's GUI).
 - **Xcode Subproject**: add `Decomposed.xcodeproj` to your project, and then add `Decomposed.framework` as an embedded framework.
 
 #### Requirements
