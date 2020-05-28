@@ -1,5 +1,8 @@
 # Decomposed
 
+![Tests](https://github.com/b3ll/Decomposed/workflows/Tests/badge.svg)
+![Docs](https://github.com/b3ll/Decomposed/workflows/Docs/badge.svg)
+
 Manipulating and using `CATransform3D` for animations and interactions is pretty challenging… Decomposed makes `CATransform3D`, `matrix_double4x4`, and `matrix_float4x4` much easier to work with.
 
 <p align="center">
