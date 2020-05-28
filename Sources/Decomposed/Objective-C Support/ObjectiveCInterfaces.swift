@@ -46,13 +46,14 @@ import QuartzCore
   @nonobjc private var decomposed: matrix_double4x4.DecomposedTransform
 
   /// Default initializer.
-  public init(with transform: CATransform3D) {
+  @objc(initWithTransform:)
+  public init(_ transform: CATransform3D) {
     self.decomposed = matrix_double4x4(transform).decomposed()
   }
 
   /// Class initializer.
   public class func decomposedTransformWith(transform: CATransform3D) -> DEDecomposedCATransform3D {
-    return DEDecomposedCATransform3D(with: transform)
+    return DEDecomposedCATransform3D(transform)
   }
 
   /// Returns a recomposed `CATransform3D`.
@@ -97,13 +98,14 @@ import QuartzCore
   @nonobjc private var decomposed: matrix_double4x4.DecomposedTransform
 
   /// Default initializer.
-  public init(with matrix: matrix_double4x4) {
+  @objc(initWithMatrixDouble4x4:)
+  public init(_ matrix: matrix_double4x4) {
     self.decomposed = matrix.decomposed()
   }
 
   /// Class initializer.
   public class func decomposedMatrixWith(_ matrix: matrix_double4x4) -> DEDecomposedMatrixDouble4x4 {
-    return DEDecomposedMatrixDouble4x4(with: matrix)
+    return DEDecomposedMatrixDouble4x4(matrix)
   }
 
   /// Returns a recomposed `CATransform3D`.
@@ -148,13 +150,14 @@ import QuartzCore
   @nonobjc private var decomposed: matrix_float4x4.DecomposedTransform
 
   /// Default initializer.
-  public init(with matrix: matrix_float4x4) {
+  @objc(initWithMatrixFloat4x4:)
+  public init(_ matrix: matrix_float4x4) {
     self.decomposed = matrix.decomposed()
   }
 
   /// Class initializer.
   public class func decomposedTransformWith(_ matrix: matrix_float4x4) -> DEDecomposedMatrixFloat4x4 {
-    return DEDecomposedMatrixFloat4x4(with: matrix)
+    return DEDecomposedMatrixFloat4x4(matrix)
   }
 
   /// Returns a recomposed `CATransform3D`.
