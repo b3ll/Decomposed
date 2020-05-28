@@ -20,7 +20,22 @@
 		662B67FA247DE3510021C80B /* ObjectiveCInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662B67AB247DE22C0021C80B /* ObjectiveCInterfaces.swift */; };
 		662B67FB247DE3510021C80B /* SIMDConvenienceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662B67B1247DE22C0021C80B /* SIMDConvenienceExtensions.swift */; };
 		662B67FC247DE3510021C80B /* SIMDDecomposed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662B67AC247DE22C0021C80B /* SIMDDecomposed.swift */; };
+		664BEDBA247F45E90006E201 /* Decomposed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662B67E7247DE3400021C80B /* Decomposed.framework */; };
+		664BEDC4247F46160006E201 /* DoubleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BEDC0247F46160006E201 /* DoubleTests.swift */; };
+		664BEDC5247F46160006E201 /* XCTestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BEDC1247F46160006E201 /* XCTestUtils.swift */; };
+		664BEDC6247F46160006E201 /* FloatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BEDC2247F46160006E201 /* FloatTests.swift */; };
+		664BEDC7247F46160006E201 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BEDC3247F46160006E201 /* XCTestManifests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		664BEDBB247F45E90006E201 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 662B6798247DE1F70021C80B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 662B67E6247DE3400021C80B;
+			remoteInfo = Decomposed;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		660E345D247E3C7F00C74767 /* CALayer+Decomposed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Decomposed.h"; sourceTree = "<group>"; };
@@ -38,6 +53,12 @@
 		662B67E7247DE3400021C80B /* Decomposed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Decomposed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		662B67E9247DE3400021C80B /* Decomposed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Decomposed.h; path = ../Decomposed.h; sourceTree = "<group>"; };
 		662B67EA247DE3400021C80B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		664BEDB5247F45E90006E201 /* DecomposedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecomposedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		664BEDB9247F45E90006E201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Tests/DecomposedTests/Info.plist; sourceTree = "<group>"; };
+		664BEDC0247F46160006E201 /* DoubleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleTests.swift; path = Tests/DecomposedTests/DoubleTests.swift; sourceTree = SOURCE_ROOT; };
+		664BEDC1247F46160006E201 /* XCTestUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCTestUtils.swift; path = Tests/DecomposedTests/XCTestUtils.swift; sourceTree = SOURCE_ROOT; };
+		664BEDC2247F46160006E201 /* FloatTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatTests.swift; path = Tests/DecomposedTests/FloatTests.swift; sourceTree = SOURCE_ROOT; };
+		664BEDC3247F46160006E201 /* XCTestManifests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCTestManifests.swift; path = Tests/DecomposedTests/XCTestManifests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +66,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		664BEDB2247F45E90006E201 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				664BEDBA247F45E90006E201 /* Decomposed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				662B67E8247DE3400021C80B /* Decomposed */,
+				664BEDB6247F45E90006E201 /* DecomposedTests */,
 				662B67A1247DE1F70021C80B /* Products */,
 				662B67DE247DE2A20021C80B /* Frameworks */,
 			);
@@ -74,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				662B67E7247DE3400021C80B /* Decomposed.framework */,
+				664BEDB5247F45E90006E201 /* DecomposedTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +134,18 @@
 			);
 			name = Decomposed;
 			path = Sources/Decomposed;
+			sourceTree = "<group>";
+		};
+		664BEDB6247F45E90006E201 /* DecomposedTests */ = {
+			isa = PBXGroup;
+			children = (
+				664BEDC0247F46160006E201 /* DoubleTests.swift */,
+				664BEDC2247F46160006E201 /* FloatTests.swift */,
+				664BEDC3247F46160006E201 /* XCTestManifests.swift */,
+				664BEDC1247F46160006E201 /* XCTestUtils.swift */,
+				664BEDB9247F45E90006E201 /* Info.plist */,
+			);
+			path = DecomposedTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +181,24 @@
 			productReference = 662B67E7247DE3400021C80B /* Decomposed.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		664BEDB4247F45E90006E201 /* DecomposedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 664BEDBF247F45E90006E201 /* Build configuration list for PBXNativeTarget "DecomposedTests" */;
+			buildPhases = (
+				664BEDB1247F45E90006E201 /* Sources */,
+				664BEDB2247F45E90006E201 /* Frameworks */,
+				664BEDB3247F45E90006E201 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				664BEDBC247F45E90006E201 /* PBXTargetDependency */,
+			);
+			name = DecomposedTests;
+			productName = DecomposedTests;
+			productReference = 664BEDB5247F45E90006E201 /* DecomposedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -151,6 +212,9 @@
 					662B67E6247DE3400021C80B = {
 						CreatedOnToolsVersion = 11.5;
 						LastSwiftMigration = 1150;
+					};
+					664BEDB4247F45E90006E201 = {
+						CreatedOnToolsVersion = 11.5;
 					};
 				};
 			};
@@ -168,6 +232,7 @@
 			projectRoot = "";
 			targets = (
 				662B67E6247DE3400021C80B /* Decomposed */,
+				664BEDB4247F45E90006E201 /* DecomposedTests */,
 			);
 		};
 /* End PBXProject section */
@@ -178,6 +243,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				660E3463247E481C00C74767 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		664BEDB3247F45E90006E201 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +273,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		664BEDB1247F45E90006E201 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				664BEDC7247F46160006E201 /* XCTestManifests.swift in Sources */,
+				664BEDC6247F46160006E201 /* FloatTests.swift in Sources */,
+				664BEDC5247F46160006E201 /* XCTestUtils.swift in Sources */,
+				664BEDC4247F46160006E201 /* DoubleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		664BEDBC247F45E90006E201 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 662B67E6247DE3400021C80B /* Decomposed */;
+			targetProxy = 664BEDBB247F45E90006E201 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		662B67A5247DE1F70021C80B /* Debug */ = {
@@ -375,6 +466,42 @@
 			};
 			name = Release;
 		};
+		664BEDBD247F45E90006E201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6TK23TLYP7;
+				INFOPLIST_FILE = Tests/DecomposedTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ca.adambell.DecomposedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		664BEDBE247F45E90006E201 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6TK23TLYP7;
+				INFOPLIST_FILE = Tests/DecomposedTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ca.adambell.DecomposedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -392,6 +519,15 @@
 			buildConfigurations = (
 				662B67F1247DE3400021C80B /* Debug */,
 				662B67F2247DE3400021C80B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		664BEDBF247F45E90006E201 /* Build configuration list for PBXNativeTarget "DecomposedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				664BEDBD247F45E90006E201 /* Debug */,
+				664BEDBE247F45E90006E201 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
