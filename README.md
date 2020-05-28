@@ -12,6 +12,8 @@ Manipulating and using `CATransform3D` for animations and interactions is pretty
 
 **Note**: The API for Decomposed is still heavily being changed / optimized, so please feel free to give feedback and expect breaking changes as time moves on.
 
+Specifically, I really want to figure out what to do about the Vector types introduced in this repository. If there are any issues with them please let me know; I'm actively sourcing ways to make it better.
+
 # Introduction
 
 Typically on iOS if you wanted to transform a `CALayer` you'd do something like:
