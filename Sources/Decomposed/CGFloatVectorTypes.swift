@@ -166,12 +166,12 @@ public struct Quaternion {
 
   internal var storage: simd_quatd
 
-  var axis: Vector3 {
+  public var axis: Vector3 {
     get { return Vector3(storage.axis) }
     set { self.storage = simd_quatd(angle: storage.angle, axis: normalize(simd_double3(newValue))) }
   }
 
-  var angle: CGFloat {
+  public var angle: CGFloat {
     get { return CGFloat(storage.angle) }
     set { self.storage = simd_quatd(angle: Double(newValue), axis: storage.axis) }
   }

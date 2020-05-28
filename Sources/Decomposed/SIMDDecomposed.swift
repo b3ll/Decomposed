@@ -106,6 +106,9 @@ public extension matrix_double4x4 {
 
   /// Rotates the current rotation by applying a rotation transform (expressed as a quaternion) to the current transformation matrix.
   mutating func rotate(by q: simd_quatd) {
+    if (q.axis.x.isNaN || q.axis.y.isNaN || q.axis.z.isNaN) {
+      return
+    }
     let rotationMatrix = matrix_double4x4(q)
     self = matrix_multiply(self, rotationMatrix)
   }
@@ -193,7 +196,7 @@ public extension matrix_double4x4 {
     public var scale: simd_double3 = .zero
 
     /// The rotation of a transformation matrix (expressed as a quaternion ).
-    public var rotation: simd_quatd = simd_quatd(vector: .zero)
+    public var rotation: simd_quatd = simd_quatd()
 
     /// The rotation of a transformation matrix (expressed as a euler angles).
     public var eulerAngles: simd_double3 = .zero
@@ -530,7 +533,7 @@ public extension matrix_float4x4 {
     public var scale: simd_float3 = .zero
 
     /// The rotation of a transformation matrix (expressed as a quaternion).
-    public var rotation: simd_quatf = simd_quatf(vector: .zero)
+    public var rotation: simd_quatf = simd_quatf()
 
     /// The rotation of a transformation matrix (expressed as euler angles).
     public var eulerAngles: simd_float3 = .zero
