@@ -135,8 +135,8 @@ Sadly, `simd` doesn't support storing `CGFloat` (even when they're `Double`). To
 `Translation`, `Scale`, etc. are all type aliased (i.e. `Vector3` or `Vector4`), and they all conform to `ArrayLiteralRepresentable` so you can use `Array<CGFloat>` to initialize them.
 
 ```swift
-layer.translation = [44.0, 44.0, 0.0]
-layer.scale = [0.5, 0.75, 0.0]
+layer.translation = Translation(44.0, 44.0, 0.0)
+layer.scale = (0.5, 0.75, 0.0)
 ```
 
 **Note**: This API is questionable in its current form as it collides with Swift's `Vector` types (which are just simd types and part of me thinks everything should be exposed as `simd` types), so I'm happy to take feedback!
