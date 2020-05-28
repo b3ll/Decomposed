@@ -22,7 +22,13 @@ However, what if you were given a transform from somewhere else? How would you k
 
 Decomposed aims to simplify this by allowing for `CATransform3D`, `matrix_double4x4`, `matrix_float4x4`, to be decomposed, recomposed, and mutated without complex math.
 
-Decomposition is the act of breaking something down into smaller components, in this case transformation matrices into things like translation, scale, etc. in a way that they can all be individually changed or reset.
+Decomposition is the act of breaking something down into smaller components, in this case transformation matrices into things like translation, scale, etc. in a way that they can all be individually changed or reset. The following are supported:
+
+- Translation
+- Scale
+- Rotation (using Quaternions)
+- Skew
+- Perspective
 
 It's also powered by Accelerate, so it should introduce relatively low overhead for matrix manipulations.
 
