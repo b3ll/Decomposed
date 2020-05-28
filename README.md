@@ -4,6 +4,7 @@ Manipulating and using `CATransform3D` for animations and interactions is pretty
 
 <p align="center">
   <img width="320" height="692" src="https://github.com/b3ll/Decomposed/blob/master/Resources/Decomposed.gif?raw=true">
+  <img width="320" height="692" src="https://github.com/b3ll/Decomposed/blob/master/Resources/Decomposed2.gif?raw=true">
 </p>
 
 **Note**: The API for Decomposed is still heavily being changed / optimized, so please feel free to give feedback and expect breaking changes as time moves on.
