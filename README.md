@@ -29,7 +29,7 @@ Decomposition is the act of breaking something down into smaller components, in 
 
 - Translation
 - Scale
-- Rotation (using Quaternions)
+- Rotation (using Quaternions or Euler Angles)
 - Skew
 - Perspective
 
