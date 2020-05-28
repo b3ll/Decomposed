@@ -1,4 +1,4 @@
-name: Jazzy Docs
+name: Docs
 
 on: [push]
 
