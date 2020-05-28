@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// The rotation of the layer's transform (expressed as a quaternion).
 @property (nonatomic, readwrite) simd_quatd rotation;
 
+/// The euler angles of the layer's transform (expressed in radians).
+@property (nonatomic, readwrite) simd_double3 eulerAngles;
+
 /// The shearing of the layer's transform as a vector.
 @property (nonatomic, readwrite) simd_double3 skew;
 

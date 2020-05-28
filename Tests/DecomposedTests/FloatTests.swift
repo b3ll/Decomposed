@@ -67,6 +67,31 @@ final class FloatTests: XCTestCase {
     XCTAssertEqual(testTransformXY, testTransformXYCA)
   }
 
+  func testRotationEulerAngles() {
+    let testRotateXCA = CATransform3DMakeRotation(.pi / 4, 1.0, 0.0, 0.0)
+    let testRotateYCA = CATransform3DMakeRotation(.pi / 4, 0.0, 1.0, 0.0)
+    let testRotateZCA = CATransform3DMakeRotation(.pi / 4, 0.0, 0.0, 1.0)
+
+    var testTransformX = CATransform3DIdentity
+    testTransformX.eulerAngles.x = .pi / 4
+
+    var testTransformY = CATransform3DIdentity
+    testTransformY.eulerAngles.y = .pi / 4
+
+    var testTransformZ = CATransform3DIdentity
+    testTransformZ.eulerAngles.z = .pi / 4
+
+    XCTAssertEqual(testTransformX, testRotateXCA)
+    XCTAssertEqual(testTransformY, testRotateYCA)
+    XCTAssertEqual(testTransformZ, testRotateZCA)
+
+    var testTransformXYCA = CATransform3DMakeRotation(.pi / 4.0, 1.0, 0.0, 0.0)
+    testTransformXYCA = CATransform3DConcat(testTransformXYCA, CATransform3DMakeRotation(.pi / 4.0, 0.0, 1.0, 0.0))
+    let testTransformXY = CATransform3DIdentity.rotated(by: Vector3(.pi / 4.0, .pi / 4.0, 0.0))
+
+    XCTAssertEqual(testTransformXY, testTransformXYCA)
+  }
+
   func testSkew() {
     // CA doesn't really provide any default Skew manipulations so, just make sure that the skew works as intended.
     let transform1 = CATransform3DIdentity.skewedBy(XY: 0.25, XZ: 0.25, YZ: 0.25)

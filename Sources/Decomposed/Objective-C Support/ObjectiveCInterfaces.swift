@@ -31,6 +31,12 @@ import QuartzCore
     set { decomposed.rotation = newValue }
   }
 
+  /// The rotation of the transform (expressed as euler angles, expressed in radians).
+  public var eulerAngles: simd_double3 {
+    get { return decomposed.eulerAngles }
+    set { decomposed.eulerAngles = newValue }
+  }
+
   /// The shearing of the transform.
   public var skew: simd_double3 {
     get { return decomposed.skew }
@@ -83,6 +89,12 @@ import QuartzCore
     set { decomposed.rotation = newValue }
   }
 
+  /// The rotation of the transformation matrix (expressed as euler angles, expressed in radians).
+  public var eulerAngles: simd_double3 {
+    get { return decomposed.eulerAngles }
+    set { decomposed.eulerAngles = newValue }
+  }
+
   /// The shearing of the transformation matrix.
   public var skew: simd_double3 {
     get { return decomposed.skew }
@@ -129,10 +141,17 @@ import QuartzCore
     get { return decomposed.scale }
     set { decomposed.scale = newValue }
   }
+
   /// The rotation of the transformation matrix (expressed as a quaternion).
   public var rotation: simd_quatf {
     get { return decomposed.rotation }
     set { decomposed.rotation = newValue }
+  }
+
+  /// The rotation of the transformation matrix (expressed as euler angles, expressed in radians).
+  public var eulerAngles: simd_float3 {
+    get { return decomposed.eulerAngles }
+    set { decomposed.eulerAngles = newValue }
   }
 
   /// The shearing of the transformation matrix.

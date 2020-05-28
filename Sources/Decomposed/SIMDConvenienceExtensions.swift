@@ -86,6 +86,23 @@ public extension simd_quatf {
     self.init(vector: simd_float4(Float(quat.vector[0]), Float(quat.vector[1]), Float(quat.vector[2]), Float(quat.vector[3])))
   }
 
+  init(_ eulerAngles: simd_float3) {
+    // From: https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
+    let cz = cos(eulerAngles.z * 0.5)
+    let sz = sin(eulerAngles.z * 0.5)
+    let cy = cos(eulerAngles.y * 0.5)
+    let sy = sin(eulerAngles.y * 0.5)
+    let cx = cos(eulerAngles.x * 0.5)
+    let sx = sin(eulerAngles.x * 0.5)
+
+    self.init(vector: [
+      sx * cy * cz - cx * sy * sz, // x
+      cx * sy * cz + sx * cy * sz, // y
+      cx * cy * sz - sx * sy * cz, // z
+      cx * cy * cz + sx * sy * sz, // w
+    ])
+  }
+
 }
 
 public extension simd_double4x4 {
@@ -118,6 +135,23 @@ public extension simd_quatd {
 
   init(_ quat: simd_quatf) {
     self.init(vector: simd_double4(Double(quat.vector[0]), Double(quat.vector[1]), Double(quat.vector[2]), Double(quat.vector[3])))
+  }
+
+  init(_ eulerAngles: simd_double3) {
+    // From: https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
+    let cz = cos(eulerAngles.z * 0.5)
+    let sz = sin(eulerAngles.z * 0.5)
+    let cy = cos(eulerAngles.y * 0.5)
+    let sy = sin(eulerAngles.y * 0.5)
+    let cx = cos(eulerAngles.x * 0.5)
+    let sx = sin(eulerAngles.x * 0.5)
+
+    self.init(vector: [
+      sx * cy * cz - cx * sy * sz, // x
+      cx * sy * cz + sx * cy * sz, // y
+      cx * cy * sz - sx * sy * cz, // z
+      cx * cy * cz + sx * sy * sz, // w
+    ])
   }
 
 }

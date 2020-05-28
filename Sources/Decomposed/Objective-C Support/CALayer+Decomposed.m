@@ -31,66 +31,66 @@
 
 // MARK: - Translation
 
-- (CGPoint)de_translation
+- (CGPoint)translation
 {
   DecomposeTransform;
   simd_double3 translation = decomposed.translation;
   return CGPointMake(translation.x, translation.y);
 }
 
-- (void)setDe_translation:(CGPoint)de_translation
+- (void)setTranslation:(CGPoint)translation
 {
   DecomposeTransform;
   DisableActions(^{
-    decomposed.translation = simd_make_double3(de_translation.x, de_translation.y, decomposed.translation.z);
+    decomposed.translation = simd_make_double3(translation.x, translation.y, decomposed.translation.z);
     RecomposeAndSetTransform;
   });
 }
 
-- (simd_double3)de_translationXYZ
+- (simd_double3)translationXYZ
 {
   DecomposeTransform;
   return decomposed.translation;
 }
 
-- (void)setDe_translationXYZ:(simd_double3)de_translationXYZ
+- (void)setTranslationXYZ:(simd_double3)translationXYZ
 {
   DecomposeTransform;
   DisableActions(^{
-    decomposed.translation = de_translationXYZ;
+    decomposed.translation = translationXYZ;
     RecomposeAndSetTransform;
   });
 }
 
 // MARK: - Scale
 
-- (CGPoint)de_scale
+- (CGPoint)scale
 {
   DecomposeTransform;
   simd_double3 scale = decomposed.scale;
   return CGPointMake(scale.x, scale.y);
 }
 
-- (void)setDe_scale:(CGPoint)de_scale
+- (void)setScale:(CGPoint)scale
 {
   DecomposeTransform;
   DisableActions(^{
-    decomposed.scale = simd_make_double3(de_scale.x, de_scale.y, decomposed.scale.z);
+    decomposed.scale = simd_make_double3(scale.x, scale.y, decomposed.scale.z);
     RecomposeAndSetTransform;
   });
 }
 
-- (simd_double3)de_scaleXYZ
+- (simd_double3)scaleXYZ
 {
   DecomposeTransform;
   return decomposed.scale;
 }
 
-- (void)setDe_scaleXYZ:(simd_double3)de_scaleXYZ
+- (void)setScaleXYZ:(simd_double3)scaleXYZ
 {
   DecomposeTransform;
   DisableActions(^{
-    decomposed.scale = de_scaleXYZ;
+    decomposed.scale = scaleXYZ;
     RecomposeAndSetTransform;
   });
 }
@@ -103,11 +103,26 @@
   return decomposed.rotation;
 }
 
-- (void)setDe_rotation:(simd_quatd)de_rotation
+- (void)setRotation:(simd_quatd)rotation
 {
   DecomposeTransform;
   DisableActions(^{
-    decomposed.rotation = de_rotation;
+    decomposed.rotation = rotation;
+    RecomposeAndSetTransform;
+  });
+}
+
+- (simd_double3)eulerAngles
+{
+  DecomposeTransform;
+  return decomposed.eulerAngles;
+}
+
+- (void)setEulerAngles:(simd_double3)eulerAngles
+{
+  DecomposeTransform;
+  DisableActions(^{
+    decomposed.eulerAngles = eulerAngles;
     RecomposeAndSetTransform;
   });
 }
@@ -120,28 +135,28 @@
   return decomposed.skew;
 }
 
-- (void)setDe_skew:(simd_double3)de_skew
+- (void)setSkew:(simd_double3)skew
 {
   DecomposeTransform;
   DisableActions(^{
-    decomposed.skew = de_skew;
+    decomposed.skew = skew;
     RecomposeAndSetTransform;
   });
 }
 
 // MARK: - Perspective
 
-- (simd_double4)de_perspective
+- (simd_double4)perspective
 {
   DecomposeTransform;
   return decomposed.perspective;
 }
 
-- (void)setDe_perspective:(simd_double4)de_perspective
+- (void)setPerspective:(simd_double4)perspective
 {
   DecomposeTransform;
   DisableActions(^{
-    decomposed.perspective = de_perspective;
+    decomposed.perspective = perspective;
     RecomposeAndSetTransform;
   });
 }

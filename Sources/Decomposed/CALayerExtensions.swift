@@ -73,6 +73,18 @@ public extension CALayer {
     }
   }
 
+  /// The rotation of the layer's transform (expressed as euler angles, in radians).
+  var eulerAngles: Vector3 {
+    get {
+      return transform.eulerAngles
+    }
+    set {
+      DisableActions {
+        transform.eulerAngles = newValue
+      }
+    }
+  }
+
   /// The shearing of the layer's transform.
   var skew: Skew {
     get {

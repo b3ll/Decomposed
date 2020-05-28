@@ -137,7 +137,7 @@ public extension CATransform3D {
   /**
    Returns a copy by scaling the current transform by the given scale.
 
-   - Note: Omitted components have no effect on the translation.
+   - Note: Omitted components have no effect on the scale.
    */
   func scaledBy(x: CGFloat = 1.0, y: CGFloat = 1.0, z: CGFloat = 1.0) -> Self {
     let scale = Scale(x, y, z)
@@ -170,7 +170,7 @@ public extension CATransform3D {
 
   /** Returns a copy by applying a rotation transform (expressed as a quaternion) to the current transform.
 
-   - Note: Omitted components have no effect on the translation.
+   - Note: Omitted components have no effect on the rotation.
    */
   func rotatedBy(angle: CGFloat = 0.0, x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
     let rotation = Quaternion(angle: angle, axis: Vector3(x, y, z))
@@ -180,6 +180,39 @@ public extension CATransform3D {
   /// Rotates the current rotation by applying a rotation transform (expressed as a quaternion) to the current transform.
   mutating func rotate(by rotation: Quaternion) {
     self = CATransform3D(matrix.rotated(by: rotation.storage))
+  }
+
+  /// The rotation of the transform, expressed in radians.
+  var eulerAngles: Vector3 {
+    get {
+      return Vector3(_decomposed().eulerAngles)
+    }
+    set {
+      var decomposed = _decomposed()
+      decomposed.eulerAngles = newValue.storage
+      self = CATransform3D(decomposed.recomposed())
+    }
+  }
+
+  /// Returns a copy by applying a rotation transform (expressed as euler angles, expressed in radians) to the current transform.
+  func rotated(by eulerAngles: Vector3) -> Self {
+    var transform = self
+    transform.rotate(by: eulerAngles)
+    return transform
+  }
+
+  /** Returns a copy by applying a rotation transform (expressed as euler angles, expressed in radians) to the current transform.
+
+   - Note: Omitted components have no effect on the rotation.
+   */
+  func rotatedBy(x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
+    let rotation = Vector3(x, y, z)
+    return self.rotated(by: rotation)
+  }
+
+  /// Rotates the current rotation by applying a rotation transform (expressed as euler angles, expressed in radians) to the current transform.
+  mutating func rotate(by eulerAngles: Vector3) {
+    self = CATransform3D(matrix.rotated(by: eulerAngles.storage))
   }
 
   /// The skew of the transform.
@@ -204,7 +237,7 @@ public extension CATransform3D {
   /**
    Returns a copy by skewing the current transform by the given skew components.
 
-   - Note: Omitted components have no effect on the translation.
+   - Note: Omitted components have no effect on the skew.
    */
   func skewedBy(XY: CGFloat? = nil, XZ: CGFloat? = nil, YZ: CGFloat? = nil) -> Self {
     let skew = Skew(XY ?? self.skew.XY, XZ ?? self.skew.XZ, YZ ?? self.skew.YZ)
@@ -237,7 +270,7 @@ public extension CATransform3D {
   /**
    Returns a copy by changing the perspective of the current transform.
 
-   - Note: Omitted components have no effect on the translation.
+   - Note: Omitted components have no effect on the perspective.
    */
   func applyingPerspective(m14: CGFloat? = nil, m24: CGFloat? = nil, m34: CGFloat? = nil, m44: CGFloat? = nil) -> Self {
     let perspective = Perspective(m14: m14 ?? self.m14, m24: m24 ?? self.m24, m34: m34 ?? self.m34, m44: m44 ?? self.m44)
