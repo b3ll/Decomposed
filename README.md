@@ -65,8 +65,7 @@ var transform: CATransform3D = CATransform3DIdentity
 Create a transform with a translation of 44pts on the Y-axis, rotated by .pi / 40 on the X-axis.
 
 ```objectivec
-CATransform3D transform = CATransform3DIdentity;
-CATransform3DDecomposed *decomposed = [DEDecomposedCATransform3D decomposedTransformWithTransform:transform];
+CATransform3DDecomposed *decomposed = [DEDecomposedCATransform3D decomposedTransformWithTransform:CATransform3DIdentity];
 decomposed.translation = CGPoint(0.0, 44.0);
 decomposed.rotation = simd_quaternion(M_PI / 4.0, simd_make_double3(1.0, 0.0, 0.0));
 transform = [decomposed recompose];
@@ -98,6 +97,8 @@ layer.transformProxy.scale = CGPoint(x: 0.75, y: 0.75);
 
 Anytime you change a property on a `CATransform3D` or `matrix_double4x4`, it needs to be decomposed, changed, and then recomposed. This can be expensive if done a lot, so it should be limited. If you're making multiple changes at once, it's better to change the `DecomposedTransform` and then call its `recomposed()` function to get a recomposed transform.
 
+## Swift
+
 ```swift
 var decomposed = transform.decomposed()
 decomposed.translation = Translation(44.0, 44.0, 0.0)
@@ -105,6 +106,17 @@ decomposed.scale = Scale(0.75, 0.75, 0.0)
 decomposed.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(1.0, 0.0, 0.0))
 
 let changedTransform = decomposed.recomposed()
+```
+
+## Objective-C
+
+```objectivec
+DEDecomposedCATransform3D *decomposed = [DEDecomposedCATransform3D decomposedTransformWithTransform:transform];
+decomposed.translation = CGPointMake(44.0, 44.0);
+decomposed.scale = CGPointMake(0.75, 0.75);
+decomposed.rotation = simd_quaternion(M_PI / 4.0, simd_make_double3(1.0, 0.0, 0.0));
+
+CATransform3D changedTransform = [decomposed recomposed];
 ```
 
 # Vector3 / Vector4 / Quaternion
