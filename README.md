@@ -143,7 +143,7 @@ layer.scale = Scale(0.5, 0.75, 0.0)
 
 ## Interpolatable
 
-It also provides functionality to linearly interpolate from any transform to any transform via the `Interpolatable` protocol.
+It also provides functionality to linearly interpolate from any transform to any transform via the `Interpolatable` protocol. This lets you easily animate / transition between transforms in a controlled manner.
 
 ```swift
 let transform: CATransform3D = CATransform3DIdentity
