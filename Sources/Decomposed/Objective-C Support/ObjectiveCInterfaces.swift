@@ -11,7 +11,7 @@ import Foundation
 import QuartzCore
 
 /// This class wraps the Swift interface for `CATransform3D.DecomposedTransform` in a means that it can be used from Objective-C.
-@objcMembers public class CATransform3DDecomposed: NSObject {
+@objcMembers public class DEDecomposedCATransform3D: NSObject {
 
   /// The translation of the transform.
   public var translation: simd_double3 {
@@ -51,8 +51,8 @@ import QuartzCore
   }
 
   /// Class initializer.
-  public class func decomposedTransform(_ transform: CATransform3D) -> CATransform3DDecomposed {
-    return CATransform3DDecomposed(with: transform)
+  public class func decomposedTransformWith(transform: CATransform3D) -> DEDecomposedCATransform3D {
+    return DEDecomposedCATransform3D(with: transform)
   }
 
   /// Returns a recomposed `CATransform3D`.
@@ -63,7 +63,7 @@ import QuartzCore
 }
 
 /// This class wraps the Swift interface for `matrix_double4x4.DecomposedTransform` in a means that it can be used from Objective-C.
-@objcMembers public class matrix_double4x4Decomposed: NSObject {
+@objcMembers public class DEDecomposedMatrixDouble4x4: NSObject {
 
   /// The translation of the transformation matrix.
   public var translation: simd_double3 {
@@ -102,8 +102,8 @@ import QuartzCore
   }
 
   /// Class initializer.
-  public class func decomposedTransform(_ matrix: matrix_double4x4) -> matrix_double4x4Decomposed {
-    return matrix_double4x4Decomposed(with: matrix)
+  public class func decomposedMatrixWith(_ matrix: matrix_double4x4) -> DEDecomposedMatrixDouble4x4 {
+    return DEDecomposedMatrixDouble4x4(with: matrix)
   }
 
   /// Returns a recomposed `CATransform3D`.
@@ -114,7 +114,7 @@ import QuartzCore
 }
 
 /// This class wraps the Swift interface for `matrix_float4x4.DecomposedTransform` in a means that it can be used from Objective-C.
-@objcMembers public class matrix_float4x4Decomposed: NSObject {
+@objcMembers public class DEDecomposedMatrixFloat4x4: NSObject {
 
   /// The translation of the transformation matrix.
   public var translation: simd_float3 {
@@ -153,8 +153,8 @@ import QuartzCore
   }
 
   /// Class initializer.
-  public class func decomposedTransform(_ matrix: matrix_float4x4) -> matrix_float4x4Decomposed {
-    return matrix_float4x4Decomposed(with: matrix)
+  public class func decomposedTransformWith(_ matrix: matrix_float4x4) -> DEDecomposedMatrixFloat4x4 {
+    return DEDecomposedMatrixFloat4x4(with: matrix)
   }
 
   /// Returns a recomposed `CATransform3D`.

@@ -20,7 +20,7 @@ layer.transform = CATransform3DMakeScale(0.5, 0.5, 1.0)
 
 However, what if you were given a transform from somewhere else? How would you know what the scale of the layer is? What if you wanted to set the scale or translation of a transform? Without lots of complex linear algebra, it's not easy to do!
 
-Decomposed aims to simplify this by allowing for `CATransform3D`, `matrix_double4x4`, `matrix_float4x4`, to be decomposed, recomposed, and mutated without crazy math.
+Decomposed aims to simplify this by allowing for `CATransform3D`, `matrix_double4x4`, `matrix_float4x4`, to be decomposed, recomposed, and mutated without complex math.
 
 Decomposition is the act of breaking something down into smaller components, in this case transformation matrices into things like translation, scale, etc. in a way that they can all be individually changed or reset.
 
@@ -48,6 +48,8 @@ Currently Decomposed supports Swift Package Manager and being used manually as a
 
 API Documentation is [here](https://b3ll.github.io/Decomposed/).
 
+# Transform Modifications
+
 ## Swift
 
 Create a transform with a translation of 44pts on the Y-axis, rotated by .pi / 4.0 on the X-axis
@@ -58,32 +60,16 @@ var transform: CATransform3D = CATransform3DIdentity
   .rotatedBy(angle: .pi / 4.0, x: 1.0)
 ```
 
-Change a layer's transform's translation to `(x: 44.0, y: 44.0)` and scale to `(x: 0.75, y: 0.75)`.
-
-```swift
-let layer = ...
-layer.translation = Translation(44.0, 44.0, 0.0)
-layer.scale = Scale(0.75, 0.75, 0.0)
-```
-
 ## Objective-C
 
 Create a transform with a translation of 44pts on the Y-axis, rotated by .pi / 40 on the X-axis.
 
 ```objectivec
 CATransform3D transform = CATransform3DIdentity;
-CATransform3DDecomposed *decomposed = [CATransform3DDecomposed decomposedTransform:transform];
+CATransform3DDecomposed *decomposed = [DEDecomposedCATransform3D decomposedTransformWithTransform:transform];
 decomposed.translation = CGPoint(0.0, 44.0);
 decomposed.rotation = simd_quaternion(M_PI / 4.0, simd_make_double3(1.0, 0.0, 0.0));
 transform = [decomposed recompose];
-```
-
-Change a layer's transform's translation to `(x: 44.0, y: 44.0)` and scale to `(x: 0.75, y: 0.75)`.
-
-```objectivec
-CALayer *layer = ...
-layer.de_translation = CGPointMake(44.0, 44.0);
-layer.de_scale = CGPointMake(0.75, 0.75);
 ```
 
 # CALayer Extensions
@@ -95,13 +81,17 @@ Typically when doing interactive gestures with `UIView` and `CALayer` you'll win
 ```swift
 // In some UIPanGestureRecognizer handling method
 layer.translation = panGestureRecognizer.translation(in: self)
+layer.scale = CGPoint(x: 0.75, y: 0.75)
 ```
 
 ## Objective-C
 
+Since namespace collision happens in Objective-C, you're able to do similar changes via the `transformProxy` property. Changes to this proxy object will be applied to the layer's transform with implicit animations disabled.
+
 ```objectivec
 // In some UIPanGestureRecognizer handling method
-layer.de_translation = [panGestureRecognizer translationInView:self];
+layer.transformProxy.translation = [panGestureRecognizer translationInView:self];
+layer.transformProxy.scale = CGPoint(x: 0.75, y: 0.75);
 ```
 
 # DecomposedTransform
@@ -128,7 +118,7 @@ layer.translation = [44.0, 44.0, 0.0]
 layer.scale = [0.5, 0.75, 0.0]
 ```
 
-**Note**: This API is questionable in its current form (part of me wants to think everything should be exposed as `simd` types), so I'm happy to take feedback!
+**Note**: This API is questionable in its current form as it collides with Swift's `Vector` types (which are just simd types and part of me thinks everything should be exposed as `simd` types), so I'm happy to take feedback!
 
 # Interpolatable
 
@@ -136,11 +126,10 @@ It also provides functionality to linearly interpolate from any transform to any
 
 ```swift
 let transform: CATransform3D = CATransform3DIdentity
-  .translated(by: [44.0, 44.0, 0.0])
-  .scaled(by: [1.0, 1.0, 1.0])
+  .translatedBy(x: 44.0, y: 44.0)
 
 let transform2 = CATransform3DIdentity
-  .translated(by: [120.0, 240.0, 0.0])
+  .translatedBy(x: 120.0, y: 240.0)
   .scaled(by: [0.5, 0.75, 1.0])
   .rotatedBy(angle: .pi / 4.0, x: 1.0)
 

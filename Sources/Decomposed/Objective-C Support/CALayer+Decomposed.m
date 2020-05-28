@@ -11,11 +11,23 @@
 #import <simd/simd.h>
 #import <Decomposed/Decomposed-Swift.h>
 
-@implementation CALayer (Decomposed)
+@implementation DEDecomposedCATransform3DProxy {
+  __weak CALayer *_layer;
+}
 
-#define DecomposeTransform CATransform3DDecomposed *decomposed = [CATransform3DDecomposed decomposedTransform:self.transform];
+#define DecomposeTransform DEDecomposedCATransform3D *decomposed = [DEDecomposedCATransform3D decomposedTransformWithTransform:_layer.transform];
 #define DisableActions(block) [CATransaction begin]; [CATransaction setDisableActions:YES]; block(); [CATransaction commit];
-#define RecomposeAndSetTransform self.transform = [decomposed recomposed];
+#define RecomposeAndSetTransform self->_layer.transform = [decomposed recomposed];
+
+- (instancetype)initWithLayer:(CALayer *)layer
+{
+  self = [super init];
+  if (!self) { return nil; }
+
+  _layer = layer;
+
+  return self;
+}
 
 // MARK: - Translation
 
@@ -132,6 +144,15 @@
     decomposed.perspective = de_perspective;
     RecomposeAndSetTransform;
   });
+}
+
+@end
+
+@implementation CALayer (Decomposed)
+
+- (DEDecomposedCATransform3DProxy *)transformProxy
+{
+  return [[DEDecomposedCATransform3DProxy alloc] initWithLayer:self];
 }
 
 @end
