@@ -256,7 +256,7 @@ public extension CATransform3D {
     set {
       var decomposed = _decomposed()
       decomposed.perspective = newValue.storage
-      self = CATransform3D(_decomposed().recomposed())
+      self = CATransform3D(decomposed.recomposed())
     }
   }
 

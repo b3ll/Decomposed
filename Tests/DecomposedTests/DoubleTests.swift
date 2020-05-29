@@ -94,10 +94,19 @@ final class DoubleTests: XCTestCase {
 
   func testSkew() {
     // CA doesn't really provide any default Skew manipulations so, just make sure that the skew works as intended.
-    let transform1 = CATransform3DIdentity.skewedBy(XY: 0.25, XZ: 0.25, YZ: 0.25)
-    XCTAssertEqual(transform1.m21, 0.25, accuracy: CGFloat(SupportedAccuracy))
+    let transform1 = CATransform3DIdentity.skewedBy(XY: 0.20, XZ: 0.25, YZ: 0.30)
+    XCTAssertEqual(transform1.m21, 0.20, accuracy: CGFloat(SupportedAccuracy))
     XCTAssertEqual(transform1.m31, 0.25, accuracy: CGFloat(SupportedAccuracy))
-    XCTAssertEqual(transform1.m32, 0.25, accuracy: CGFloat(SupportedAccuracy))
+    XCTAssertEqual(transform1.m32, 0.30, accuracy: CGFloat(SupportedAccuracy))
+  }
+
+  func testPerspective() {
+    // CA doesn't really provide any default Skew manipulations so, just make sure that the skew works as intended.
+    let transform1 = CATransform3DIdentity.applyingPerspective(m14: 0.11, m24: 0.22, m34: 0.33, m44: 0.44)
+    XCTAssertEqual(transform1.m14, 0.11, accuracy: CGFloat(SupportedAccuracy))
+    XCTAssertEqual(transform1.m24, 0.22, accuracy: CGFloat(SupportedAccuracy))
+    XCTAssertEqual(transform1.m34, 0.33, accuracy: CGFloat(SupportedAccuracy))
+    XCTAssertEqual(transform1.m44, 0.44, accuracy: CGFloat(SupportedAccuracy))
   }
 
   func testDecompose() {
