@@ -6,8 +6,8 @@
 Manipulating and using `CATransform3D` for animations and interactions is pretty challenging… Decomposed makes `CATransform3D`, `matrix_double4x4`, and `matrix_float4x4` much easier to work with.
 
 <p align="center">
-  <img width="160" height="346" src="https://github.com/b3ll/Decomposed/blob/master/Resources/Decomposed.gif?raw=true">
-  <img width="160" height="346" src="https://github.com/b3ll/Decomposed/blob/master/Resources/Decomposed2.gif?raw=true">
+  <img width="240" height="519" src="https://github.com/b3ll/Decomposed/blob/master/Resources/Decomposed.gif?raw=true">
+  <img width="240" height="519" src="https://github.com/b3ll/Decomposed/blob/master/Resources/Decomposed2.gif?raw=true">
 </p>
 
 **Note**: The API for Decomposed is still heavily being changed / optimized, so please feel free to give feedback and expect breaking changes as time moves on.
