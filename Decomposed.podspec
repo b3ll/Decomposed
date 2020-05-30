@@ -27,7 +27,7 @@ Pod::Spec.new do |spec|
   spec.swift_version = '5.0'
   spec.module_name = 'Decomposed'
   spec.source       = { :git => 'https://github.com/b3ll/Decomposed.git', :tag => "v#{spec.version}" }
-  spec.source_files  = 'Sources'
+  spec.source_files  = 'Sources/**/*.{h,m,swift}'
   spec.header_dir = 'Decomposed'
   spec.framework  = 'Accelerate'
   spec.requires_arc = true

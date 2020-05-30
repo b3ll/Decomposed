@@ -143,15 +143,31 @@ let interpolatedTransform = transform.lerp(to: transform2, fraction: 0.5)
 
 # Installation
 
-Currently Decomposed supports Swift Package Manager and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
+Currently Decomposed supports Swift Package Manager, CocoaPods, and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
 
-- **Swift Package Manager**: Add `.package(url: "https://github.com/b3ll/Decomposed", from: "0.0.1")` to your Package.swift (or through Xcode's GUI).
+- **Swift Package Manager**: Add `.package(url: "https://github.com/b3ll/Decomposed", from: "0.0.1")` to your `Package.swift` (or through Xcode's GUI).
+- **CocoaPods**: Add 'pod Decomposed' to your `Podfile`.
 - **Xcode Subproject**: add `Decomposed.xcodeproj` to your project, and then add `Decomposed.framework` as an embedded framework.
 
 #### Requirements
 
 - iOS 13+, macOS 10.15+
 - Swift 5.0 or higher
+
+#### CocoaPods Notes
+
+For some reason, when using CocoaPods and the Objective-C parts of this library, you may see an error like:
+
+`Declaration of 'DEDecomposedCATransform3D' must be imported from module 'Decomposed.Swift' before it is required`.
+
+To fix this, you'll need to use Objective-C++ files (i.e. rename from `.m` to `.mm`) or change your imports to:
+
+```objective
+#import <Decomposed/Decomposed.h>
+#import <Decomposed/Decomposed-Swift.h>
+```
+
+In the meantime, I'll try to figure out a workaround to fix this.
 
 #### Objective-C Notes
 
@@ -172,7 +188,7 @@ With Decomposed + Advanced this is super easy.
 ```swift
 let layer = ...
 let spring = Spring<CGPoint>(initialValue: .zero)
-spring.onChange = { [layer] translation in 
+spring.onChange = { [layer] translation in
   layer.translation = translation
 }
 
@@ -190,7 +206,7 @@ switch panGestureRecognizer.state {
     break
   case .ended:
     spring.velocity = velocity
-    spring.target = CGPoint(x: 200.0, y: 200.0) // wherever you want it to go  
+    spring.target = CGPoint(x: 200.0, y: 200.0) // wherever you want it to go
     break
 }
 ```

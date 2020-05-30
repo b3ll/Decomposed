@@ -1,0 +1,16 @@
+PODS:
+  - Decomposed (0.0.3)
+
+DEPENDENCIES:
+  - Decomposed (from `../../`)
+
+EXTERNAL SOURCES:
+  Decomposed:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  Decomposed: bf949bdfc2b08b1a96e7ae5da678f6412ad47eb6
+
+PODFILE CHECKSUM: 8515d1f7debfc53ba105c1952d9c3d720a4aed09
+
+COCOAPODS: 1.9.1
