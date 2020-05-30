@@ -10,14 +10,14 @@ import QuartzCore
 
 // MARK: - Convenience Extensions
 
-public typealias Translation = Vector3
-public typealias Scale = Vector3
-public typealias Perspective = Vector4
-public typealias Skew = Vector3
+public typealias Translation = CGVector3
+public typealias Scale = CGVector3
+public typealias Perspective = CGVector4
+public typealias Skew = CGVector3
 
 // Perspective
 
-public extension Vector4 {
+public extension CGVector4 {
 
   var m14: CGFloat {
     get { return CGFloat(self.storage[0]) }
@@ -55,7 +55,7 @@ public extension Vector4 {
 
 // Skew
 
-public extension Vector3 {
+public extension CGVector3 {
 
   var XY: CGFloat {
     get { return CGFloat(self.storage[0]) }

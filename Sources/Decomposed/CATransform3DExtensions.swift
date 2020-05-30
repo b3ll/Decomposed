@@ -150,9 +150,9 @@ public extension CATransform3D {
   }
 
   /// The rotation of the transform (expressed as a quaternion).
-  var rotation: Quaternion {
+  var rotation: CGQuaternion {
     get {
-      return Quaternion(_decomposed().rotation)
+      return CGQuaternion(_decomposed().rotation)
     }
     set {
       var decomposed = _decomposed()
@@ -162,7 +162,7 @@ public extension CATransform3D {
   }
 
   /// Returns a copy by applying a rotation transform (expressed as a quaternion) to the current transform.
-  func rotated(by rotation: Quaternion) -> Self {
+  func rotated(by rotation: CGQuaternion) -> Self {
     var transform = self
     transform.rotate(by: rotation)
     return transform
@@ -173,19 +173,19 @@ public extension CATransform3D {
    - Note: Omitted components have no effect on the rotation.
    */
   func rotatedBy(angle: CGFloat = 0.0, x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
-    let rotation = Quaternion(angle: angle, axis: Vector3(x, y, z))
+    let rotation = CGQuaternion(angle: angle, axis: CGVector3(x, y, z))
     return self.rotated(by: rotation)
   }
 
   /// Rotates the current rotation by applying a rotation transform (expressed as a quaternion) to the current transform.
-  mutating func rotate(by rotation: Quaternion) {
+  mutating func rotate(by rotation: CGQuaternion) {
     self = CATransform3D(matrix.rotated(by: rotation.storage))
   }
 
   /// The rotation of the transform, expressed in radians.
-  var eulerAngles: Vector3 {
+  var eulerAngles: CGVector3 {
     get {
-      return Vector3(_decomposed().eulerAngles)
+      return CGVector3(_decomposed().eulerAngles)
     }
     set {
       var decomposed = _decomposed()
@@ -195,7 +195,7 @@ public extension CATransform3D {
   }
 
   /// Returns a copy by applying a rotation transform (expressed as euler angles, expressed in radians) to the current transform.
-  func rotated(by eulerAngles: Vector3) -> Self {
+  func rotated(by eulerAngles: CGVector3) -> Self {
     var transform = self
     transform.rotate(by: eulerAngles)
     return transform
@@ -206,12 +206,12 @@ public extension CATransform3D {
    - Note: Omitted components have no effect on the rotation.
    */
   func rotatedBy(x: CGFloat = 0.0, y: CGFloat = 0.0, z: CGFloat = 0.0) -> Self {
-    let rotation = Vector3(x, y, z)
+    let rotation = CGVector3(x, y, z)
     return self.rotated(by: rotation)
   }
 
   /// Rotates the current rotation by applying a rotation transform (expressed as euler angles, expressed in radians) to the current transform.
-  mutating func rotate(by eulerAngles: Vector3) {
+  mutating func rotate(by eulerAngles: CGVector3) {
     self = CATransform3D(matrix.rotated(by: eulerAngles.storage))
   }
 
@@ -297,7 +297,7 @@ public extension CATransform3D {
     /// The translation of the transform.
     public var translation: Translation {
       get {
-        return Vector3(storage.translation)
+        return CGVector3(storage.translation)
       }
       set {
         storage.translation = newValue.storage
@@ -307,7 +307,7 @@ public extension CATransform3D {
     /// The scale of the transform.
     public var scale: Translation {
       get {
-        return Vector3(storage.scale)
+        return CGVector3(storage.scale)
       }
       set {
         storage.scale = newValue.storage
@@ -315,9 +315,9 @@ public extension CATransform3D {
     }
 
     /// The rotation of the transform (exposed as a quaternion).
-    public var rotation: Quaternion {
+    public var rotation: CGQuaternion {
       get {
-        return Quaternion(storage.rotation)
+        return CGQuaternion(storage.rotation)
       }
       set {
         storage.rotation = newValue.storage

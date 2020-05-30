@@ -62,7 +62,7 @@ public extension CALayer {
   }
 
   /// The rotation of the layer's transform (expressed as a quaternion).
-  var rotation: Quaternion {
+  var rotation: CGQuaternion {
     get {
       return transform.rotation
     }
@@ -74,7 +74,7 @@ public extension CALayer {
   }
 
   /// The rotation of the layer's transform (expressed as euler angles, in radians).
-  var eulerAngles: Vector3 {
+  var eulerAngles: CGVector3 {
     get {
       return transform.eulerAngles
     }

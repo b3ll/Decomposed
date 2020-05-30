@@ -20,7 +20,7 @@ final class FloatTests: XCTestCase {
 
     XCTAssertEqual(testTransform2, testTransformCA);
 
-    let testTransform3 = CATransform3DIdentity.translated(by: Vector3(x: 2.0, y: 3.0, z: 4.0))
+    let testTransform3 = CATransform3DIdentity.translated(by: CGVector3(x: 2.0, y: 3.0, z: 4.0))
 
     XCTAssertEqual(testTransform3, testTransformCA)
   }
@@ -39,7 +39,7 @@ final class FloatTests: XCTestCase {
 
     XCTAssertEqual(testTransform2, testTransformCA);
 
-    let testTransform3 = CATransform3DIdentity.scaled(by: Vector3(x: 2.0, y: 3.0, z: 4.0))
+    let testTransform3 = CATransform3DIdentity.scaled(by: CGVector3(x: 2.0, y: 3.0, z: 4.0))
     XCTAssertEqual(testTransform3, testTransformCA)
   }
 
@@ -49,20 +49,20 @@ final class FloatTests: XCTestCase {
     let testRotateZCA = CATransform3DMakeRotation(.pi / 4, 0.0, 0.0, 1.0)
 
     var testTransformX = CATransform3DIdentity
-    testTransformX.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 0.0, 0.0))))
+    testTransformX.rotation = CGQuaternion(angle: .pi / 4.0, axis: CGVector3(normalize(simd_float3(1.0, 0.0, 0.0))))
 
     var testTransformY = CATransform3DIdentity
-    testTransformY.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(0.0, 1.0, 0.0))))
+    testTransformY.rotation = CGQuaternion(angle: .pi / 4.0, axis: CGVector3(normalize(simd_float3(0.0, 1.0, 0.0))))
 
     var testTransformZ = CATransform3DIdentity
-    testTransformZ.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(0.0, 0.0, 1.0))))
+    testTransformZ.rotation = CGQuaternion(angle: .pi / 4.0, axis: CGVector3(normalize(simd_float3(0.0, 0.0, 1.0))))
 
     XCTAssertEqual(testTransformX, testRotateXCA)
     XCTAssertEqual(testTransformY, testRotateYCA)
     XCTAssertEqual(testTransformZ, testRotateZCA)
 
     let testTransformXYCA = CATransform3DMakeRotation(.pi / 4.0, 1.0, 1.0, 0.0)
-    let testTransformXY = CATransform3DIdentity.rotated(by: Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(x: 1.0, y: 1.0, z: 0.0)))))
+    let testTransformXY = CATransform3DIdentity.rotated(by: CGQuaternion(angle: .pi / 4.0, axis: CGVector3(normalize(simd_float3(x: 1.0, y: 1.0, z: 0.0)))))
 
     XCTAssertEqual(testTransformXY, testTransformXYCA)
   }
@@ -87,7 +87,7 @@ final class FloatTests: XCTestCase {
 
     var testTransformXYCA = CATransform3DMakeRotation(.pi / 4.0, 1.0, 0.0, 0.0)
     testTransformXYCA = CATransform3DConcat(testTransformXYCA, CATransform3DMakeRotation(.pi / 4.0, 0.0, 1.0, 0.0))
-    let testTransformXY = CATransform3DIdentity.rotated(by: Vector3(.pi / 4.0, .pi / 4.0, 0.0))
+    let testTransformXY = CATransform3DIdentity.rotated(by: CGVector3(.pi / 4.0, .pi / 4.0, 0.0))
 
     XCTAssertEqual(testTransformXY, testTransformXYCA)
   }
@@ -112,7 +112,7 @@ final class FloatTests: XCTestCase {
   func testDecompose() {
     let translationTransform = CATransform3DMakeTranslation(1.0, 2.0, 3.0)
     let decomposedTranslationTransform = translationTransform.decomposed()
-    XCTAssertEqual(decomposedTranslationTransform.translation, Vector3(1.0, 2.0, 3.0))
+    XCTAssertEqual(decomposedTranslationTransform.translation, CGVector3(1.0, 2.0, 3.0))
 
     let scaleTransform = CATransform3DMakeScale(1.0, 2.0, 3.0)
     let decomposedScaleTransform = scaleTransform.decomposed()
@@ -120,16 +120,16 @@ final class FloatTests: XCTestCase {
 
     let rotationTransformQuaternion = CATransform3DMakeRotation(.pi / 4.0, 1.0, 1.0, 1.0)
     let decomposedRotationTransformQuaternion = rotationTransformQuaternion.decomposed()
-    XCTAssertEqual(decomposedRotationTransformQuaternion.rotation, Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 1.0, 1.0)))))
+    XCTAssertEqual(decomposedRotationTransformQuaternion.rotation, CGQuaternion(angle: .pi / 4.0, axis: CGVector3(normalize(simd_float3(1.0, 1.0, 1.0)))))
 
     var combinedTransform = CATransform3DMakeTranslation(1.0, 2.0, 3.0)
     combinedTransform = CATransform3DScale(combinedTransform, 2.0, 2.0, 2.0)
     combinedTransform = CATransform3DRotate(combinedTransform, .pi, 1.0, 0.0, 0.0)
 
     let decomposedCombinedTransform = combinedTransform.decomposed()
-    XCTAssertEqual(decomposedCombinedTransform.translation, Vector3(1.0, 2.0, 3.0))
-    XCTAssertEqual(decomposedCombinedTransform.scale, Vector3(2.0, 2.0, 2.0))
-    XCTAssertEqual(decomposedCombinedTransform.rotation, Quaternion(angle: .pi, axis: Vector3(x: 1.0, y: 0.0, z: 0.0)))
+    XCTAssertEqual(decomposedCombinedTransform.translation, CGVector3(1.0, 2.0, 3.0))
+    XCTAssertEqual(decomposedCombinedTransform.scale, CGVector3(2.0, 2.0, 2.0))
+    XCTAssertEqual(decomposedCombinedTransform.rotation, CGQuaternion(angle: .pi, axis: CGVector3(x: 1.0, y: 0.0, z: 0.0)))
   }
 
   func testRecompose() {
@@ -144,13 +144,13 @@ final class FloatTests: XCTestCase {
 
     let m = CATransform3DIdentity
     var decomposed = m.decomposed()
-    decomposed.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 0.0, 0.0))))
+    decomposed.rotation = CGQuaternion(angle: .pi / 4.0, axis: CGVector3(normalize(simd_float3(1.0, 0.0, 0.0))))
     let recomposedRotationTransform = decomposed.recomposed()
 
     XCTAssertEqual(rotationTransform, recomposedRotationTransform)
 
     var m2 = CATransform3DIdentity
-    m2.rotation = Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 0.0, 0.0))))
+    m2.rotation = CGQuaternion(angle: .pi / 4.0, axis: CGVector3(normalize(simd_float3(1.0, 0.0, 0.0))))
     XCTAssertEqual(rotationTransform, m2)
   }
 
@@ -161,9 +161,9 @@ final class FloatTests: XCTestCase {
     transform = CATransform3DRotate(transform, .pi / 4.0, 1.0, 0.0, 0.0)
 
     let transform2 = CATransform3DIdentity
-      .translated(by: Vector3(x: 2.0, y: 4.0, z: 6.0))
-      .scaled(by: Vector3(x: 1.0, y: 2.0, z: 3.0))
-      .rotated(by: Quaternion(angle: .pi / 4.0, axis: Vector3(normalize(simd_float3(1.0, 0.0, 0.0)))))
+      .translated(by: CGVector3(x: 2.0, y: 4.0, z: 6.0))
+      .scaled(by: CGVector3(x: 1.0, y: 2.0, z: 3.0))
+      .rotated(by: CGQuaternion(angle: .pi / 4.0, axis: CGVector3(normalize(simd_float3(1.0, 0.0, 0.0)))))
 
     XCTAssertEqual(transform, transform2)
   }

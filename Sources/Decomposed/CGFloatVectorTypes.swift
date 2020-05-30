@@ -15,7 +15,7 @@ import QuartzCore
  Technically CGFloat can be Float or Double (32bit or 64bit) but everything is 64bit nowadays so, if it's really necessary it can be added later.
  */
 
-public struct Vector3 {
+public struct CGVector3 {
 
   internal var storage: simd_double3
 
@@ -58,7 +58,7 @@ public struct Vector3 {
 
 // MARK: - ExpressibleByArrayLiteral
 
-extension Vector3: ExpressibleByArrayLiteral {
+extension CGVector3: ExpressibleByArrayLiteral {
 
   public init(arrayLiteral elements: CGFloat...) {
     self.init(x: elements[0], y: elements[1], z: elements[2])
@@ -72,7 +72,7 @@ extension Vector3: ExpressibleByArrayLiteral {
 
 public extension simd_double3 {
 
-  init(_ vector: Vector3) {
+  init(_ vector: CGVector3) {
     self.init(Double(vector.x), Double(vector.y), Double(vector.z))
   }
 
@@ -80,13 +80,13 @@ public extension simd_double3 {
 
 public extension simd_float3 {
 
-  init(_ vector: Vector3) {
+  init(_ vector: CGVector3) {
     self.init(Float(vector.x), Float(vector.y), Float(vector.z))
   }
 
 }
 
-public struct Vector4 {
+public struct CGVector4 {
 
   internal var storage: simd_double4
 
@@ -134,7 +134,7 @@ public struct Vector4 {
 
 // MARK: - ExpressibleByArrayLiteral
 
-extension Vector4: ExpressibleByArrayLiteral {
+extension CGVector4: ExpressibleByArrayLiteral {
 
   public init(arrayLiteral elements: CGFloat...) {
     self.init(x: elements[0], y: elements[1], z: elements[2], w: elements[3])
@@ -148,7 +148,7 @@ extension Vector4: ExpressibleByArrayLiteral {
 
 public extension simd_double4 {
 
-  init(_ vector: Vector4) {
+  init(_ vector: CGVector4) {
     self.init(Double(vector.x), Double(vector.y), Double(vector.z), Double(vector.w))
   }
 
@@ -156,18 +156,18 @@ public extension simd_double4 {
 
 public extension simd_float4 {
 
-  init(_ vector: Vector4) {
+  init(_ vector: CGVector4) {
     self.init(Float(vector.x), Float(vector.y), Float(vector.z), Float(vector.w))
   }
 
 }
 
-public struct Quaternion {
+public struct CGQuaternion {
 
   internal var storage: simd_quatd
 
-  public var axis: Vector3 {
-    get { return Vector3(storage.axis) }
+  public var axis: CGVector3 {
+    get { return CGVector3(storage.axis) }
     set { self.storage = simd_quatd(angle: storage.angle, axis: normalize(simd_double3(newValue))) }
   }
 
@@ -182,7 +182,7 @@ public struct Quaternion {
    - Parameter angle: The angle of rotation (specified in radians).
    - Parameter axis: The axis of rotation (this will be normalized automatically)
    */
-  public init(angle: CGFloat, axis: Vector3) {
+  public init(angle: CGFloat, axis: CGVector3) {
     self.storage = simd_quatd(angle: Double(angle), axis: normalize(simd_double3(axis)))
   }
 
@@ -194,7 +194,7 @@ public struct Quaternion {
 
 public extension simd_quatd {
 
-  init(_ quaternion: Quaternion) {
+  init(_ quaternion: CGQuaternion) {
     self.init(angle: Double(quaternion.angle), axis: simd_double3(quaternion.axis))
   }
 
@@ -202,7 +202,7 @@ public extension simd_quatd {
 
 public extension simd_quatf {
 
-  init(_ quaternion: Quaternion) {
+  init(_ quaternion: CGQuaternion) {
     self.init(angle: Float(quaternion.angle), axis: simd_float3(quaternion.axis))
   }
 
@@ -210,26 +210,26 @@ public extension simd_quatf {
 
 // MARK: - Interpolatable
 
-extension Vector3: Interpolatable {
+extension CGVector3: Interpolatable {
 
-  public func lerp(to: Vector3, fraction: CGFloat) -> Vector3 {
-    return Vector3(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
+  public func lerp(to: CGVector3, fraction: CGFloat) -> CGVector3 {
+    return CGVector3(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
   }
 
 }
 
-extension Vector4: Interpolatable {
+extension CGVector4: Interpolatable {
 
-  public func lerp(to: Vector4, fraction: CGFloat) -> Vector4 {
-    return Vector4(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
+  public func lerp(to: CGVector4, fraction: CGFloat) -> CGVector4 {
+    return CGVector4(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
   }
 
 }
 
-extension Quaternion: Interpolatable {
+extension CGQuaternion: Interpolatable {
 
-  public func lerp(to: Quaternion, fraction: CGFloat) -> Quaternion {
-    return Quaternion(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
+  public func lerp(to: CGQuaternion, fraction: CGFloat) -> CGQuaternion {
+    return CGQuaternion(self.storage.lerp(to: to.storage, fraction: Double(fraction)))
   }
 
 }
@@ -238,7 +238,7 @@ extension Quaternion: Interpolatable {
 
 fileprivate let accuracy: Double = 0.0001
 
-extension Vector3: Equatable {
+extension CGVector3: Equatable {
 
   public static func == (lhs: Self, rhs: Self) -> Bool {
     return abs(rhs.storage[0] - lhs.storage[0]) < accuracy &&
@@ -248,7 +248,7 @@ extension Vector3: Equatable {
 
 }
 
-extension Vector4: Equatable {
+extension CGVector4: Equatable {
 
   public static func == (lhs: Self, rhs: Self) -> Bool {
     return abs(rhs.storage[0] - lhs.storage[0]) < accuracy &&
@@ -259,7 +259,7 @@ extension Vector4: Equatable {
 
 }
 
-extension Quaternion: Equatable {
+extension CGQuaternion: Equatable {
 
   public static func == (lhs: Self, rhs: Self) -> Bool {
     return lhs.axis == rhs.axis &&
