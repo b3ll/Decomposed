@@ -14,15 +14,15 @@ fileprivate func transformAt(_ percent: CGFloat) -> CATransform3D {
   let startingTransform =
     CATransform3DIdentity
       .translatedBy(x: -100.0, y: -200.0)
-      .rotated(by: Quaternion(angle: .pi * 2.0, axis: Vector3(1.0, 0.0, 0.0)))
-      .rotated(by: Quaternion(angle: .pi * 2.0, axis: Vector3(0.0, 1.0, 0.0)))
+      .rotated(by: CGQuaternion(angle: .pi * 2.0, axis: CGVector3(1.0, 0.0, 0.0)))
+      .rotated(by: CGQuaternion(angle: .pi * 2.0, axis: CGVector3(0.0, 1.0, 0.0)))
       .applyingPerspective(m34: 1.0 / 500.0)
 
   let finalTransform =
     CATransform3DIdentity
       .translatedBy(x: 100.0, y: 300.0)
-      .rotated(by: Quaternion(angle: .pi / 2.0, axis: Vector3(1.0, 0.0, 0.0)))
-      .rotated(by: Quaternion(angle: .pi / 2.0, axis: Vector3(0.0, 1.0, 0.0)))
+      .rotated(by: CGQuaternion(angle: .pi / 2.0, axis: CGVector3(1.0, 0.0, 0.0)))
+      .rotated(by: CGQuaternion(angle: .pi / 2.0, axis: CGVector3(0.0, 1.0, 0.0)))
       .applyingPerspective(m34: 1.0 / 500.0)
 
   return startingTransform.lerp(to: finalTransform, fraction: percent)
