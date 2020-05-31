@@ -158,16 +158,21 @@ let interpolatedTransform = transform.lerp(to: transform2, fraction: 0.5)
 
 Currently Decomposed supports Swift Package Manager, CocoaPods, and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
 
-- **Swift Package Manager**: Add `.package(url: "https://github.com/b3ll/Decomposed", from: "0.0.1")` to your `Package.swift` (or through Xcode's GUI).
-- **CocoaPods**: Add `pod 'Decomposed'` to your `Podfile`.
-- **Xcode Subproject**: add `Decomposed.xcodeproj` to your project, and then add `Decomposed.framework` as an embedded framework.
+## Swift Package Manager
 
-#### Requirements
+Add the following to your `Package.swift` (or add it via Xcode's GUI):
 
-- iOS 13+, macOS 10.15+
-- Swift 5.0 or higher
+```swift
+.package(url: "https://github.com/b3ll/Decomposed", from: "0.0.1")
+```
 
-#### CocoaPods Notes
+## CocoaPods
+
+Add the following to your `Podfile`:
+
+`pod 'Decomposed'`
+
+#### Notes
 
 For some reason, when using CocoaPods and the Objective-C parts of this library, you may see an error like:
 
@@ -180,7 +185,17 @@ To fix this, you'll need to use Objective-C++ files (i.e. rename from `.m` to `.
 #import <Decomposed/Decomposed-Swift.h>
 ```
 
-In the meantime, I'll try to figure out a workaround to fix this.
+I don't have any other workarounds at the moment, but if I do, I'll make an update.
+
+## Xcode Subproject
+
+- Add `Decomposed.xcodeproj` to your project
+- Add `Decomposed.framework` as an embedded framework (it's a static library, so it should not be embedded).
+
+### Requirements
+
+- iOS 13+, macOS 10.15+
+- Swift 5.0 or higher
 
 #### Objective-C Notes
 
