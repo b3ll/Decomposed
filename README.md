@@ -156,6 +156,11 @@ let interpolatedTransform = transform.lerp(to: transform2, fraction: 0.5)
 
 # Installation
 
+## Requirements
+
+- iOS 13+, macOS 10.15+
+- Swift 5.0 or higher
+
 Currently Decomposed supports Swift Package Manager, CocoaPods, and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
 
 ## Swift Package Manager
@@ -191,11 +196,6 @@ I don't have any other workarounds at the moment, but if I do, I'll make an upda
 
 - Add `Decomposed.xcodeproj` to your project
 - Add `Decomposed.framework` as an embedded framework (it's a static library, so it should not be embedded).
-
-### Requirements
-
-- iOS 13+, macOS 10.15+
-- Swift 5.0 or higher
 
 #### Objective-C Notes
 
