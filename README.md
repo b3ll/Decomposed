@@ -14,6 +14,19 @@ Manipulating and using `CATransform3D` for animations and interactions is pretty
 
 Specifically, I really want to figure out what to do about the Vector types introduced in this repository. If there are any issues with them please let me know; I'm actively sourcing ways to make it better.
 
+- [Introduction](#introduction)
+- [Usage](#usage)
+  - [Transform Modifications](#transform-modifications)
+  - [CALayer Extensions](#calayer-extensions)
+  - [DecomposedTransform](#decomposedtransform)
+  - [CGVector3 / CGVector4 / CGQuaternion](#cgvector3--cgvector4--cgquaternion)
+  - [Interpolatable](#interpolatable)
+- [Installation](#installation)
+- [Other Recommendations](#other-recommendations)
+  - [Advance](#advance)
+- [License](#license)
+- [Contact Info](#contact-info)
+
 # Introduction
 
 Typically on iOS if you wanted to transform a `CALayer` you'd do something like:
@@ -146,7 +159,7 @@ let interpolatedTransform = transform.lerp(to: transform2, fraction: 0.5)
 Currently Decomposed supports Swift Package Manager, CocoaPods, and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
 
 - **Swift Package Manager**: Add `.package(url: "https://github.com/b3ll/Decomposed", from: "0.0.1")` to your `Package.swift` (or through Xcode's GUI).
-- **CocoaPods**: Add 'pod Decomposed' to your `Podfile`.
+- **CocoaPods**: Add `pod 'Decomposed'` to your `Podfile`.
 - **Xcode Subproject**: add `Decomposed.xcodeproj` to your project, and then add `Decomposed.framework` as an embedded framework.
 
 #### Requirements
