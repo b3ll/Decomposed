@@ -161,7 +161,7 @@ let interpolatedTransform = transform.lerp(to: transform2, fraction: 0.5)
 - iOS 13+, macOS 10.15+
 - Swift 5.0 or higher
 
-Currently Decomposed supports Swift Package Manager, CocoaPods, and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
+Currently Decomposed supports Swift Package Manager, CocoaPods, Carthage, and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
 
 ## Swift Package Manager
 
@@ -191,6 +191,12 @@ To fix this, you'll need to use Objective-C++ files (i.e. rename from `.m` to `.
 ```
 
 I don't have any other workarounds at the moment, but if I do, I'll make an update.
+
+## Carthage
+
+Add the following to your `Cartfile`:
+
+`"b3ll/Decomposed"`
 
 ## Xcode Subproject
 
