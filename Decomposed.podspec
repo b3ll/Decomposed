@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = 'Decomposed'
-  spec.version      = '0.0.3'
+  spec.version      = '0.0.4'
   spec.summary      = 'CATransform3D manipulation made easy.'
   spec.description  = <<-DESC
   Decomposed allows for CATransform3D, matrix_double4x4, and matrix_float4x4, to be decomposed, recomposed, and mutated without complex math.

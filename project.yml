@@ -1,0 +1,22 @@
+name: Decomposed
+options:
+  bundleIdPrefix: ca.adambell
+targets:
+  Decomposed:
+    type: framework.static
+    platform: [iOS, tvOS, macOS]
+    deploymentTarget:
+      iOS: 13.0
+      macOS: 10.15
+      tvOS: 13.0
+    sources: [Sources]
+    gatherCoverageData: true
+    testTargets:
+      - DecomposedTests
+  DecomposedTests:
+    type: bundle.unit-test
+    platform: [iOS, tvOS, macOS]
+    sources: ["Tests/DecomposedTests"]
+    parallelizable: true
+    randomExecutionOrder: true
+    gatherCoverageData: true

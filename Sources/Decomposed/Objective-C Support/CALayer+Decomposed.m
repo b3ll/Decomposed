@@ -9,7 +9,8 @@
 #import "CALayer+Decomposed.h"
 
 #import <simd/simd.h>
-#import <Decomposed/Decomposed-Swift.h>
+
+#import "Decomposed-Swift.h"
 
 @implementation DEDecomposedCATransform3DProxy {
   __weak CALayer *_layer;
