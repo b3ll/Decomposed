@@ -12,11 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create XCFramework
+      - name: Create xcframework
         uses: unsignedapps/swift-create-xcframework@v1
-
-      - name: Zip XCFramework
-        run: zip -r Decomposed.zip Decomposed.xcframework
 
       - name: Create Release
         id: create_release
