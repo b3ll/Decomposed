@@ -161,7 +161,7 @@ let interpolatedTransform = transform.lerp(to: transform2, fraction: 0.5)
 - iOS 13+, macOS 10.15+
 - Swift 5.0 or higher
 
-Currently Decomposed supports Swift Package Manager, CocoaPods, Carthage, and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
+Currently Decomposed supports Swift Package Manager, CocoaPods, Carthage, being used as an xcframework, and being used manually as an Xcode subproject. Pull requests for other dependency systems / build systems are welcome!
 
 ## Swift Package Manager
 
@@ -176,6 +176,10 @@ Add the following to your `Package.swift` (or add it via Xcode's GUI):
 Add the following to your `Podfile`:
 
 `pod 'Decomposed'`
+
+## xcframework
+
+A built xcframework is available for each tagged release.
 
 #### Notes
 
