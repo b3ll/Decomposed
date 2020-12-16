@@ -215,18 +215,18 @@ Add the following to your `Cartfile`:
 
 # Other Recommendations
 
-## Advance
+## Motion
 
-This library pairs very nicely with [Advance](https://github.com/timdonnelly/Advance), a physics-based animation system for iOS.
+This library pairs very nicely with [Advance](https://github.com/b3ll/Motion), an animation engine for gesturally-driven user interfaces, animations, and interactions on iOS, macOS, and tvOS.
 
 Animating a layer on a spring by modifying its transform has never been easier! Usually you'd have to manually wrap things in a `CATransaction` with actions disabled, and usage of `CATransform3DTranslate` gets pretty cumbersome.
 
-With Decomposed + Advanced this is super easy.
+With Decomposed + Motion this is super easy.
 
 ```swift
 let layer = ...
-let spring = Spring<CGPoint>(initialValue: .zero)
-spring.onChange = { [layer] translation in
+let springAnimation = SpringAnimation<CGPoint>(initialValue: .zero)
+springAnimation.onValueChanged(disableActions: true) { [layer] translation in
   layer.translation = translation
 }
 
@@ -237,14 +237,16 @@ let velocity = panGestureRecognizer.velocity(in: self.view)
 
 switch panGestureRecognizer.state {
   case .began:
-    spring.reset(to: .zero)
-    break
+    springAnimation.stop()
+    springAnimation.updateValue(to: .zero)
   case .changed:
+    springAnimation.updateValue(to: translation)
     layer.translation = translation
-    break
   case .ended:
-    spring.velocity = velocity
-    spring.target = CGPoint(x: 200.0, y: 200.0) // wherever you want it to go
+    springAnimation.velocity = velocity
+    springAnimation.toValue = CGPoint(x: 200.0, y: 200.0) // wherever you want it to go
+    springAnimation.start()
+  default:
     break
 }
 ```
