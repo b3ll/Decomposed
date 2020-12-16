@@ -13,9 +13,9 @@
 		664BED92247F034F0006E201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664BED90247F034F0006E201 /* Main.storyboard */; };
 		664BED94247F03500006E201 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 664BED93247F03500006E201 /* Assets.xcassets */; };
 		664BED97247F03500006E201 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664BED95247F03500006E201 /* LaunchScreen.storyboard */; };
-		664BEDA0247F036F0006E201 /* Advance in Frameworks */ = {isa = PBXBuildFile; productRef = 664BED9F247F036F0006E201 /* Advance */; };
 		664BEDA8247F03790006E201 /* Decomposed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 664BEDA6247F03750006E201 /* Decomposed.framework */; };
 		664BEDA9247F03790006E201 /* Decomposed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 664BEDA6247F03750006E201 /* Decomposed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		66879E0C2589BD400070DEC8 /* Motion in Frameworks */ = {isa = PBXBuildFile; productRef = 66879E0B2589BD400070DEC8 /* Motion */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +32,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 662B67E6247DE3400021C80B;
 			remoteInfo = Decomposed;
+		};
+		66879E082589BD270070DEC8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 664BEDA1247F03750006E201 /* Decomposed.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 664BEDB5247F45E90006E201;
+			remoteInfo = DecomposedTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -66,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				664BEDA0247F036F0006E201 /* Advance in Frameworks */,
+				66879E0C2589BD400070DEC8 /* Motion in Frameworks */,
 				664BEDA8247F03790006E201 /* Decomposed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				664BEDA6247F03750006E201 /* Decomposed.framework */,
+				66879E092589BD270070DEC8 /* DecomposedTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,7 +148,7 @@
 			);
 			name = DraggingCard;
 			packageProductDependencies = (
-				664BED9F247F036F0006E201 /* Advance */,
+				66879E0B2589BD400070DEC8 /* Motion */,
 			);
 			productName = DraggingCard;
 			productReference = 664BED87247F034F0006E201 /* DraggingCard.app */;
@@ -171,7 +179,7 @@
 			);
 			mainGroup = 664BED7E247F034F0006E201;
 			packageReferences = (
-				664BED9E247F036F0006E201 /* XCRemoteSwiftPackageReference "Advance" */,
+				66879E0A2589BD400070DEC8 /* XCRemoteSwiftPackageReference "Motion" */,
 			);
 			productRefGroup = 664BED88247F034F0006E201 /* Products */;
 			projectDirPath = "";
@@ -194,6 +202,13 @@
 			fileType = wrapper.framework;
 			path = Decomposed.framework;
 			remoteRef = 664BEDA5247F03750006E201 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66879E092589BD270070DEC8 /* DecomposedTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DecomposedTests.xctest;
+			remoteRef = 66879E082589BD270070DEC8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -426,21 +441,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		664BED9E247F036F0006E201 /* XCRemoteSwiftPackageReference "Advance" */ = {
+		66879E0A2589BD400070DEC8 /* XCRemoteSwiftPackageReference "Motion" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/timdonnelly/Advance";
+			repositoryURL = "https://github.com/b3ll/Motion";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.1;
+				minimumVersion = 0.0.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		664BED9F247F036F0006E201 /* Advance */ = {
+		66879E0B2589BD400070DEC8 /* Motion */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 664BED9E247F036F0006E201 /* XCRemoteSwiftPackageReference "Advance" */;
-			productName = Advance;
+			package = 66879E0A2589BD400070DEC8 /* XCRemoteSwiftPackageReference "Motion" */;
+			productName = Motion;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
