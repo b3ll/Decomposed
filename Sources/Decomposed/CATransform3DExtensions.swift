@@ -110,10 +110,26 @@ public extension CATransform3D {
     return self.translated(by: translation)
   }
 
+    /**
+     Returns a copy by translating the current transform by the given translation components.
+
+     - Note: Omitted components have no effect on the translation.
+     */
+    func translated(by translation: CGPoint) -> Self {
+        let translation = Translation(translation.x, translation.y, 0.0)
+      return self.translated(by: translation)
+    }
+
   /// Translates the current transform by the given translation amount.
   mutating func translate(by translation: Translation) {
     self = CATransform3D(matrix.translated(by: translation.storage))
   }
+
+    /// Translates the current transform by the given translation amount.
+    mutating func translate(by translation: CGPoint) {
+        let translation = Translation(translation.x, translation.y, 0.0)
+        translate(by: translation)
+    }
 
   /// The scale of the transform.
   var scale: Scale {
@@ -134,6 +150,11 @@ public extension CATransform3D {
     return transform
   }
 
+    /// Returns a copy by scaling the current transform by the given scale.
+    func scaled(by scale: CGPoint) -> Self {
+        return self.scaled(by: Scale(scale.x, scale.y, 0.0))
+    }
+
   /**
    Returns a copy by scaling the current transform by the given scale.
 
@@ -148,6 +169,12 @@ public extension CATransform3D {
   mutating func scale(by scale: Scale) {
     self = CATransform3D(matrix.scaled(by: scale.storage))
   }
+
+    /// Scales the current transform by the given scale.
+    mutating func scale(by scale: CGPoint) {
+        let scale = Scale(scale.x, scale.y, 0.0)
+        self.scale(by: scale)
+    }
 
   /// The rotation of the transform (expressed as a quaternion).
   var rotation: CGQuaternion {

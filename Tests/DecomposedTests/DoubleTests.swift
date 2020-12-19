@@ -23,6 +23,14 @@ final class DoubleTests: XCTestCase {
     let testTransform3 = CATransform3DIdentity.translated(by: CGVector3(x: 2.0, y: 3.0, z: 4.0))
 
     XCTAssertEqual(testTransform3, testTransformCA)
+
+    testTransform2.translation.z = 0.0
+    let testTransform4 = CATransform3DIdentity.translated(by: CGPoint(x: 2.0, y: 3.0))
+    XCTAssertEqual(testTransform4, testTransform2)
+
+    var testTransform5 = CATransform3DIdentity
+    testTransform5.translate(by: CGPoint(x: 2.0, y: 3.0))
+    XCTAssertEqual(testTransform5, testTransform2)
   }
 
   func testScale() {
@@ -41,6 +49,15 @@ final class DoubleTests: XCTestCase {
 
     let testTransform3 = CATransform3DIdentity.scaled(by: CGVector3(x: 2.0, y: 3.0, z: 4.0))
     XCTAssertEqual(testTransform3, testTransformCA)
+
+    testTransform2.scale.z = 0.0
+
+    let testTransform4 = CATransform3DIdentity.scaled(by: CGPoint(x: 2.0, y: 3.0))
+    XCTAssertEqual(testTransform4, testTransform2)
+
+    var testTransform5 = CATransform3DIdentity
+    testTransform5.scale(by: CGPoint(x: 2.0, y: 3.0))
+    XCTAssertEqual(testTransform5, testTransform2)
   }
 
   func testRotation() {
