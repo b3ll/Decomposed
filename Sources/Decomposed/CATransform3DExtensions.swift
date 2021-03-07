@@ -266,8 +266,8 @@ public extension CATransform3D {
 
    - Note: Omitted components have no effect on the skew.
    */
-  func skewedBy(XY: CGFloat? = nil, XZ: CGFloat? = nil, YZ: CGFloat? = nil) -> Self {
-    let skew = Skew(XY ?? self.skew.XY, XZ ?? self.skew.XZ, YZ ?? self.skew.YZ)
+  func skewedBy(xy: CGFloat? = nil, xz: CGFloat? = nil, yz: CGFloat? = nil) -> Self {
+    let skew = Skew(xy ?? self.skew.xy, xz ?? self.skew.xz, yz ?? self.skew.yz)
     return self.skewed(by: skew)
   }
 

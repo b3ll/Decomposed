@@ -41,23 +41,23 @@ public extension SIMD4 {
 
 extension SIMD3 {
 
-  public var XY: Scalar {
+  public var xy: Scalar {
     get { return self[0] }
     set { self[0] = newValue }
   }
 
-  public var XZ: Scalar {
+  public var xz: Scalar {
     get { return self[1] }
     set { self[1] = newValue }
   }
 
-  public var YZ: Scalar {
+  public var yz: Scalar {
     get { return self[2] }
     set { self[2] = newValue }
   }
 
-  public init(XY: Scalar, XZ: Scalar, YZ: Scalar) {
-    self.init(XY, XZ, YZ)
+  public init(xy: Scalar, xz: Scalar, yz: Scalar) {
+    self.init(xy, xz, yz)
   }
 
 }

@@ -145,7 +145,8 @@
 				664BEDC1247F46160006E201 /* XCTestUtils.swift */,
 				664BEDB9247F45E90006E201 /* Info.plist */,
 			);
-			path = DecomposedTests;
+			name = DecomposedTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

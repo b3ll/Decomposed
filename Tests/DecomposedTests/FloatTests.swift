@@ -111,7 +111,7 @@ final class FloatTests: XCTestCase {
 
   func testSkew() {
     // CA doesn't really provide any default Skew manipulations so, just make sure that the skew works as intended.
-    let transform1 = CATransform3DIdentity.skewedBy(XY: 0.25, XZ: 0.25, YZ: 0.25)
+    let transform1 = CATransform3DIdentity.skewedBy(xy: 0.25, xz: 0.25, yz: 0.25)
     XCTAssertEqual(transform1.m21, 0.25, accuracy: CGFloat(SupportedAccuracy))
     XCTAssertEqual(transform1.m31, 0.25, accuracy: CGFloat(SupportedAccuracy))
     XCTAssertEqual(transform1.m32, 0.25, accuracy: CGFloat(SupportedAccuracy))

@@ -111,7 +111,7 @@ final class DoubleTests: XCTestCase {
 
   func testSkew() {
     // CA doesn't really provide any default Skew manipulations so, just make sure that the skew works as intended.
-    let transform1 = CATransform3DIdentity.skewedBy(XY: 0.20, XZ: 0.25, YZ: 0.30)
+    let transform1 = CATransform3DIdentity.skewedBy(xy: 0.20, xz: 0.25, yz: 0.30)
     XCTAssertEqual(transform1.m21, 0.20, accuracy: CGFloat(SupportedAccuracy))
     XCTAssertEqual(transform1.m31, 0.25, accuracy: CGFloat(SupportedAccuracy))
     XCTAssertEqual(transform1.m32, 0.30, accuracy: CGFloat(SupportedAccuracy))

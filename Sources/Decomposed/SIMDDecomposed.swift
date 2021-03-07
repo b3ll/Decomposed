@@ -155,21 +155,21 @@ public extension matrix_double4x4 {
 
   /// Skews the current transformation matrix by the given skew.
   mutating func skew(by s: simd_double3) {
-    if s.YZ != 0.0 {
+    if s.yz != 0.0 {
       var skewMatrix: matrix_double4x4 = .identity
-      skewMatrix[2][1] = s.YZ
+      skewMatrix[2][1] = s.yz
       self = matrix_multiply(self, skewMatrix)
     }
 
-    if s.XZ != 0.0 {
+    if s.xz != 0.0 {
       var skewMatrix: matrix_double4x4 = .identity
-      skewMatrix[2][0] = s.XZ
+      skewMatrix[2][0] = s.xz
       self = matrix_multiply(self, skewMatrix)
     }
 
-    if s.XY != 0.0 {
+    if s.xy != 0.0 {
       var skewMatrix: matrix_double4x4 = .identity
-      skewMatrix[1][0] = s.XY
+      skewMatrix[1][0] = s.xy
       self = matrix_multiply(self, skewMatrix)
     }
   }
@@ -299,22 +299,22 @@ public extension matrix_double4x4 {
       self.scale.x = length(rotationLocal[0])
       rotationLocal[0] = normalize(rotationLocal[0])
 
-      self.skew.XY = dot(rotationLocal[0], rotationLocal[1])
-      rotationLocal[1] = simd_linear_combination(1.0, rotationLocal[1], -skew.XY, rotationLocal[0])
+      self.skew.xy = dot(rotationLocal[0], rotationLocal[1])
+      rotationLocal[1] = simd_linear_combination(1.0, rotationLocal[1], -skew.xy, rotationLocal[0])
 
       self.scale.y = simd_length(rotationLocal[1])
       rotationLocal[1] = normalize(rotationLocal[1])
-      self.skew.XY /= scale.y
+      self.skew.xy /= scale.y
 
-      self.skew.XZ = dot(rotationLocal[0], rotationLocal[2])
-      rotationLocal[2] = simd_linear_combination(1.0, rotationLocal[2], -skew.XZ, rotationLocal[0])
-      self.skew.YZ = dot(rotationLocal[1], rotationLocal[2])
-      rotationLocal[2] = simd_linear_combination(1.0, rotationLocal[2], -skew.YZ, rotationLocal[1])
+      self.skew.xz = dot(rotationLocal[0], rotationLocal[2])
+      rotationLocal[2] = simd_linear_combination(1.0, rotationLocal[2], -skew.xz, rotationLocal[0])
+      self.skew.yz = dot(rotationLocal[1], rotationLocal[2])
+      rotationLocal[2] = simd_linear_combination(1.0, rotationLocal[2], -skew.yz, rotationLocal[1])
 
       self.scale.z = length(rotationLocal[2])
       rotationLocal[2] = normalize(rotationLocal[2])
-      self.skew.XZ /= scale.z
-      self.skew.YZ /= scale.z
+      self.skew.xz /= scale.z
+      self.skew.yz /= scale.z
 
       if simd_determinant(rotationLocal) < 0 {
         self.scale *= -1.0
@@ -517,21 +517,21 @@ public extension matrix_float4x4 {
 
   /// Skews the current transformation matrix by the given skew.
   mutating func skew(by s: simd_float3) {
-    if s.YZ != 0.0 {
+    if s.yz != 0.0 {
       var skewMatrix: matrix_float4x4 = .identity
-      skewMatrix[2][1] = s.YZ
+      skewMatrix[2][1] = s.yz
       self = matrix_multiply(self, skewMatrix)
     }
 
-    if s.XZ != 0.0 {
+    if s.xz != 0.0 {
       var skewMatrix: matrix_float4x4 = .identity
-      skewMatrix[2][0] = s.XZ
+      skewMatrix[2][0] = s.xz
       self = matrix_multiply(self, skewMatrix)
     }
 
-    if s.XY != 0.0 {
+    if s.xy != 0.0 {
       var skewMatrix: matrix_float4x4 = .identity
-      skewMatrix[1][0] = s.XY
+      skewMatrix[1][0] = s.xy
       self = matrix_multiply(self, skewMatrix)
     }
   }

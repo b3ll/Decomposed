@@ -57,31 +57,31 @@ public extension CGVector4 {
 
 public extension CGVector3 {
 
-  var XY: CGFloat {
+  var xy: CGFloat {
     get { return CGFloat(self.storage[0]) }
     set { self.storage[0] = Double(newValue) }
   }
 
-  var XZ: CGFloat {
+  var xz: CGFloat {
     get { return CGFloat(self.storage[1]) }
     set { self.storage[1] = Double(newValue) }
   }
 
-  var YZ: CGFloat {
+  var yz: CGFloat {
     get { return CGFloat(self.storage[2]) }
     set { self.storage[2] = Double(newValue) }
   }
 
-  init(XY: CGFloat = 0.0, XZ: CGFloat = 0.0, YZ: CGFloat = 0.0) {
-    self.init(XY, XZ, YZ)
+  init(xy: CGFloat = 0.0, xz: CGFloat = 0.0, yz: CGFloat = 0.0) {
+    self.init(xy, xz, yz)
   }
   
-  init(XY: Double = 0.0, XZ: Double = 0.0, YZ: Double = 0.0) {
-    self.init(CGFloat(XY), CGFloat(XZ), CGFloat(YZ))
+  init(xy: Double = 0.0, xz: Double = 0.0, yz: Double = 0.0) {
+    self.init(CGFloat(xy), CGFloat(xz), CGFloat(yz))
   }
   
-  init(XY: Float = 0.0, XZ: Float = 0.0, YZ: Float = 0.0) {
-    self.init(CGFloat(XY), CGFloat(XZ), CGFloat(YZ))
+  init(xy: Float = 0.0, xz: Float = 0.0, yz: Float = 0.0) {
+    self.init(CGFloat(xy), CGFloat(xz), CGFloat(yz))
   }
 
 }
