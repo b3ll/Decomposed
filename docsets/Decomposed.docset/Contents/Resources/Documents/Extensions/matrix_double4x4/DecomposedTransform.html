@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DecomposedTransform Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+    <script src="../../js/lunr.min.js" defer></script>
+    <script src="../../js/typeahead.jquery.js" defer></script>
+    <script src="../../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/DecomposedTransform" class="dashAnchor"></a>
+    <a title="DecomposedTransform Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../../index.html">Decomposed 0.0.5 Docs</a> (72% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../../index.html">Decomposed Reference</a>
+        <img id="carat" src="../../img/carat.png" />
+        DecomposedTransform Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../../Categories.html">Categories</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Categories/CALayer%28Decomposed%29.html">CALayer(Decomposed)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Classes/DEDecomposedCATransform3D.html">DEDecomposedCATransform3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/DEDecomposedCATransform3DProxy.html">DEDecomposedCATransform3DProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/DEDecomposedMatrixDouble4x4.html">DEDecomposedMatrixDouble4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/DEDecomposedMatrixFloat4x4.html">DEDecomposedMatrixFloat4x4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Constants.html#/c:@DecomposedVersionNumber">DecomposedVersionNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Constants.html#/c:@DecomposedVersionString">DecomposedVersionString</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Extensions/CATransform3D.html">CATransform3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/CATransform3D/DecomposedTransform.html">– DecomposedTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/SIMD2.html">SIMD2</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/SIMD3.html">SIMD3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/SIMD4.html">SIMD4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/matrix_double4x4.html">matrix_double4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/matrix_double4x4/DecomposedTransform.html">– DecomposedTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/matrix_float4x4.html">matrix_float4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/matrix_float4x4/DecomposedTransform.html">– DecomposedTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/simd_double3.html">simd_double3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/simd_double4.html">simd_double4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/simd_double4x4.html">simd_double4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/simd_float3.html">simd_float3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/simd_float4.html">simd_float4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/simd_float4x4.html">simd_float4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/simd_quatd.html">simd_quatd</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/simd_quatf.html">simd_quatf</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Protocols/Interpolatable.html">Interpolatable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Structs/CGQuaternion.html">CGQuaternion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/CGVector3.html">CGVector3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/CGVector4.html">CGVector4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:10Decomposed11Perspectivea">Perspective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:10Decomposed5Scalea">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:10Decomposed4Skewa">Skew</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:10Decomposed11Translationa">Translation</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>DecomposedTransform</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">DecomposedTransform</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="n">matrix_double4x4</span><span class="o">.</span><span class="kt">DecomposedTransform</span><span class="p">:</span> <span class="kt"><a href="../../Protocols/Interpolatable.html">Interpolatable</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>A type to break down a <code>matrix_double4x4</code> into its specific transformation attributes / properties (i.e. scale, translation, etc.).</p>
+
+<p>Instantiate this using: <code><a href="../../Extensions/matrix_float4x4.html#/s:So13simd_float4x4a10DecomposedE10decomposedAbCE0C9TransformVyF">matrix_float4x4.decomposed()</a></code>.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So14simd_double4x4a10DecomposedE0C9TransformV11translations5SIMD3VySdGvp"></a>
+                    <a name="//apple_ref/swift/Property/translation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So14simd_double4x4a10DecomposedE0C9TransformV11translations5SIMD3VySdGvp">translation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The translation of a transformation matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">translation</span><span class="p">:</span> <span class="n">simd_double3</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So14simd_double4x4a10DecomposedE0C9TransformV5scales5SIMD3VySdGvp"></a>
+                    <a name="//apple_ref/swift/Property/scale" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So14simd_double4x4a10DecomposedE0C9TransformV5scales5SIMD3VySdGvp">scale</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The scale of a transformation matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">scale</span><span class="p">:</span> <span class="n">simd_double3</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So14simd_double4x4a10DecomposedE0C9TransformV8rotationSo0A6_quatdavp"></a>
+                    <a name="//apple_ref/swift/Property/rotation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So14simd_double4x4a10DecomposedE0C9TransformV8rotationSo0A6_quatdavp">rotation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The rotation of a transformation matrix (expressed as a quaternion ).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rotation</span><span class="p">:</span> <span class="n">simd_quatd</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So14simd_double4x4a10DecomposedE0C9TransformV11eulerAngless5SIMD3VySdGvp"></a>
+                    <a name="//apple_ref/swift/Property/eulerAngles" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So14simd_double4x4a10DecomposedE0C9TransformV11eulerAngless5SIMD3VySdGvp">eulerAngles</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The rotation of a transformation matrix (expressed as a euler angles).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">eulerAngles</span><span class="p">:</span> <span class="n">simd_double3</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So14simd_double4x4a10DecomposedE0C9TransformV4skews5SIMD3VySdGvp"></a>
+                    <a name="//apple_ref/swift/Property/skew" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So14simd_double4x4a10DecomposedE0C9TransformV4skews5SIMD3VySdGvp">skew</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The shearing of a transformation matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">skew</span><span class="p">:</span> <span class="n">simd_double3</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So14simd_double4x4a10DecomposedE0C9TransformV11perspectives5SIMD4VySdGvp"></a>
+                    <a name="//apple_ref/swift/Property/perspective" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So14simd_double4x4a10DecomposedE0C9TransformV11perspectives5SIMD4VySdGvp">perspective</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The perspective of a transformation matrix (e.g. .m34).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">perspective</span><span class="p">:</span> <span class="n">simd_double4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So14simd_double4x4a10DecomposedE0C9TransformV10recomposedAByF"></a>
+                    <a name="//apple_ref/swift/Method/recomposed()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So14simd_double4x4a10DecomposedE0C9TransformV10recomposedAByF">recomposed()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Merges all the properties of the the decomposed transform into a <code>matrix_double4x4</code> transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">recomposed</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">matrix_double4x4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/DecomposedTransform"></a>
+                <a name="//apple_ref/swift/Section/DecomposedTransform" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/DecomposedTransform"></a>
+                  <h3 class="section-name"><p>DecomposedTransform</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10Decomposed14InterpolatableP4lerp2to8fractionxx_12FractionTypeQztF"></a>
+                    <a name="//apple_ref/swift/Method/lerp(to:fraction:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Decomposed14InterpolatableP4lerp2to8fractionxx_12FractionTypeQztF">lerp(to:<wbr>fraction:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">lerp</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="err">`</span><span class="k">Self</span><span class="err">`</span><span class="p">,</span> <span class="nv">fraction</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">simd_double4x4</span><span class="o">.</span><span class="kt">DecomposedTransform</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://twitter.com/b3ll" target="_blank" rel="external">Adam Bell</a>. All rights reserved. (Last updated: 2021-03-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

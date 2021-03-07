@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DEDecomposedCATransform3D Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/DEDecomposedCATransform3D" class="dashAnchor"></a>
+    <a title="DEDecomposedCATransform3D Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Decomposed 0.0.5 Docs</a> (72% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Decomposed Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        DEDecomposedCATransform3D Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Categories.html">Categories</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Categories/CALayer%28Decomposed%29.html">CALayer(Decomposed)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/DEDecomposedCATransform3D.html">DEDecomposedCATransform3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DEDecomposedCATransform3DProxy.html">DEDecomposedCATransform3DProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DEDecomposedMatrixDouble4x4.html">DEDecomposedMatrixDouble4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DEDecomposedMatrixFloat4x4.html">DEDecomposedMatrixFloat4x4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@DecomposedVersionNumber">DecomposedVersionNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@DecomposedVersionString">DecomposedVersionString</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CATransform3D.html">CATransform3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CATransform3D/DecomposedTransform.html">– DecomposedTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SIMD2.html">SIMD2</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SIMD3.html">SIMD3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SIMD4.html">SIMD4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/matrix_double4x4.html">matrix_double4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/matrix_double4x4/DecomposedTransform.html">– DecomposedTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/matrix_float4x4.html">matrix_float4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/matrix_float4x4/DecomposedTransform.html">– DecomposedTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_double3.html">simd_double3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_double4.html">simd_double4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_double4x4.html">simd_double4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_float3.html">simd_float3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_float4.html">simd_float4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_float4x4.html">simd_float4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_quatd.html">simd_quatd</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_quatf.html">simd_quatf</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Interpolatable.html">Interpolatable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CGQuaternion.html">CGQuaternion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CGVector3.html">CGVector3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CGVector4.html">CGVector4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10Decomposed11Perspectivea">Perspective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10Decomposed5Scalea">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10Decomposed4Skewa">Skew</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10Decomposed11Translationa">Translation</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>DEDecomposedCATransform3D</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">@objcMembers</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">DEDecomposedCATransform3D</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>This class wraps the Swift interface for <code><a href="../Extensions/CATransform3D/DecomposedTransform.html">CATransform3D.DecomposedTransform</a></code> in a means that it can be used from Objective-C.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)translation"></a>
+                    <a name="//apple_ref/swift/Property/translation" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)translation">translation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The translation of the transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">translation</span><span class="p">:</span> <span class="n">simd_double3</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)scale"></a>
+                    <a name="//apple_ref/swift/Property/scale" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)scale">scale</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The scale of the transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">scale</span><span class="p">:</span> <span class="n">simd_double3</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)rotation"></a>
+                    <a name="//apple_ref/swift/Property/rotation" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)rotation">rotation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The rotation of the transform (expressed as a quaternion).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rotation</span><span class="p">:</span> <span class="n">simd_quatd</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)eulerAngles"></a>
+                    <a name="//apple_ref/swift/Property/eulerAngles" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)eulerAngles">eulerAngles</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The rotation of the transform (expressed as euler angles, expressed in radians).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">eulerAngles</span><span class="p">:</span> <span class="n">simd_double3</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)skew"></a>
+                    <a name="//apple_ref/swift/Property/skew" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)skew">skew</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The shearing of the transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">skew</span><span class="p">:</span> <span class="n">simd_double3</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)perspective"></a>
+                    <a name="//apple_ref/swift/Property/perspective" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(py)perspective">perspective</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The perspective of the transform (e.g. .m34).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">perspective</span><span class="p">:</span> <span class="n">simd_double4</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(im)initWithTransform:"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(im)initWithTransform:">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default initializer.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(initWithTransform:)</span>
+<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">transform</span><span class="p">:</span> <span class="kt">CATransform3D</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(cm)decomposedTransformWithTransform:"></a>
+                    <a name="//apple_ref/swift/Method/decomposedTransformWith(transform:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(cm)decomposedTransformWithTransform:">decomposedTransformWith(transform:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Class initializer.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">decomposedTransformWith</span><span class="p">(</span><span class="nv">transform</span><span class="p">:</span> <span class="kt">CATransform3D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">DEDecomposedCATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(im)recomposed"></a>
+                    <a name="//apple_ref/swift/Method/recomposed()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Decomposed@objc(cs)DEDecomposedCATransform3D(im)recomposed">recomposed()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a recomposed <code>CATransform3D</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">recomposed</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://twitter.com/b3ll" target="_blank" rel="external">Adam Bell</a>. All rights reserved. (Last updated: 2021-03-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

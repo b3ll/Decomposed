@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CATransform3D Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/CATransform3D" class="dashAnchor"></a>
+    <a title="CATransform3D Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Decomposed 0.0.5 Docs</a> (72% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Decomposed Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CATransform3D Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Categories.html">Categories</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Categories/CALayer%28Decomposed%29.html">CALayer(Decomposed)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/DEDecomposedCATransform3D.html">DEDecomposedCATransform3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DEDecomposedCATransform3DProxy.html">DEDecomposedCATransform3DProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DEDecomposedMatrixDouble4x4.html">DEDecomposedMatrixDouble4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DEDecomposedMatrixFloat4x4.html">DEDecomposedMatrixFloat4x4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@DecomposedVersionNumber">DecomposedVersionNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@DecomposedVersionString">DecomposedVersionString</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CATransform3D.html">CATransform3D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CATransform3D/DecomposedTransform.html">– DecomposedTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SIMD2.html">SIMD2</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SIMD3.html">SIMD3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SIMD4.html">SIMD4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/matrix_double4x4.html">matrix_double4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/matrix_double4x4/DecomposedTransform.html">– DecomposedTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/matrix_float4x4.html">matrix_float4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/matrix_float4x4/DecomposedTransform.html">– DecomposedTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_double3.html">simd_double3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_double4.html">simd_double4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_double4x4.html">simd_double4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_float3.html">simd_float3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_float4.html">simd_float4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_float4x4.html">simd_float4x4</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_quatd.html">simd_quatd</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/simd_quatf.html">simd_quatf</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Interpolatable.html">Interpolatable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CGQuaternion.html">CGQuaternion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CGVector3.html">CGVector3</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CGVector4.html">CGVector4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10Decomposed11Perspectivea">Perspective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10Decomposed5Scalea">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10Decomposed4Skewa">Skew</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10Decomposed11Translationa">Translation</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CATransform3D</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">CATransform3D</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CATransform3D</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Interpolatable.html">Interpolatable</a></span></code></pre>
+
+                </div>
+              </div>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE8identityABvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/identity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE8identityABvpZ">identity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the identity matrix of <code>CATransform3D</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">identity</span><span class="p">:</span> <span class="kt">CATransform3D</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE4zeroABvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/zero" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE4zeroABvpZ">zero</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the a <code>CATransform3D</code> initialized with all zeros.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">zero</span><span class="p">:</span> <span class="kt">CATransform3D</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedEyABSo14simd_double4x4acfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedEyABSo14simd_double4x4acfc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Intializes a <code>CATransform3D</code> with a <code>matrix_double4x4</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">matrix</span><span class="p">:</span> <span class="n">matrix_double4x4</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedEyABSo13simd_float4x4acfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedEyABSo13simd_float4x4acfc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>No overview available.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">matrix</span><span class="p">:</span> <span class="n">matrix_float4x4</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE10decomposedAbCE0B9TransformVyF"></a>
+                    <a name="//apple_ref/swift/Method/decomposed()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE10decomposedAbCE0B9TransformVyF">decomposed()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>No overview available.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">decomposed</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Extensions/CATransform3D/DecomposedTransform.html">DecomposedTransform</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE11translationAC9CGVector3Vvp"></a>
+                    <a name="//apple_ref/swift/Property/translation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE11translationAC9CGVector3Vvp">translation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The translation of the transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">translation</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed11Translationa">Translation</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE10translated2byAbC9CGVector3V_tF"></a>
+                    <a name="//apple_ref/swift/Method/translated(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE10translated2byAbC9CGVector3V_tF">translated(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by translating the current transform by the given translation amount.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">translated</span><span class="p">(</span><span class="n">by</span> <span class="nv">translation</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed11Translationa">Translation</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE12translatedBy1x1y1zAB12CoreGraphics7CGFloatV_A2JtF"></a>
+                    <a name="//apple_ref/swift/Method/translatedBy(x:y:z:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE12translatedBy1x1y1zAB12CoreGraphics7CGFloatV_A2JtF">translatedBy(x:<wbr>y:<wbr>z:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by translating the current transform by the given translation components.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Omitted components have no effect on the translation.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">translatedBy</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">z</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE10translated2byABSo7CGPointV_tF"></a>
+                    <a name="//apple_ref/swift/Method/translated(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE10translated2byABSo7CGPointV_tF">translated(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by translating the current transform by the given translation components.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Omitted components have no effect on the translation.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">translated</span><span class="p">(</span><span class="n">by</span> <span class="nv">translation</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE9translate2byyAC9CGVector3V_tF"></a>
+                    <a name="//apple_ref/swift/Method/translate(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE9translate2byyAC9CGVector3V_tF">translate(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Translates the current transform by the given translation amount.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">translate</span><span class="p">(</span><span class="n">by</span> <span class="nv">translation</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed11Translationa">Translation</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE9translate2byySo7CGPointV_tF"></a>
+                    <a name="//apple_ref/swift/Method/translate(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE9translate2byySo7CGPointV_tF">translate(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Translates the current transform by the given translation amount.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">translate</span><span class="p">(</span><span class="n">by</span> <span class="nv">translation</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE5scaleAC9CGVector3Vvp"></a>
+                    <a name="//apple_ref/swift/Property/scale" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE5scaleAC9CGVector3Vvp">scale</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The scale of the transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed5Scalea">Scale</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE6scaled2byAbC9CGVector3V_tF"></a>
+                    <a name="//apple_ref/swift/Method/scaled(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE6scaled2byAbC9CGVector3V_tF">scaled(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by scaling the current transform by the given scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">scaled</span><span class="p">(</span><span class="n">by</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed5Scalea">Scale</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE6scaled2byABSo7CGPointV_tF"></a>
+                    <a name="//apple_ref/swift/Method/scaled(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE6scaled2byABSo7CGPointV_tF">scaled(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by scaling the current transform by the given scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">scaled</span><span class="p">(</span><span class="n">by</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE8scaledBy1x1y1zAB12CoreGraphics7CGFloatV_A2JtF"></a>
+                    <a name="//apple_ref/swift/Method/scaledBy(x:y:z:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE8scaledBy1x1y1zAB12CoreGraphics7CGFloatV_A2JtF">scaledBy(x:<wbr>y:<wbr>z:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by scaling the current transform by the given scale.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Omitted components have no effect on the scale.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">scaledBy</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nv">z</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE5scale2byyAC9CGVector3V_tF"></a>
+                    <a name="//apple_ref/swift/Method/scale(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE5scale2byyAC9CGVector3V_tF">scale(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Scales the current transform by the given scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">scale</span><span class="p">(</span><span class="n">by</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed5Scalea">Scale</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE5scale2byySo7CGPointV_tF"></a>
+                    <a name="//apple_ref/swift/Method/scale(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE5scale2byySo7CGPointV_tF">scale(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Scales the current transform by the given scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">scale</span><span class="p">(</span><span class="n">by</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE8rotationAC12CGQuaternionVvp"></a>
+                    <a name="//apple_ref/swift/Property/rotation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE8rotationAC12CGQuaternionVvp">rotation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The rotation of the transform (expressed as a quaternion).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">rotation</span><span class="p">:</span> <span class="kt"><a href="../Structs/CGQuaternion.html">CGQuaternion</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE7rotated2byAbC12CGQuaternionV_tF"></a>
+                    <a name="//apple_ref/swift/Method/rotated(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE7rotated2byAbC12CGQuaternionV_tF">rotated(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by applying a rotation transform (expressed as a quaternion) to the current transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">rotated</span><span class="p">(</span><span class="n">by</span> <span class="nv">rotation</span><span class="p">:</span> <span class="kt"><a href="../Structs/CGQuaternion.html">CGQuaternion</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE9rotatedBy5angle1x1y1zAB12CoreGraphics7CGFloatV_A3KtF"></a>
+                    <a name="//apple_ref/swift/Method/rotatedBy(angle:x:y:z:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE9rotatedBy5angle1x1y1zAB12CoreGraphics7CGFloatV_A3KtF">rotatedBy(angle:<wbr>x:<wbr>y:<wbr>z:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by applying a rotation transform (expressed as a quaternion) to the current transform.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Omitted components have no effect on the rotation.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">rotatedBy</span><span class="p">(</span><span class="nv">angle</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">x</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">z</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE6rotate2byyAC12CGQuaternionV_tF"></a>
+                    <a name="//apple_ref/swift/Method/rotate(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE6rotate2byyAC12CGQuaternionV_tF">rotate(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Rotates the current rotation by applying a rotation transform (expressed as a quaternion) to the current transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">by</span> <span class="nv">rotation</span><span class="p">:</span> <span class="kt"><a href="../Structs/CGQuaternion.html">CGQuaternion</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE11eulerAnglesAC9CGVector3Vvp"></a>
+                    <a name="//apple_ref/swift/Property/eulerAngles" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE11eulerAnglesAC9CGVector3Vvp">eulerAngles</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The rotation of the transform, expressed in radians.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">eulerAngles</span><span class="p">:</span> <span class="kt"><a href="../Structs/CGVector3.html">CGVector3</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE7rotated2byAbC9CGVector3V_tF"></a>
+                    <a name="//apple_ref/swift/Method/rotated(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE7rotated2byAbC9CGVector3V_tF">rotated(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by applying a rotation transform (expressed as euler angles, expressed in radians) to the current transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">rotated</span><span class="p">(</span><span class="n">by</span> <span class="nv">eulerAngles</span><span class="p">:</span> <span class="kt"><a href="../Structs/CGVector3.html">CGVector3</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE9rotatedBy1x1y1zAB12CoreGraphics7CGFloatV_A2JtF"></a>
+                    <a name="//apple_ref/swift/Method/rotatedBy(x:y:z:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE9rotatedBy1x1y1zAB12CoreGraphics7CGFloatV_A2JtF">rotatedBy(x:<wbr>y:<wbr>z:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by applying a rotation transform (expressed as euler angles, expressed in radians) to the current transform.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Omitted components have no effect on the rotation.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">rotatedBy</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">z</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE6rotate2byyAC9CGVector3V_tF"></a>
+                    <a name="//apple_ref/swift/Method/rotate(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE6rotate2byyAC9CGVector3V_tF">rotate(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Rotates the current rotation by applying a rotation transform (expressed as euler angles, expressed in radians) to the current transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">by</span> <span class="nv">eulerAngles</span><span class="p">:</span> <span class="kt"><a href="../Structs/CGVector3.html">CGVector3</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE4skewAC9CGVector3Vvp"></a>
+                    <a name="//apple_ref/swift/Property/skew" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE4skewAC9CGVector3Vvp">skew</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The skew of the transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">skew</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed4Skewa">Skew</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE6skewed2byAbC9CGVector3V_tF"></a>
+                    <a name="//apple_ref/swift/Method/skewed(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE6skewed2byAbC9CGVector3V_tF">skewed(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by skewing the current transform by a given skew.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">skewed</span><span class="p">(</span><span class="n">by</span> <span class="nv">skew</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed4Skewa">Skew</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE8skewedBy2xy2xz2yzAB12CoreGraphics7CGFloatVSg_A2KtF"></a>
+                    <a name="//apple_ref/swift/Method/skewedBy(xy:xz:yz:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE8skewedBy2xy2xz2yzAB12CoreGraphics7CGFloatVSg_A2KtF">skewedBy(xy:<wbr>xz:<wbr>yz:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by skewing the current transform by the given skew components.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Omitted components have no effect on the skew.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">skewedBy</span><span class="p">(</span><span class="nv">xy</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">xz</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">yz</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE4skew2byyAC9CGVector3V_tF"></a>
+                    <a name="//apple_ref/swift/Method/skew(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE4skew2byyAC9CGVector3V_tF">skew(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>No overview available.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">skew</span><span class="p">(</span><span class="n">by</span> <span class="nv">skew</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed4Skewa">Skew</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE11perspectiveAC9CGVector4Vvp"></a>
+                    <a name="//apple_ref/swift/Property/perspective" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE11perspectiveAC9CGVector4Vvp">perspective</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The perspective of the transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">perspective</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed11Perspectivea">Perspective</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE19applyingPerspectiveyAbC9CGVector4VF"></a>
+                    <a name="//apple_ref/swift/Method/applyingPerspective(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE19applyingPerspectiveyAbC9CGVector4VF">applyingPerspective(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by changing the perspective of the current transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">applyingPerspective</span><span class="p">(</span><span class="n">_</span> <span class="nv">perspective</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed11Perspectivea">Perspective</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE19applyingPerspective3m143m243m343m44AB12CoreGraphics7CGFloatVSg_A3LtF"></a>
+                    <a name="//apple_ref/swift/Method/applyingPerspective(m14:m24:m34:m44:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE19applyingPerspective3m143m243m343m44AB12CoreGraphics7CGFloatVSg_A3LtF">applyingPerspective(m14:<wbr>m24:<wbr>m34:<wbr>m44:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a copy by changing the perspective of the current transform.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Omitted components have no effect on the perspective.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">applyingPerspective</span><span class="p">(</span><span class="nv">m14</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">m24</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">m34</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">m44</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE16applyPerspectiveyyAC9CGVector4VF"></a>
+                    <a name="//apple_ref/swift/Method/applyPerspective(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE16applyPerspectiveyyAC9CGVector4VF">applyPerspective(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the perspective of the current transform.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">applyPerspective</span><span class="p">(</span><span class="n">_</span> <span class="nv">perspective</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:10Decomposed11Perspectivea">Perspective</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/DecomposedTransform"></a>
+                <a name="//apple_ref/swift/Section/DecomposedTransform" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/DecomposedTransform"></a>
+                  <h3 class="section-name"><p>DecomposedTransform</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So13CATransform3DV10DecomposedE0B9TransformV"></a>
+                    <a name="//apple_ref/swift/Struct/DecomposedTransform" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So13CATransform3DV10DecomposedE0B9TransformV">DecomposedTransform</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a decomposed CATransform3D in which the transform is broken down into its transform attributes (scale, translation, etc.).</p>
+
+                        <a href="../Extensions/CATransform3D/DecomposedTransform.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">DecomposedTransform</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CATransform3D</span><span class="o">.</span><span class="kt">DecomposedTransform</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Interpolatable.html">Interpolatable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/CATransform3D%20Extensions"></a>
+                <a name="//apple_ref/swift/Section/CATransform3D Extensions" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/CATransform3D%20Extensions"></a>
+                  <h3 class="section-name"><p>CATransform3D Extensions</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10Decomposed14InterpolatableP4lerp2to8fractionxx_12FractionTypeQztF"></a>
+                    <a name="//apple_ref/swift/Method/lerp(to:fraction:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Decomposed14InterpolatableP4lerp2to8fractionxx_12FractionTypeQztF">lerp(to:<wbr>fraction:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">lerp</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="err">`</span><span class="k">Self</span><span class="err">`</span><span class="p">,</span> <span class="nv">fraction</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CATransform3D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://twitter.com/b3ll" target="_blank" rel="external">Adam Bell</a>. All rights reserved. (Last updated: 2021-03-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

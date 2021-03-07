@@ -1,0 +1,537 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CALayer+Decomposed.h",
+      "line": 18,
+      "symbol": "DEDecomposedCATransform3DProxy.-init",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CALayer+Decomposed.h",
+      "line": 20,
+      "symbol": "DEDecomposedCATransform3DProxy.-initWithLayer:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CALayer+Decomposed.h",
+      "line": 48,
+      "symbol": "CALayer(Decomposed)",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 13,
+      "symbol": "Translation",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 14,
+      "symbol": "Scale",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 15,
+      "symbol": "Perspective",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 16,
+      "symbol": "Skew",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 22,
+      "symbol": "CGVector4.m14",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 27,
+      "symbol": "CGVector4.m24",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 32,
+      "symbol": "CGVector4.m34",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 37,
+      "symbol": "CGVector4.m44",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 42,
+      "symbol": "CGVector4.init(m14:m24:m34:m44:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 46,
+      "symbol": "CGVector4.init(m14:m24:m34:m44:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 50,
+      "symbol": "CGVector4.init(m14:m24:m34:m44:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 60,
+      "symbol": "CGVector3.xy",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 65,
+      "symbol": "CGVector3.xz",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 70,
+      "symbol": "CGVector3.yz",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 75,
+      "symbol": "CGVector3.init(xy:xz:yz:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 79,
+      "symbol": "CGVector3.init(xy:xz:yz:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DConvenienceExtensions.swift",
+      "line": 83,
+      "symbol": "CGVector3.init(xy:xz:yz:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DExtensions.swift",
+      "line": 47,
+      "symbol": "CATransform3D.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DExtensions.swift",
+      "line": 80,
+      "symbol": "CATransform3D.decomposed()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CATransform3DExtensions.swift",
+      "line": 274,
+      "symbol": "CATransform3D.skew(by:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 20,
+      "symbol": "CGVector4",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 22,
+      "symbol": "CGVector3.x",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 27,
+      "symbol": "CGVector3.y",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 32,
+      "symbol": "CGVector3.z",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 37,
+      "symbol": "CGVector3.init(x:y:z:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 41,
+      "symbol": "CGVector3.init(x:y:z:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 45,
+      "symbol": "CGVector3.init(x:y:z:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 49,
+      "symbol": "CGVector3.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 53,
+      "symbol": "CGVector3.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 67,
+      "symbol": "CGVector3.init(_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 75,
+      "symbol": "simd_double3.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 83,
+      "symbol": "simd_float3.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 89,
+      "symbol": "CGVector4",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 113,
+      "symbol": "CGVector4.init(x:y:z:w:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 117,
+      "symbol": "CGVector4.init(x:y:z:w:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 121,
+      "symbol": "CGVector4.init(x:y:z:w:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 125,
+      "symbol": "CGVector4.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 129,
+      "symbol": "CGVector4.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 137,
+      "symbol": "CGVector4",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 143,
+      "symbol": "CGVector4.init(_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 151,
+      "symbol": "simd_double4.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 159,
+      "symbol": "simd_float4.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 165,
+      "symbol": "CGQuaternion",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 169,
+      "symbol": "CGQuaternion.axis",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 174,
+      "symbol": "CGQuaternion.angle",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 189,
+      "symbol": "CGQuaternion.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 197,
+      "symbol": "simd_quatd.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 205,
+      "symbol": "simd_quatf.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 221,
+      "symbol": "CGVector4",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 229,
+      "symbol": "CGQuaternion",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 251,
+      "symbol": "CGVector4",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/CGFloatVectorTypes.swift",
+      "line": 262,
+      "symbol": "CGQuaternion",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 14,
+      "symbol": "SIMD4.m31",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 19,
+      "symbol": "SIMD4.m32",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 24,
+      "symbol": "SIMD4.m33",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 29,
+      "symbol": "SIMD4.m34",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 34,
+      "symbol": "SIMD4.init(m31:m32:m33:m34:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 44,
+      "symbol": "SIMD3.xy",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 49,
+      "symbol": "SIMD3.xz",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 54,
+      "symbol": "SIMD3.yz",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 59,
+      "symbol": "SIMD3.init(xy:xz:yz:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 69,
+      "symbol": "simd_float3.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 77,
+      "symbol": "simd_float4.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 85,
+      "symbol": "simd_quatf.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 89,
+      "symbol": "simd_quatf.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 110,
+      "symbol": "simd_double4x4.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 120,
+      "symbol": "simd_double3.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 128,
+      "symbol": "simd_double4.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 136,
+      "symbol": "simd_quatd.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 140,
+      "symbol": "simd_quatd.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Decomposed/Decomposed/Sources/Decomposed/SIMDConvenienceExtensions.swift",
+      "line": 161,
+      "symbol": "simd_float4x4.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "Sources/Decomposed.h",
+      "line": 12,
+      "symbol": "DecomposedVersionNumber",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "Sources/Decomposed.h",
+      "line": 15,
+      "symbol": "DecomposedVersionString",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/Decomposed/Decomposed"
+}
