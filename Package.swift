@@ -1,13 +1,13 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.6
 
 import PackageDescription
 
 let package = Package(
     name: "Decomposed",
     platforms: [
-      .iOS(.v10),
-      .macOS(.v10_12),
-      .tvOS(.v10)
+      .iOS(.v13),
+      .macOS(.v11),
+      .tvOS(.v13)
     ],
     products: [
         .library(
